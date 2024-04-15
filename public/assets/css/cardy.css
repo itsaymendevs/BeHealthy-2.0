@@ -1,0 +1,622 @@
+/*
+  Theme Name: Cardy - HTML Credit Card Payment Form
+*/
+/* CSS Index
+-------------------
+01. Card styles
+02. Card style 1
+03. Card style 2
+04. Card style 3
+05. Card style 4
+06. Card style 5
+07. Card style 6
+08. Card style 7
+09. Card style 8
+10. Card style 9
+11. Card style 10
+12. Card style 11
+13. Card style 12
+14. Media
+-------------------
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+/*=========================
+	01. Card styles
+===========================*/
+.cardy {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.cardy__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 27px 30px;
+    position: relative;
+    z-index: 1;
+    height: 240px;
+
+}
+.cardy__logo > span {
+    display: none;
+}
+.cardy__logo > span.active {
+    display: block;
+}
+.cardy__nfc {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    z-index: 1;
+}
+.cardy__column {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.cardy-subtitle {
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+    opacity: 0.8;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    line-height: 15px;
+}
+.cardy-slim {
+    font-weight: 300;
+}
+.cardy-input-style {
+    background: transparent;
+    border: 0;
+    width: 100%;
+    color: #fff;
+    outline: none;
+    font-size: 25px;
+    padding: 0;
+    resize: none;
+    font-family: "Changa", sans-serif;
+}
+.cardy__exp__input {
+    font-size: 17px;
+    height: 15px;
+    margin-top: 1px;
+    width: 51px;
+}
+.cardy__number {
+    font-size: 0;
+}
+.cardy__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.cardy__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cardy__logo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cardy__logo .cardy__logo__item {
+    max-width: 42px;
+}
+.cardy__logo .cardy__logo__item img {
+    width: 100%;
+    height: auto;
+}
+.cardy__bottom {
+    display: flex;
+}
+.cardy__name__input {
+    font-size: 20px;
+}
+/*=========================
+	02. Card style 1
+===========================*/
+.cardy-style1 {
+    background: #111111;
+}
+.cardy-style1 .cardy__img {
+    width: 50%;
+    left: unset;
+}
+.cardy-style1 .cardy__number__input {
+    width: 170px;
+    height: 88px;
+    line-height: 40px;
+    letter-spacing: 1px;
+}
+.cardy-style1 .cardy__container {
+    width: 50%;
+    height: 240px;
+}
+/*=========================
+	03. Card style 2
+===========================*/
+.cardy-style2 .cardy__img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.cardy-style2 .cardy__img img {
+    width: 100%;
+}
+.cardy-style2 .cardy__number__input {
+    font-size: 32px;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.cardy-style2 .cardy-input-style::placeholder {
+    color: rgb(255 255 255 / 49%);
+}
+/*=========================
+	04. Card style 3
+===========================*/
+.cardy-style3 .cardy__number__input {
+    font-size: 30px;
+    max-width: 200px;
+    height: 96px;
+}
+.cardy-style3 .cardy__number__input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+.cardy-style3 .cardy-subtitle {
+    color: #000;
+}
+.cardy-style3 .cardy-input-style {
+    color: #000;
+}
+.cardy-style3 .cardy__container:after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    background: #000;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.cardy-style3 .cardy__nfc {
+    bottom: 40px;
+    top: unset;
+    right: 40px;
+}
+.cardy-style3 .cardy__column {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+}
+.cardy-style3 .cardy__number {
+    margin-top: 9px;
+}
+/*=========================
+	05. Card style 4
+===========================*/
+.cardy-style4 .cardy__img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.cardy-style4 .cardy__img img {
+    width: 100%;
+}
+.cardy-style4 .cardy__number__input {
+    font-size: 32px;
+    height: 50px;
+    line-height: 40px;
+}
+.cardy-style4 .cardy-input-style::placeholder {
+    color: rgb(255 255 255 / 49%);
+}
+.cardy-style4 .cardy__number {
+    margin-top: 50px;
+}
+/*=========================
+	06. Card style 5
+===========================*/
+.cardy-style5 .cardy__logo {
+    justify-content: flex-end;
+}
+.cardy-style5 .cardy__nfc {
+    right: unset;
+    left: 30px;
+}
+.cardy-style5 .cardy__container {
+    justify-content: space-between;
+}
+.cardy-style5 .cardy__number {
+    margin-bottom: -8px;
+    position: relative;
+    z-index: 1;
+}
+.cardy-style5 .cardy__bottom {
+    position: absolute;
+    right: 30px;
+    bottom: 46px;
+    z-index: 2;
+}
+.cardy-style5 .cardy__number__input {
+    max-width: 200px;
+    font-size: 30px;
+    line-height: 41px;
+    height: 90px;
+}
+.cardy-style5 .cardy__column {
+    flex-direction: column;
+    gap: 10px;
+}
+.cardy-style5 .cardy__container:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 129px;
+    background: #111;
+}
+/*=========================
+	07. Card style 6
+===========================*/
+.cardy-style6 .cardy__logo {
+    justify-content: flex-end;
+}
+.cardy-style6 .cardy__number__input {
+    font-size: 32px;
+    height: 68px;
+    color: #000;
+}
+.cardy-style6 .cardy__bottom {
+    margin: -30px;
+    background: #202530;
+    padding: 24px 30px;
+}
+/*=========================
+	08. Card style 7
+===========================*/
+.cardy-style7 .cardy__nfc {
+    left: 30px;
+    right: unset;
+}
+.cardy-style7 .cardy__logo {
+    justify-content: flex-end;
+}
+.cardy-style7 .cardy__number__input {
+    font-size: 32px;
+    height: 68px;
+}
+.cardy-style7 .cardy__bottom {
+    margin: -30px;
+    background: rgb(17 17 17 / 30%);
+    padding: 24px 30px;
+    backdrop-filter: blur(6px);
+}
+/*=========================
+	09. Card style 8
+===========================*/
+.cardy-style8 .cardy__container {
+    align-items: center;
+}
+.cardy-style8 .cardy__logo {
+    margin: 10px 0;
+}
+.cardy-style8 .cardy-input-style {
+    color: #fff;
+}
+.cardy-style8 .cardy-input-style::placeholder {
+    color: rgb(255 255 255 / 80%);
+}
+.cardy-style8 .cardy__number__input {
+    font-size: 26px;
+    height: 46px;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 280px;
+}
+.cardy-style8 .cardy__bottom {
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+}
+.cardy-style8 .cardy__cvv__input {
+    width: 50px;
+    font-size: 22px;
+    font-weight: 300;
+    height: 25px;
+    margin-top: 8px;
+}
+.cardy-style8 .cardy__name__input {
+    margin-bottom: 4px;
+}
+/*=========================
+	10. Card style 9
+===========================*/
+.cardy-style9 {
+    background: #306BDD;
+}
+.cardy-style9 .cardy__img {
+    width: 50%;
+    left: unset;
+}
+.cardy-style9 .cardy__number__input {
+    width: 170px;
+    height: 88px;
+    line-height: 40px;
+    letter-spacing: 1px;
+}
+.cardy-style9 .cardy__container {
+    width: 50%;
+    height: 240px;
+}
+.cardy-style9 .cardy-input-style {
+    color: #fff;
+}
+.cardy-style9 .cardy-input-style::placeholder {
+    color: rgb(255 255 255 / 70%);
+}
+/*=========================
+	11. Card style 10
+===========================*/
+.cardy-style10 .cardy__logo {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1;
+}
+.cardy-style10 .cardy__container:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+    height: 95px;
+    background: #1EC4F8;
+}
+.cardy-style10 .cardy__bottom {
+    z-index: 1;
+}
+.cardy-style10 .cardy-input-style {
+    color: #fff;
+}
+.cardy-style10 .cardy-input-style::placeholder {
+    color: rgb(255 255 255 / 70%);
+}
+.cardy-style10 .cardy__number__input {
+    font-size: 32px;
+    height: 68px;
+}
+.cardy-style10 .cardy__number {
+    margin-top: 40px;
+}
+/*=========================
+	12. Card style 11
+===========================*/
+.cardy-style11 {
+    box-shadow: 0px 40px 64px 12px rgb(17 54 129 / 6%);
+}
+.cardy-style11 .cardy__logo {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1;
+}
+.cardy-style11 .cardy__container:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+    height: 95px;
+    background: #ffffff;
+}
+.cardy-style11 .cardy__bottom {
+    z-index: 1;
+}
+.cardy-style11 .cardy__number__input {
+    font-size: 32px;
+    height: 68px;
+}
+.cardy-style11 .cardy__number {
+    margin-top: 40px;
+}
+/*=========================
+	12. Card style 12
+===========================*/
+.cardy-style12 .cardy__container {
+    align-items: center;
+}
+.cardy-style12 .cardy__number__input {
+    max-width: 150px;
+    height: 80px;
+}
+.cardy-style12 .cardy__logo {
+    margin-top: 10px;
+}
+
+/* 14. Media */
+@media only screen and (max-width: 1400px) {
+    .cardy-style2 .cardy__number__input,
+    .cardy-style10 .cardy__number__input,
+    .cardy-style11 .cardy__number__input {
+        font-size: 27px;
+    }
+    .cardy-style2 .cardy__number__input {
+        height: 40px;
+    }
+    .cardy-style6 .cardy__number__input,
+    .cardy-style7 .cardy__number__input {
+        font-size: 27px;
+    }
+    .cardy-style4 .cardy__number__input {
+        font-size: 27px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .cardy__container {
+        height: 200px;
+    }
+    .cardy-style1 .cardy__container,
+    .cardy-style9 .cardy__container {
+        height: 200px;
+    }
+    .cardy-style2 .cardy__number__input,
+    .cardy-style6 .cardy__number__input,
+    .cardy-style7 .cardy__number__input,
+    .cardy-style10 .cardy__number__input,
+    .cardy-style11 .cardy__number__input {
+        font-size: 22px;
+    }
+    .cardy-style3 .cardy__number__input {
+        font-size: 24px;
+        max-width: 150px;
+        height: 76px;
+    }
+    .cardy-style5 .cardy__number__input {
+        font-size: 24px;
+        max-width: 150px;
+    }
+    .cardy-style4 .cardy__number__input {
+        font-size: 22px;
+    }
+    .cardy-style5 .cardy__container:after {
+        height: 112px;
+    }
+    .cardy-style5 .cardy__number__input {
+        line-height: 35px;
+        height: 78px;
+    }
+    .cardy-style1 .cardy__logo .cardy__logo__item,
+    .cardy-style9 .cardy__logo .cardy__logo__item {
+        width: 44%;
+    }
+    .cardy-style1 .cardy__number__input,
+    .cardy-style9 .cardy__number__input {
+        width: 130px;
+        height: 65px;
+        line-height: 26px;
+        letter-spacing: 1px;
+    }
+    .cardy-style1 .cardy-input-style,
+    .cardy-style9 .cardy-input-style {
+        font-size: 20px;
+    }
+    .cardy-style1 .cardy__exp__input,
+    .cardy-style9 .cardy__exp__input {
+        font-size: 17px;
+    }
+    .cardy__logo .cardy__logo__item {
+        max-width: 34px;
+    }
+    .cardy-style8 .cardy__number__input {
+        font-size: 20px;
+        min-width: 216px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .cardy__container {
+        height: 220px;
+    }
+    .cardy-style1 .cardy__container,
+    .cardy-style9 .cardy__container {
+        height: 220px;
+    }
+    .cardy-style2 .cardy__number__input,
+    .cardy-style6 .cardy__number__input,
+    .cardy-style7 .cardy__number__input,
+    .cardy-style10 .cardy__number__input,
+    .cardy-style11 .cardy__number__input {
+        font-size: 25px;
+    }
+    .cardy-style4 .cardy__number__input {
+        font-size: 25px;
+    }
+    .cardy-style3 .cardy__number__input {
+        font-size: 26px;
+        height: 82px;
+    }
+    .cardy-style1 .cardy-input-style,
+    .cardy-style9 .cardy-input-style {
+        font-size: 22px;
+    }
+    .cardy-style1 .cardy__exp__input,
+    .cardy-style9 .cardy__exp__input {
+        font-size: 17px;
+    }
+    .cardy-style8 .cardy__number__input {
+        font-size: 22px;
+        min-width: 244px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cardy__container {
+        height: 240px;
+    }
+    .cardy-style1 .cardy__container,
+    .cardy-style9 .cardy__container {
+        height: 240px;
+    }
+    .cardy-style2 .cardy__number__input,
+    .cardy-style6 .cardy__number__input,
+    .cardy-style7 .cardy__number__input,
+    .cardy-style10 .cardy__number__input,
+    .cardy-style11 .cardy__number__input {
+        font-size: 32px;
+    }
+    .cardy-style4 .cardy__number__input {
+        font-size: 32px;
+    }
+    .cardy-style1 .cardy-input-style,
+    .cardy-style9 .cardy-input-style {
+        font-size: 22px;
+    }
+    .cardy-style1 .cardy-input-style,
+    .cardy-style9 .cardy-input-style {
+        font-size: 26px;
+    }
+    .cardy-style1 .cardy__exp__input,
+    .cardy-style9 .cardy__exp__input {
+        font-size: 17px;
+    }
+    .cardy-style1 .cardy__number__input,
+    .cardy-style9 .cardy__number__input {
+        width: 150px;
+        height: 65px;
+    }
+    .cardy__logo .cardy__logo__item {
+        max-width: 42px;
+    }
+    .cardy-style8 .cardy__number__input {
+        font-size: 26px;
+        min-width: 280px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .cardy-style2 .cardy__number__input,
+    .cardy-style6 .cardy__number__input,
+    .cardy-style7 .cardy__number__input,
+    .cardy-style10 .cardy__number__input,
+    .cardy-style11 .cardy__number__input  {
+        font-size: 27px;
+    }
+    .cardy-style4 .cardy__number__input {
+        font-size: 27px;
+    }
+}

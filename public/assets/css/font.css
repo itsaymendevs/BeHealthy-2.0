@@ -1,0 +1,38 @@
+@import url('../fonts/ItalianPlateNo1-Demibold.woff');
+@import url('../fonts/ItalianPlateNo1-Extrabold.woff');
+@import url('../fonts/ItalianPlateNo1-Light.woff');
+@import url('../fonts/ItalianPlateNo1-Medium.woff');
+@import url('../fonts/ItalianPlateNo1-Regular.woff');
+
+@font-face {
+    font-family: 'ItalianPlateNo1Regular';
+    src: url('../fonts/ItalianPlateNo1-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ItalianPlateNo1Extrabold';
+    src: url('../fonts/ItalianPlateNo1-Extrabold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ItalianPlateNo1Medium';
+    src: url('../fonts/ItalianPlateNo1-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ItalianPlateNo1Demibold';
+    src: url('../fonts/ItalianPlateNo1-Demibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ItalianPlateNo1Light';
+    src: url('../fonts/ItalianPlateNo1-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
