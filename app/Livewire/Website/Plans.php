@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Website;
 
+use App\Models\Plan;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -15,51 +16,6 @@ class Plans extends Component
 
 
 
-    // :: variables
-    public $plans;
-
-
-
-
-
-
-    public function getData()
-    {
-
-
-        // 1: makeRequest
-        $response = $this->makeRequest('website/plans', []);
-
-
-
-
-
-        // :: combine
-        $combine = new stdClass();
-        $combine->plans = $response?->plans;
-
-
-        return $combine;
-
-
-
-
-    } // end function
-
-
-
-
-
-
-
-
-    // --------------------------------------------------------------------
-
-
-
-
-
-
 
 
     public function mount()
@@ -67,17 +23,7 @@ class Plans extends Component
 
 
         // :: forgetSession
-        // Session::forget('customer');
-
-
-
-        // 1: getData [plans]
-        $response = $this->getData();
-
-
-        $this->plans = $response?->plans ?? [];
-
-
+        Session::forget('customer');
 
 
     } // end function
@@ -102,7 +48,23 @@ class Plans extends Component
     {
 
 
-        return view('livewire.website.plans');
+
+
+
+        // 1: dependencies
+        $plans = Plan::whereHas('ranges')
+            ->whereHas('bundles')
+            ->whereHas('defaultCalendarRelation')
+            ->where('isForWebsite', true)
+            ->get();
+
+
+
+
+
+
+        return view('livewire.website.plans', compact('plans'));
+
 
     } // end function
 

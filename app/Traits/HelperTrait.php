@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\CityDeliveryTime;
 use App\Models\CityDistrict;
+use App\Models\PlanBundleDay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,36 @@ trait HelperTrait
 {
 
     use LivewireAlert;
+
+
+
+
+
+
+    protected function getDefaultPreview()
+    {
+
+
+        // 1: define defaultPreview Picture
+        $defaultPreview = asset('assets/img/placeholder.png');
+
+        return $defaultPreview;
+
+
+
+    } // end function
+
+
+
+
+
+
+
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+
+
 
 
 
@@ -70,6 +101,52 @@ trait HelperTrait
 
 
 
+    // --------------------------------------------------------------
+
+
+
+
+
+
+
+    protected function getPauseDate()
+    {
+
+
+        // 1: getDate
+        return $pauseDate = date('Y-m-d', strtotime('+1 day +4 hours'));
+
+
+    } // end function
+
+
+
+
+
+
+
+
+    // --------------------------------------------------------------
+
+
+
+
+
+
+
+    protected function getUnPauseDate()
+    {
+
+
+        // 1: getDate
+        return $unPauseDate = date('Y-m-d', strtotime('+1 day +4 hours'));
+
+
+    } // end function
+
+
+
+
 
 
 
@@ -77,6 +154,114 @@ trait HelperTrait
     // --------------------------------------------------------------
     // --------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+
+
+
+    public function refreshSelect($childSelectId, $parentModel, $childModel, $parentValue, $isEmpty = false)
+    {
+
+
+
+        // 1: city - districts
+        if ($parentModel == 'city' && $childModel == 'district') {
+
+            $cityDistricts = $parentValue ?
+                CityDistrict::where('cityId', $parentValue)
+                    ->get(['id', 'name as text'])->toArray() : [];
+
+
+
+            // :: makeEmpty
+            $isEmpty ? array_unshift($cityDistricts, ['id' => '', 'text' => '']) : null;
+
+
+            $this->dispatch('refreshSelect', id: $childSelectId, data: $cityDistricts);
+
+
+        } // end if
+
+
+
+
+
+
+
+        // 2: city - deliveryTime
+        if ($parentModel == 'city' && $childModel == 'deliveryTime') {
+
+            $cityDeliveryTimes = $parentValue ?
+                CityDeliveryTime::where('cityId', $parentValue)
+                    ->get(['id', 'title as text'])->toArray() : [];
+
+
+
+            // :: makeEmpty
+            $isEmpty ? array_unshift($cityDeliveryTimes, ['id' => '', 'text' => '']) : null;
+
+
+
+
+            $this->dispatch('refreshSelect', id: $childSelectId, data: $cityDeliveryTimes);
+
+
+        } // end if
+
+
+
+
+
+
+
+
+
+
+
+
+        // 3: bundle - days
+        if ($parentModel == 'bundle' && $childModel == 'days') {
+
+            $bundleDays = $parentValue ?
+                PlanBundleDay::where('planBundleId', $parentValue)
+                    ->get(['days as id', 'days as text'])->toArray() : [];
+
+
+
+            // :: makeEmpty
+            $isEmpty ? array_unshift($bundleDays, ['id' => '', 'text' => '']) : null;
+
+
+            $this->dispatch('refreshSelect', id: $childSelectId, data: $bundleDays);
+
+
+        } // end if
+
+
+
+
+
+
+    } // end function
+
+
+
+
+
+
+
+
+
+
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
 
 
 
@@ -110,11 +295,7 @@ trait HelperTrait
         // 3: convertToObject
         $response = json_decode(json_encode($response));
 
-
-
         return $response;
-
-
 
 
     } // end function
@@ -215,12 +396,6 @@ trait HelperTrait
 
 
 
-
-
-
-
-
-
     // --------------------------------------------------------------
     // --------------------------------------------------------------
     // --------------------------------------------------------------
@@ -234,48 +409,99 @@ trait HelperTrait
 
 
 
-
-
-    public function refreshSelect($childSelectId, $parentModel, $childModel, $options, $isEmpty = false)
+    protected function uploadFile($instanceFile, $path)
     {
 
 
+        // 1: makeFileName - upload
+        $fileName = date('h.iA') . rand(10, 10000) . rand(10, 10000) . rand(10, 10000) . $instanceFile->getClientOriginalName();
+        $instanceFile->storeAs($path, $fileName, 'public');
 
 
-        // 1: bundle - days
-        if ($parentModel == 'bundle' && $childModel == 'days') {
+        // 1.2: return fileName
+        return $fileName;
 
 
 
-
-            // 1.2: prepareOptions
-            $bundleDays = [];
-
-            foreach ($options ?? [] as $option) {
-
-                array_push($bundleDays, ['id' => $option->id, 'text' => $option->days]);
-
-            } // end function
+    } // end function
 
 
 
 
-            // :: makeEmpty
-            $isEmpty ? array_unshift($bundleDays, ['id' => '', 'text' => '']) : null;
 
 
 
 
-            $this->dispatch('refreshSelect', id: $childSelectId, data: $bundleDays);
 
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+    protected function removeFile($fileName, $path)
+    {
+
+
+        // 1: removeFile
+        Storage::disk('public')->delete($path . '/' . $fileName);
+
+        return true;
+
+
+    } // end function
+
+
+
+
+
+
+
+
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+    // --------------------------------------------------------------
+
+
+
+
+
+
+
+
+    protected function makeSerial($characters, $currentCount)
+    {
+
+
+        // 1: convert
+        $currentCount = intval($currentCount);
+
+
+
+        // 1.2: defineAndConcat
+        if ($currentCount < 10) {
+
+            return $characters . '-000' . ($currentCount + 1);
+
+        } elseif ($currentCount < 100) {
+
+            return $characters . '-00' . ($currentCount + 1);
+
+        } elseif ($currentCount < 1000) {
+
+            return $characters . '-0' . ($currentCount + 1);
+
+        } elseif ($currentCount < 10000) {
+
+            return $characters . '-' . ($currentCount + 1);
 
         } // end if
-
-
-
-
-
-
 
 
 
@@ -290,8 +516,6 @@ trait HelperTrait
 
 
 
-
-
     // --------------------------------------------------------------
     // --------------------------------------------------------------
     // --------------------------------------------------------------
@@ -300,6 +524,55 @@ trait HelperTrait
 
 
 
+
+
+
+
+    function formatBytes($bytes, $precision = 1)
+    {
+
+
+        // ::rootOfFormat
+        $kilobyte = 1024;
+        $megabyte = $kilobyte * 1024;
+        $gigabyte = $megabyte * 1024;
+
+
+
+        // 1: bytes
+        if ($bytes < $kilobyte) {
+            return $bytes . ' B';
+
+
+            // 2: kiloBytes
+        } elseif ($bytes < $megabyte) {
+            return round($bytes / $kilobyte, $precision) . ' KB';
+
+
+            // 3: megaBytes
+        } elseif ($bytes < $gigabyte) {
+            return round($bytes / $megabyte, $precision) . ' MB';
+
+
+            // 4: gigaBytes
+        } else {
+
+            return round($bytes / $gigabyte, $precision) . ' GB';
+
+        } // end if
+
+
+    } // end function
+
+
+
+
+
+
+
+
+
+    // --------------------------------------------------------------
 
 
 
@@ -338,6 +611,30 @@ trait HelperTrait
 
 
 
+
+
+
+
+    // --------------------------------------------------------------
+
+
+
+
+
+
+
+    function makeGroupToken()
+    {
+
+
+
+        // :: returnToken
+        return date('dmYhisA');
+
+
+
+
+    } // end function
 
 
 

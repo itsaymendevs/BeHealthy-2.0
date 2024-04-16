@@ -34,9 +34,13 @@ class AppServiceProvider extends ServiceProvider
     {
 
 
+        // 1: defaultPreview
+        View::share('defaultPreview', asset('assets/img/placeholder.png'));
+        View::share('defaultPlate', "plate.png");
+        View::share('defaultIngredient', "ingredient.png");
 
-        // 1: storagePath
-        View::share('storagePath', env('APP_STORAGE'));
+
+
 
 
 
@@ -56,6 +60,11 @@ class AppServiceProvider extends ServiceProvider
 
 
 
+
+
+
+        // 1.5: storagePath
+        View::share('storagePath', env('APP_STORAGE'));
 
 
     } // end function

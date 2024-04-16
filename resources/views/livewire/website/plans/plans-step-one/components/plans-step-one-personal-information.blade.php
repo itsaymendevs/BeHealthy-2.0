@@ -102,7 +102,7 @@
                             <div class="input-group margin">
                                 <input required="" type="text" autocomplete="off" class="input"
                                     wire:model='instance.phone' minlength="9" maxlength="9" pattern="[0-9]+">
-                                <label class="user-label">Phone Number</label>
+                                <label class="user-label">Phone</label>
                             </div>
                         </div>
 
@@ -116,7 +116,7 @@
                             <div class="input-group margin">
                                 <input required type="text" autocomplete="off" class="input"
                                     wire:model='instance.whatsapp' minlength="9" maxlength="9" pattern="[0-9]+">
-                                <label class="user-label">Whatsapp Number</label>
+                                <label class="user-label">Whatsapp</label>
                             </div>
                         </div>
 

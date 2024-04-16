@@ -17,9 +17,8 @@
                             <span class="number">1</span>
                             <span class="text">Personalize</span>
                         </p>
-                        <p class="line">
+                        <p class="line me-3">
                             <span></span>
-                            <i class="fal fa-long-arrow-right"></i>
                         </p>
                     </div>
 
@@ -28,14 +27,13 @@
 
 
                     {{-- 2: checkout --}}
-                    <div class="wizard-steps">
+                    <div class='wizard-steps @if (Request::is("plans/${id}/checkout")) active @endif'>
                         <p class="title">
                             <span class="number">2</span>
                             <span class="text">Checkout</span>
                         </p>
-                        <p class="line">
+                        <p class="line me-3">
                             <span></span>
-                            <i class="fal fa-long-arrow-right"></i>
                         </p>
                     </div>
 

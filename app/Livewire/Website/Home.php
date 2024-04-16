@@ -2,6 +2,10 @@
 
 namespace App\Livewire\Website;
 
+use App\Models\MealType;
+use App\Models\MenuCalendarScheduleMeal;
+use App\Models\Plan;
+use App\Models\Type;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -16,65 +20,6 @@ class Home extends Component
 
 
 
-    // :: variables
-    public $plans, $sampleMeals;
-
-
-
-
-
-
-    public function getData()
-    {
-
-
-        // 1: makeRequest
-        $response = $this->makeRequest('website/plans', []);
-        $secondResponse = $this->makeRequest('website/sample-meals', []);
-
-
-
-
-
-
-
-
-        // ----------------------------
-        // ----------------------------
-
-
-
-
-
-
-        // 2: handleParams
-
-
-
-        // 2.1: plans - sampleMeals
-        $this->plans = $response?->plans ?? [];
-        $this->sampleMeals = $secondResponse?->sampleMeals ?? [];
-
-
-
-
-
-
-    } // end function
-
-
-
-
-
-
-
-
-    // --------------------------------------------------------------------
-
-
-
-
-
 
 
 
@@ -83,12 +28,7 @@ class Home extends Component
 
 
         // :: forgetSession
-        // Session::forget('customer');
-
-
-
-        // 1: getData
-        $this->getData();
+        Session::forget('customer');
 
 
 
@@ -114,7 +54,61 @@ class Home extends Component
     {
 
 
-        return view('livewire.website.home');
+
+
+
+        // 1: dependencies
+        $plans = $plans = Plan::whereHas('ranges')
+            ->whereHas('bundles')
+            ->whereHas('defaultCalendarRelation')
+            ->where('isForWebsite', true)
+            ->get();
+
+
+
+
+
+
+
+
+        // ------------------------------------
+        // ------------------------------------
+
+
+
+
+
+
+        // 2: sampleMeals
+
+
+
+
+        // 2.1: mealTypes
+        $types = Type::whereIn('name', ['Recipe'])->get()?->pluck('id')?->toArray();
+        $mealTypes = MealType::whereIn('typeId', $types)->get()?->pluck('id')?->toArray();
+
+
+
+
+
+        // 2.2: sampleMeals
+        $sampleMeals = MenuCalendarScheduleMeal::with('meal')
+            ->whereNotNull('mealId')
+            ->whereIn('mealTypeId', $mealTypes)
+            ->where('scheduleDate', $this->getCurrentDate())
+            ->take(12)->get();
+
+
+
+
+
+
+
+        return view('livewire.website.home', compact('sampleMeals', 'plans'));
+
+
+
 
     } // end function
 
