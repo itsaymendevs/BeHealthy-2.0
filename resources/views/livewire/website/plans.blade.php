@@ -3,6 +3,46 @@
 
 
 
+    {{-- head --}}
+    @section('head')
+
+
+
+
+    {{-- title - description - keywords meta --}}
+    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+
+    <meta name="description"
+        content="Discover the best Healthy Meal Plans in Dubai to begin your diet journey. Aleen's experts offer dietary plans, nutritional counseling, and wellness solutions.">
+
+    <meta name="keywords"
+        content="Healthy Meal Plans in Dubai, Best Healthy Meal Plans in Dubai, Healthy Meal Plans, Meal Plans For Healthy Diet in Dubai">
+
+
+
+    @endsection
+    {{-- endHead --}}
+
+
+
+
+
+
+
+
+
+
+    {{-- ------------------------------------------------ --}}
+    {{-- ------------------------------------------------ --}}
+
+
+
+
+
+
+
+
+
 
     <!-- 1: plans -->
     <section class="meal-plan-section">
@@ -39,8 +79,8 @@
 
 
 
-                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper" data-aos='fade-up'
-                    data-aos-delay="{{ $key * 200 }}">
+                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper mb-4" data-aos='fade-up'
+                    data-aos-delay="{{ $key * 200 }}" wire:ignore.self>
                     <div class="meal-plan-card @if ($key >= 3 && $key <= 6 || $key >= 6 && $key <= 9) reverse @endif">
                         <div class="img-box">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}"  }}' alt="">
@@ -102,6 +142,8 @@
 
 
 
+
+
     {{-- -------------------------------------------------- --}}
     {{-- -------------------------------------------------- --}}
 
@@ -114,7 +156,8 @@
 
 
 
-    <!-- 2: help Section -->
+
+    <!-- 4: helpSection -->
     <section class="not-sure-sec light-sec">
         <div class="container">
             <div class="row">
@@ -123,11 +166,10 @@
                         <div class="row">
 
 
-
-                            {{-- information --}}
-                            <div class="col-lg-8 col-md-6 col-12">
+                            {{-- question --}}
+                            <div class="col-lg-8 col-md-6 col-12 order-lg-1 order-md-1 order-2">
                                 <div class="content-box">
-                                    <h2>Need help choosing a plan?</h2>
+                                    <h2>Not Sure Which Meal Plan Suits You?</h2>
                                     <a href="javascript:void(0);">
                                         <i class="fal fa-play"></i>Get A Free Diet Consultation
                                     </a>
@@ -135,8 +177,8 @@
                             </div>
 
 
-                            {{-- cover --}}
-                            <div class="col-lg-4 col-md-6 col-12 position-relative">
+                            {{-- imageFile --}}
+                            <div class="col-lg-4 col-md-6 col-12 order-lg-2 order-md-2 order-1 position-relative">
                                 <div class="img-box">
                                     <img src="{{ url('assets/images/nutrioniest.png') }}" alt="">
                                 </div>
@@ -150,6 +192,12 @@
         </div>
     </section>
     {{-- endSection --}}
+
+
+
+
+
+
 
 
 
@@ -176,7 +224,7 @@
 
     <!-- 3: FAQs -->
     <section class="faq-sec light-sec">
-        <div class="container" data-aos='slide-up'>
+        <div class="container" data-aos='slide-up' wire:ignore.self>
 
             {{-- heading --}}
             <div class="row">

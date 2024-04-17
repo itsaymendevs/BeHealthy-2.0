@@ -2,35 +2,84 @@
 <html lang="en">
 
     {{-- head --}}
-
     <head>
+
+
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CNV3GXQT9F"></script>
+        <script>
+            window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-CNV3GXQT9F');
+        </script>
+
+
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WSQT63PD');
+        </script>
+        <!-- End Google Tag Manager -->
+
+
+
+        {{-- siteVerification --}}
+        <meta name="google-site-verification" content="te9mj_RC4u0N_yLsegAflmaP4T4PSQbDNH9o3ppC1GM" />
+
+        {{-- facebook - meta --}}
+        <meta name="facebook-domain-verification" content="l3asbc4bhzkgnd54qt2558td8vmntm" />
+
+
+
+
+
+
+
+
+
+
+
+        {{-- --------------------------------------- --}}
+        {{-- --------------------------------------- --}}
+
+
+
+
+
+
+
+
+
+
 
         {{-- meta --}}
         <meta charset="utf-8">
         <meta name="viewport"
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
-        <title>Aleens.</title>
-
         <meta name="description" content="Aleens">
         <meta name="keywords" content="Aleens">
         <meta name="author" content="TRUTH. SOLUTIONS">
 
 
 
+
+
         {{-- icons --}}
-        {{--
         <link rel="apple-touch-icon" sizes="180x180" href="{{url('apple-touch-icon.png')}}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{url('favicon-32x32.png')}}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{url('favicon-16x16.png')}}">
         <link rel="manifest" href="{{url('site.webmanifest')}}">
-        <link rel="mask-icon" href="{{url('safari-pinned-tab.svg')}}" color="#000000">
-        <meta name="msapplication-TileColor" content="#000000">
-        <meta name="theme-color" content="#000000"> --}}
+        <link rel="mask-icon" href="{{url('safari-pinned-tab.svg')}}" color="#00a155">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="theme-color" content="#ffffff">
+
+
+
 
 
 
         {{-- fonts --}}
         <link href="{{ url('assets/fonts/poppins/stylesheet.css') }}" rel="stylesheet">
+
+
 
 
 
@@ -59,18 +108,63 @@
 
 
 
-
-
         @yield('styles')
 
 
 
 
 
-        {{-- JQuery --}}
+
+
+
+
+
+        {{-- --------------------------------------- --}}
+        {{-- --------------------------------------- --}}
+
+
+
+
+
+
+
+
+        {{-- extraHeaders --}}
+        @yield('head')
+
+
+
+
+
+
+
+
+        {{-- JQUERY --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
             crossorigin="anonymous" referrerpolicy="no-referrer" data-navigate-once></script>
+
+
+
+
+
+
+        <!-- Meta Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '2505810666269624');
+            fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+                src="https://www.facebook.com/tr?id=2505810666269624&ev=PageView&noscript=1" /></noscript>
+        <!-- End Meta Pixel Code -->
 
 
 
@@ -86,7 +180,13 @@
 
 
 
+
     {{-- ----------------------------------------------------- --}}
+    {{-- ----------------------------------------------------- --}}
+
+
+
+
 
 
 
@@ -97,6 +197,19 @@
 
     {{-- body --}}
     <body class="scrollbar" id='style-1'>
+
+
+
+
+
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSQT63PD" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+
+
+
 
 
 
@@ -157,6 +270,7 @@
 
 
         <!-- generalScripts -->
+
         <script src="{{url('assets/js/bootstrap.bundle.min.js')}}" data-navigate-once></script>
         <script src="{{url('assets/js/jquery.validate.js')}}" data-navigate-once></script>
         <script src="{{url('assets/js/jquery.smartWizard.min.js')}}"></script>

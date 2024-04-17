@@ -5,6 +5,41 @@
 
 
 
+    {{-- head --}}
+    @section('head')
+
+
+
+
+    {{-- title - description - keywords meta --}}
+    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+
+
+
+    @endsection
+    {{-- endHead --}}
+
+
+
+
+
+
+
+
+
+
+    {{-- ------------------------------------------------ --}}
+    {{-- ------------------------------------------------ --}}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,7 +72,7 @@
 
 
 
-            {{-- 1: step - plans --}}
+            {{-- 1: step - plans - HIDDEN --}}
             <div class="row d-none">
                 <div class="col-lg-7 offset-lg-5 col-md-6 col-12">
                     <div class='d-block'>
@@ -178,7 +213,7 @@
 
 
                 {{-- :: planInformation --}}
-                <div class="col-lg-5 col-md-6 col-12">
+                <div class="col-lg-5 col-md-6 col-12" data-aos='slide-right' wire:ignore.self>
                     <div class="side-detail">
 
 
@@ -352,10 +387,11 @@
 
 
                                 {{-- loop - bundles --}}
-                                @foreach ($planBundles?->where('isForWebsite', true) ?? [] as $planBundle)
+                                @foreach ($planBundles?->where('isForWebsite', true) ?? [] as $key => $planBundle)
 
-                                <div class="col-11 col-sm-6 col-xl-4 mb-md-4" key='plan-bunlde-{{ $planBundle->id }}'>
-                                    <label class="check-box action bundle-options w-100">
+                                <div class="col-12 col-sm-6 col-xl-4 mb-4" key='plan-bunlde-{{ $planBundle->id }}'
+                                    data-aos='fade' data-aos-delay='{{ $key * 300 }}' wire:ignore.self>
+                                    <label class="check-box action bundle-options w-100 h-100">
 
 
 
@@ -365,7 +401,7 @@
 
 
                                         {{-- information --}}
-                                        <div class="check-item flex-column">
+                                        <div class="check-item flex-column h-100 justify-content-start">
 
 
 
@@ -809,11 +845,12 @@
 
 
                                 {{-- 4.3: loop - weekDays --}}
-                                @foreach ($weekDays ?? [] as $weekDay)
+                                @foreach ($weekDays ?? [] as $key => $weekDay)
 
 
 
-                                <div class="col-6 col-sm-4 col-md-6 col-xl-3 mb-2">
+                                <div class="col-6 col-sm-4 col-md-6 col-xl-3 mb-2" data-aos='fade'
+                                    data-aos-delay='{{ $key * 100 }}' wire:ignore.self>
                                     <label class="check-box action bundle-options w-100 mb-0">
 
 
@@ -1115,7 +1152,7 @@
 
     <!-- 2: FAQs -->
     <section class="faq-sec light-sec personalize">
-        <div class="container">
+        <div class="container" data-aos='slide-up' wire:ignore.self>
 
 
 

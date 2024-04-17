@@ -4,6 +4,50 @@
 
 
 
+    {{-- head --}}
+    @section('head')
+
+
+
+    {{-- calendly --}}
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+
+
+    {{-- title - description - keywords meta --}}
+    <title>Aleen’s: Best Healthy Meal Plans Provider in Dubai</title>
+
+    <meta name="description"
+        content="Aleen’s delivers delectable, nutritious meal plans for well-being. Achieve your goals with the best healthy meal plans provider in Dubai. Savor goodness!">
+
+    <meta name="keywords"
+        content="Healthy Meal Plans Provider in Dubai, Best Healthy Meal Plans Provider in Dubai, Healthy Meal Plans Provider">
+
+
+    @endsection
+    {{-- endHead --}}
+
+
+
+
+
+
+
+
+
+
+    {{-- ------------------------------------------------ --}}
+    {{-- ------------------------------------------------ --}}
+
+
+
+
+
+
+
+
+
     {{-- 1: banner --}}
     <section class="main-banner light-sec" style="min">
         <div class="container">
@@ -49,7 +93,7 @@
 
 
                                     {{-- imageFile --}}
-                                    <div class="col-lg-6 col-md-6 col-12" data-aos='fade'>
+                                    <div class="col-lg-6 col-md-6 col-12" data-aos='fade' wire:ignore.self>
                                         <div class="img-box">
                                             <img src="{{ url('assets/images/banner-image.png') }}" alt="">
                                         </div>
@@ -249,8 +293,8 @@
 
 
 
-                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper" data-aos='fade-up'
-                    data-aos-delay="{{ $key * 200 }}">
+                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper mb-4" data-aos='fade-up'
+                    data-aos-delay="{{ $key * 200 }}" wire:ignore.self>
                     <div class="meal-plan-card @if ($key >= 3 && $key <= 6 || $key >= 6 && $key <= 9) reverse @endif">
                         <div class="img-box">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}"  }}' alt="">
@@ -359,7 +403,8 @@
 
 
 
-                        <div class="meal-of-day-item orange" data-aos='fade' data-aos-delay="{{ $key * 150 }}">
+                        <div class="meal-of-day-item orange" data-aos='fade' data-aos-delay="{{ $key * 150 }}"
+                            wire:ignore.self>
                             <div class="mela-info-box">
 
 
@@ -480,7 +525,7 @@
                             <div class="col-lg-8 col-md-6 col-12 order-lg-1 order-md-1 order-2">
                                 <div class="content-box">
                                     <h2>Not Sure Which Meal Plan Suits You?</h2>
-                                    <a href="javascript:void(0);">
+                                    <a href="javascript:void(0);" id='toggleCalendly'>
                                         <i class="fal fa-play"></i>Get A Free Diet Consultation
                                     </a>
                                 </div>
@@ -558,7 +603,8 @@
 
 
                         {{-- 1: selectPlanStep --}}
-                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='600'>
+                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='600'
+                            wire:ignore.self>
                             <div class="how-it-works-item green">
                                 <img src="{{ url('assets/images/select-your-meal-plan.png') }}" alt="">
                                 <p class="title">Select your meal plan</p>
@@ -573,7 +619,8 @@
 
 
                         {{-- 2: weDeliver --}}
-                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='300'>
+                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='300'
+                            wire:ignore.self>
                             <div class="how-it-works-item orange">
                                 <img src="{{ url('assets/images/we-deliver.png') }}" alt="">
                                 <p class="title">We Deliver</p>
@@ -586,7 +633,7 @@
 
 
                         {{-- 3: enjoy --}}
-                        <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0" data-aos='slide-left'>
+                        <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0" data-aos='slide-left' wire:ignore.self>
                             <div class="how-it-works-item green">
                                 <img src="assets/images/enjiy.png" alt="">
                                 <p class="title">you enjoy</p>
@@ -822,7 +869,8 @@
 
 
                             {{-- cover --}}
-                            <div class="col-lg-4 col-md-6 col-12 position-relative" data-aos='zoom-out'>
+                            <div class="col-lg-4 col-md-6 col-12 position-relative" data-aos='zoom-out'
+                                wire:ignore.self>
                                 <div class="img-box">
                                     <img src="assets/images/personal-trainer-trimmed.png" alt="">
                                 </div>
@@ -1141,7 +1189,7 @@
 
     <!-- 9: FAQs -->
     <section class="faq-sec light-sec">
-        <div class="container" data-aos="slide-up">
+        <div class="container" data-aos="slide-up" wire:ignore.self>
 
 
 
@@ -1216,7 +1264,7 @@
 
 
                 {{-- singleBlog --}}
-                <div class="col-lg-4 col-md-6 col-12" data-aos='fade'>
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' wire:ignore.self>
                     <div class="blog-card green">
                         <div class="img-box">
                             <img src="{{ url('assets/images/blog-1.png') }}" alt="">
@@ -1238,7 +1286,7 @@
 
 
                 {{-- singleBlog --}}
-                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="300">
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="300" wire:ignore.self>
                     <div class="blog-card orange">
                         <div class="img-box">
                             <img src="{{ url('assets/images/blog-2.png') }}" alt="">
@@ -1265,7 +1313,7 @@
 
 
                 {{-- singleblog --}}
-                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="600">
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="600" wire:ignore.self>
                     <div class="blog-card green">
                         <div class="img-box">
                             <img src="{{ url('assets/images/blog-3.png') }}" alt="">
@@ -1360,7 +1408,7 @@
 
                     {{-- logo --}}
                     <div class="col-lg-6 col-md-6 col-12">
-                        <div class="logo-box">
+                        <div class="logo-box text-center text-md-start mb-3 mb-md-0">
                             <a href="{{ route('website.home') }}">
                                 <img src="{{ url('assets/images/logo.png') }}" alt="">
                             </a>
@@ -1374,7 +1422,7 @@
                     {{-- shortLinks --}}
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="link-box">
-                            <ul>
+                            <ul class='mb-0 justify-content-center justify-content-md-end'>
                                 <li><a href="{{ route('website.home') }}">Home</a></li>
                                 <li><a href="{{ route('website.plans') }}">Meal Plan</a></li>
                                 <li><a href="{{ route('website.home') }}#blogs">Blogs</a></li>
@@ -1404,13 +1452,13 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-12 col-md-4 col-lg-4 text-center text-md-start mt-3 mt-md-0">
                         <div class="copyright">
                             <p>&#169; {{ date('Y') }} Aleen's. All rights reserved.</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-12 text-center">
+                    <div class="col-12 col-md-4 col-lg-4 text-center">
                         <a href="https://doer.ae" target='_blank'>
                             <img src="{{ url('assets/images/footer/doer.png') }}" alt="" class='of-contain'
                                 style="height: 56px; width: 125px;">
@@ -1419,7 +1467,7 @@
                     </div>
 
 
-                    <div class="col-lg-4 col-md-4 col-12">
+                    <div class="col-lg-4 col-md-4 col-12 d-none d-md-block">
                         <div class="we-accept">
                             <img src="{{ url('assets/images/card-enhanced.png') }}" alt="" class='of-contain'
                                 style="height: 56px; width: 125px;">
@@ -1451,6 +1499,37 @@
 
 
 
+
+
+
+
+    {{-- initiateCalendly --}}
+    <script>
+        $(document).ready(function() {
+            var calendlyButton = document.getElementById('toggleCalendly');
+            calendlyButton.addEventListener("click", function() {
+                Calendly.initPopupWidget({ url: 'https://calendly.com/cynthiagfarsoun/30min' });
+                return false;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
 
 
 

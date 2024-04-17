@@ -6,6 +6,38 @@
 
 
 
+    {{-- head --}}
+    @section('head')
+
+
+
+
+    {{-- title - description - keywords meta --}}
+    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+
+
+
+    @endsection
+    {{-- endHead --}}
+
+
+
+
+
+
+
+
+
+
+    {{-- ------------------------------------------------ --}}
+    {{-- ------------------------------------------------ --}}
+
+
+
+
+
+
+
 
 
 
@@ -270,7 +302,7 @@
 
 
                 {{-- 2: summary --}}
-                <div class="col-lg-3 col-md-7 col-12">
+                <div class="col-lg-3 col-md-7 col-12" data-aos='slide-left' wire:ignore.self>
                     <div class="summary-right light-sec">
 
 
@@ -451,7 +483,7 @@
 
     <!-- 2: FAQs -->
     <section class="faq-sec light-sec personalize">
-        <div class="container">
+        <div class="container" data-aos='slide-up' wire:ignore.self>
 
 
 

@@ -12,7 +12,8 @@
 
 
                     {{-- 1: personalize --}}
-                    <div class='wizard-steps @if (Request::is("plans/${id}/personalize")) active @endif'>
+                    <div class='wizard-steps @if (Request::is("plans/${id}/personalize")) active @endif'
+                        data-aos='fade-down' wire:ignore.self>
                         <p class="title">
                             <span class="number">1</span>
                             <span class="text">Personalize</span>
@@ -27,7 +28,8 @@
 
 
                     {{-- 2: checkout --}}
-                    <div class='wizard-steps @if (Request::is("plans/${id}/checkout")) active @endif'>
+                    <div class='wizard-steps @if (Request::is("plans/${id}/checkout")) active @endif'
+                        data-aos='fade-down' data-aos-delay='200' wire:ignore.self>
                         <p class="title">
                             <span class="number">2</span>
                             <span class="text">Checkout</span>
@@ -43,7 +45,7 @@
 
 
                     {{-- 3: getStarted --}}
-                    <div class="wizard-steps">
+                    <div class="wizard-steps" data-aos='fade-down' data-aos-delay='400' wire:ignore.self>
                         <p class="title">
                             <span class="number">3</span>
                             <span class="text">Get Started</span>
