@@ -39,7 +39,8 @@
 
 
 
-                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper">
+                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper" data-aos='fade-up'
+                    data-aos-delay="{{ $key * 200 }}">
                     <div class="meal-plan-card @if ($key >= 3 && $key <= 6 || $key >= 6 && $key <= 9) reverse @endif">
                         <div class="img-box">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}"  }}' alt="">
@@ -47,7 +48,7 @@
 
 
                         {{-- content --}}
-                        <div class="content-box">
+                        <div class="content-box text-center">
 
 
                             {{-- information --}}
@@ -59,8 +60,8 @@
 
 
                             {{-- select --}}
-                            <a wire:navigate class="btn" href="{{ route('website.plans.stepOne', [$plan->id]) }}">
-                                <i class="fal fa-play"></i>Select</a>
+                            <a class="btn w-100 d-flex justify-content-center"
+                                href="{{ route('website.plans.stepOne', [$plan->id]) }}">Select</a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +119,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="not-sure-banner-box">
+                    <div class="not-sure-banner-box gradient-banner">
                         <div class="row">
 
 
@@ -135,9 +136,9 @@
 
 
                             {{-- cover --}}
-                            <div class="col-lg-4 col-md-6 col-12">
+                            <div class="col-lg-4 col-md-6 col-12 position-relative">
                                 <div class="img-box">
-                                    <img src="{{ asset('assets/images/thinking.png') }}" alt="">
+                                    <img src="{{ url('assets/images/nutrioniest.png') }}" alt="">
                                 </div>
                             </div>
 
@@ -175,7 +176,7 @@
 
     <!-- 3: FAQs -->
     <section class="faq-sec light-sec">
-        <div class="container">
+        <div class="container" data-aos='slide-up'>
 
             {{-- heading --}}
             <div class="row">

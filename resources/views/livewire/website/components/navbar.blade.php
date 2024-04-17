@@ -6,8 +6,8 @@
 
 
                 {{-- logo --}}
-                <a wire:navigate class="navbar-brand" href="{{ route('website.home') }}">
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="">
+                <a class="navbar-brand" href="{{ route('website.home') }}">
+                    <img src="{{ url('assets/images/logo.png') }}" alt="">
                 </a>
 
 
@@ -23,14 +23,14 @@
 
 
                 {{-- navLinks --}}
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse mobile--navbar" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
 
 
                         {{-- 1: home --}}
                         <li class="nav-item">
-                            <a wire:navigate class="nav-link @if (Request::is('/', '/home')) active @endif"
-                                aria-current="page" href="{{ route('website.home') }}">Home</a>
+                            <a class="nav-link @if (Request::is('/', '/home')) active @endif" aria-current="page"
+                                href="{{ route('website.home') }}">Home</a>
                         </li>
 
 
@@ -51,7 +51,7 @@
 
                         {{-- 3: mealPlans --}}
                         <li class="nav-item">
-                            <a wire:navigate class="nav-link @if (Request::is('plans', 'plans/*')) active @endif"
+                            <a class="nav-link @if (Request::is('plans', 'plans/*')) active @endif"
                                 href="{{ route('website.plans') }}">MEAL PLANS</a>
                         </li>
 
@@ -94,7 +94,7 @@
 
                         {{-- 7: login --}}
                         <li class="nav-item">
-                            <a class="green-outline-btn" href="javascript:void(0);">LOGIN</a>
+                            <a class="green-outline-btn " href="javascript:void(0);">LOGIN</a>
                         </li>
 
 

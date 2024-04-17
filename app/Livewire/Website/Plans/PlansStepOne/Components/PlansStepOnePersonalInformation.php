@@ -3,6 +3,7 @@
 namespace App\Livewire\Website\Plans\PlansStepOne\Components;
 
 use App\Livewire\Forms\CustomerSubscriptionForm;
+use App\Models\Bag;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\On;
@@ -82,10 +83,60 @@ class PlansStepOnePersonalInformation extends Component
 
 
 
+
+
+
+
+
+        // 1: appendMissingInformation
+
+
+
+
+
+        // 1.2: bag
+        $bag = Bag::whereIn('name', ['Cool Bag', 'Cooler Bag'])->first();
+
+
+        $this->instance->bag = $bag->name;
+        $this->instance->bagImageFile = $bag->imageFile;
+        $this->instance->bagPrice = $bag->price;
+
+
+
+
+
+
+
+
+
+
+        // 1.3: calculateTotalPrice
+        $this->instance->totalPrice = $this->instance->totalBundleRangePrice + $this->instance->bagPrice;
+        $this->instance->totalCheckoutPrice = $this->instance->totalBundleRangePrice + $this->instance->bagPrice;
+
+
+
+
+
+
+
+
+        // ----------------------------------
+        // ----------------------------------
+
+
+
+
+
+
+
         // :: continue
 
 
-        // 3: makeSession
+
+
+        // 2: makeSession
         Session::put('customer', $this->instance);
 
 
@@ -95,7 +146,7 @@ class PlansStepOnePersonalInformation extends Component
 
 
         // :: redirectStepTwo
-        return $this->redirect(route('website.plans.stepTwo', [$this->instance->planId]), navigate: true);
+        return $this->redirect(route('website.plans.stepTwo', [$this->instance->planId]), navigate: false);
 
 
 

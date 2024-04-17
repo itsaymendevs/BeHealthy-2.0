@@ -208,9 +208,7 @@ class PlansStepOne extends Component
 
 
 
-
         $this->refreshSelect('#planDays-select', 'bundle', 'days', $planBundle->id, true);
-
 
 
 
@@ -253,7 +251,9 @@ class PlansStepOne extends Component
 
         // 1: getPlanBundle - bundleRangePricePerDay
         $planBundle = $this->plan->bundles->where('id', $this->instance->planBundleId)->first();
-        $this->instance->bundleRangePricePerDay = $planBundle->rangesByPrice->where('planRangeId', $this->instance->bundleRangeId)->first()->pricePerDay;
+
+
+        $this->instance->bundleRangePricePerDay = $planBundle->rangesByPrice->where('planRangeId', $this->instance->bundleRangeId)?->first()?->pricePerDay;
 
 
 
@@ -345,6 +345,15 @@ class PlansStepOne extends Component
 
 
 
+
+
+
+
+
+
+
+
+
     // --------------------------------------------------------------
 
 
@@ -403,6 +412,45 @@ class PlansStepOne extends Component
 
 
 
+
+
+
+
+
+
+        // 3: updateDiscount
+
+
+
+
+        // 3.2: getDiscountRaw
+        $discount = PlanBundleDay::where('planBundleId', $this->instance->planBundleId)
+            ->where('days', $this->instance?->planDays ?? 0)?->first()?->discount ?? 0;
+
+
+
+
+
+
+        // 3.3: calculateDiscount
+        $discountPrice = ((intval($this->instance->planDays) ?? 0) * $this->instance->bundleRangePricePerDay) * ($discount / 100);
+
+
+
+
+
+        // 3.4: totalPrice (-Discount)
+        $this->instance->totalBundleRangePrice = ((intval($this->instance->planDays) ?? 0) * $this->instance->bundleRangePricePerDay) - $discountPrice;
+
+
+
+
+
+
+
+
+
+
         // ------------------------------------
         // ------------------------------------
 
@@ -416,8 +464,10 @@ class PlansStepOne extends Component
         // :: continue
 
 
-        // 3: makeSession
+        // 4: makeSession
         Session::put('customer', $this->instance);
+
+
 
 
 
@@ -465,7 +515,15 @@ class PlansStepOne extends Component
 
 
         // 1: dependencies
-        $plans = Plan::all();
+        $plans = Plan::whereHas('ranges')
+            ->whereHas('bundles')
+            ->whereHas('defaultCalendarRelation')
+            ->where('isForWebsite', true)
+            ->get();
+
+
+
+
         $weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 

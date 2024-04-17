@@ -7,10 +7,12 @@ window.onscroll = function () {
 };
 var navbar = document.getElementById("main-nav");
 function myFunction() {
-    if (window.pageYOffset >= 100) {
-        navbar.classList.add("nav-colored");
-    } else {
-        navbar.classList.remove("nav-colored");
+    if (navbar) {
+        if (window.pageYOffset >= 100) {
+            navbar.classList.add("nav-colored");
+        } else {
+            navbar.classList.remove("nav-colored");
+        }
     }
 }
 
@@ -42,8 +44,6 @@ function myFunction() {
         false
     );
 })();
-
-AOS.init();
 
 $("#main-banner-carousel").owlCarousel({
     loop: true,

@@ -7,7 +7,47 @@
 }
 @media only screen and (max-width: 992px) {
     .main-nav .navbar {
-        padding: 10px 0;
+        padding: 18px 8px;
+    }
+
+    /* --------- navbar ----------- */
+
+    .navbar-collapse {
+        width: 100%;
+        z-index: 10000;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav {
+        margin: 0px !important;
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-top: 20px !important;
+    }
+
+    .navbar-nav li {
+        width: 49%;
+        text-align: center;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .main-nav .nav-link {
+        padding: 13px 15px !important;
+        border-bottom: 2px solid #fafafa;
+    }
+
+    /* others */
+    .competitive-sec .img-box .banner-img {
+        height: 210px;
+    }
+
+    .competitive-sec .section-heading {
+        margin-bottom: 20px;
     }
 }
 @media only screen and (max-width: 768px) {
@@ -48,26 +88,25 @@
         margin-right: 3px;
     }
     .meal-plan-card .content-box .price-box .price-day {
-        font-size: 12px;
+        font-size: 13px;
         margin-bottom: 0;
         margin-left: 3px;
     }
     .meal-plan-card.orange .content-box .btn {
-        font-size: 12px;
+        font-size: 13px;
         text-align: center;
         display: block;
     }
     .meal-plan-card.green .content-box .btn {
-        font-size: 12px;
+        font-size: 13px;
         text-align: center;
         display: block;
     }
     .not-sure-banner-box .img-box img {
-        /* display: none; */
         position: absolute;
-        bottom: unset;
-        top: -120px;
-        left: 30px;
+        bottom: 20px;
+        height: 275px;
+        object-position: left;
     }
     .not-sure-banner-box {
         border-radius: 10px 150px 10px 10px;
@@ -79,7 +118,7 @@
         font-size: 20px;
     }
     .section-heading p {
-        font-size: 12px;
+        font-size: 13px;
         margin-top: 15px;
     }
     .not-sure-banner-box .content-box h2 {
@@ -114,7 +153,7 @@
     }
     .how-it-works-heading-box p {
         text-align: center;
-        font-size: 12px;
+        font-size: 13px;
         width: 80%;
         margin: 0 auto;
         margin-bottom: 30px;
@@ -126,8 +165,7 @@
         font-size: 16px;
     }
     .how-it-works-item .desc {
-        font-size: 12px;
-        height: 95px;
+        font-size: 13px;
     }
     .how-it-works-item {
         border-radius: 10px;
@@ -137,8 +175,8 @@
     .main-banner-slide.one {
         /* background-image: linear-gradient(rgba(0, 166, 80, 0.6), rgba(0, 166, 80, 0.6)), url('../images/banner-1.jpg'); */
         background-image: linear-gradient(
-                rgba(0, 84, 41, 0.6),
-                rgba(0, 84, 41, 0.6)
+                rgb(49 49 49 / 60%),
+                rgb(59 59 59 / 60%)
             ),
             url("../images/banner-1.jpg");
         background-size: cover;
@@ -149,15 +187,28 @@
     .main-banner-slide.two {
         /* background-image: linear-gradient(rgba(0, 166, 80, 0.6), rgba(0, 166, 80, 0.6)), url('../images/banner-1.jpg'); */
         background-image: linear-gradient(
-                rgba(0, 84, 41, 0.6),
-                rgba(0, 84, 41, 0.6)
+                rgb(49 49 49 / 60%),
+                rgb(59 59 59 / 60%)
             ),
-            url("../images/banner-0.jpg");
+            url(../images/banner-0.jpg);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
         border-radius: 20px;
     }
+    .main-banner-slide.three {
+        /* background-image: linear-gradient(rgba(0, 166, 80, 0.6), rgba(0, 166, 80, 0.6)), url('../images/banner-1.jpg'); */
+        background-image: linear-gradient(
+                rgb(49 49 49 / 60%),
+                rgb(59 59 59 / 60%)
+            ),
+            url(../images/banner-3-original.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        border-radius: 20px;
+    }
+
     .banner-content-box {
         text-align: center;
         padding: 20px 15px;
@@ -169,7 +220,7 @@
         color: var(--white);
     }
     .banner-content-box .desc {
-        font-size: 12px;
+        font-size: 13px;
         color: var(--white);
         font-weight: 400;
     }
@@ -198,7 +249,7 @@
         font-size: 13px;
     }
     .faq-accodain-box .accordion-body p {
-        font-size: 12px;
+        font-size: 13px;
     }
     /* Subscription */
     .step-heading {
@@ -321,7 +372,7 @@
         margin-bottom: 30px;
     }
     .easy-accordian-box .accordion-body .text {
-        font-size: 12px;
+        font-size: 13px;
     }
     .trainer-banner-box .content-box {
         text-align: end;
@@ -333,9 +384,11 @@
         padding-top: 200px;
     }
     .trainer-banner-box .img-box img {
-        top: -120px;
-        right: 30px;
-        left: unset;
+        top: -300px;
+        object-fit: contain;
+        height: 280px;
+        left: 10px;
+        width: 200px;
     }
     .trainer-banner-box .content-box a {
         font-size: 16px;
@@ -359,7 +412,7 @@
         font-size: 16px;
     }
     .competitive-slider-item .content-box .desc {
-        font-size: 12px;
+        font-size: 13px;
     }
     #competitive-carsoule .owl-dots {
         margin-top: 20px;

@@ -19,7 +19,6 @@ class PlansStepOneOverview extends Component
 
 
 
-
     // :: variables
     public $plan, $sampleMeals;
 

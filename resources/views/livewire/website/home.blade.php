@@ -5,7 +5,7 @@
 
 
     {{-- 1: banner --}}
-    <section class="main-banner light-sec">
+    <section class="main-banner light-sec" style="min">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -49,9 +49,9 @@
 
 
                                     {{-- imageFile --}}
-                                    <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="col-lg-6 col-md-6 col-12" data-aos='fade'>
                                         <div class="img-box">
-                                            <img src="{{ asset('assets/images/banner-image.png') }}" alt="">
+                                            <img src="{{ url('assets/images/banner-image.png') }}" alt="">
                                         </div>
                                     </div>
 
@@ -110,12 +110,77 @@
                                     {{-- imageFile --}}
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="img-box">
-                                            <img src="{{ asset('assets/images/banner-image-1.png') }}" alt="">
+                                            <img src="{{ url('assets/images/banner-image-1.png') }}" alt="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {{-- endSlider --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {{-- ------------------------------- --}}
+                            {{-- ------------------------------- --}}
+
+
+
+
+
+
+
+                            {{-- 3: slider --}}
+                            <div class="main-banner-slide three">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="banner-content-box">
+
+
+                                            {{-- heading --}}
+                                            <h1>Want To Fast Track Your Results With A Free Strategy Call?</h1>
+
+
+                                            {{-- description --}}
+                                            <p class="desc">
+                                                Not sure what plan is best for you? Let our expert coaches remove all
+                                                the guesswork and help you pick the
+                                                perfect meal plan on a free 20-min call<br />
+                                                We’ll also share the additional training and lifestyle strategies we use
+                                            </p>
+
+
+                                            {{-- actionButton --}}
+                                            <a class="green-btn" href="javascript:void(0);">
+                                                Get Started
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    {{-- imageFile --}}
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="img-box">
+                                            <img src="{{ url('assets/images/banner-3.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- endSlider --}}
+
+
 
 
 
@@ -184,7 +249,8 @@
 
 
 
-                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper">
+                <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper" data-aos='fade-up'
+                    data-aos-delay="{{ $key * 200 }}">
                     <div class="meal-plan-card @if ($key >= 3 && $key <= 6 || $key >= 6 && $key <= 9) reverse @endif">
                         <div class="img-box">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}"  }}' alt="">
@@ -192,7 +258,7 @@
 
 
                         {{-- content --}}
-                        <div class="content-box">
+                        <div class="content-box  text-center">
 
 
                             {{-- information --}}
@@ -204,8 +270,8 @@
 
 
                             {{-- select --}}
-                            <a wire:navigate class="btn" href="{{ route('website.plans.stepOne', [$plan->id]) }}"><i
-                                    class="fal fa-play"></i>Select</a>
+                            <a class="btn w-100 d-flex justify-content-center"
+                                href="{{ route('website.plans.stepOne', [$plan->id]) }}">Select</a>
                         </div>
                     </div>
                 </div>
@@ -293,7 +359,7 @@
 
 
 
-                        <div class="meal-of-day-item orange">
+                        <div class="meal-of-day-item orange" data-aos='fade' data-aos-delay="{{ $key * 150 }}">
                             <div class="mela-info-box">
 
 
@@ -304,25 +370,49 @@
                                 {{-- macros --}}
                                 <div class="ing-box">
                                     <ul>
+
+
+                                        {{-- calories --}}
                                         <li>
                                             <p class="title">Calories</p>
-                                            <p class="desc">1300</p>
+                                            <p class="desc">{{ $sampleMeal?->meal?->sizes->first()?->afterCookCalories
+                                                ?? 0 }}</p>
                                         </li>
+
+
+                                        {{-- proteins --}}
                                         <li>
                                             <p class="title">Protien</p>
-                                            <p class="desc">450</p>
+                                            <p class="desc">{{ $sampleMeal?->meal?->sizes->first()?->afterCookProteins
+                                                ?? 0 }}</p>
                                         </li>
+
+
+
+                                        {{-- carbs --}}
                                         <li>
                                             <p class="title">Carbs</p>
-                                            <p class="desc">100</p>
+                                            <p class="desc">{{ $sampleMeal?->meal?->sizes->first()?->afterCookCarbs
+                                                ?? 0 }}</p>
                                         </li>
+
+
+
+                                        {{-- fats --}}
                                         <li>
                                             <p class="title">Fat</p>
-                                            <p class="desc">200</p>
+                                            <p class="desc">{{ $sampleMeal?->meal?->sizes->first()?->afterCookFats
+                                                ?? 0 }}</p>
                                         </li>
+
                                     </ul>
                                 </div>
                             </div>
+                            {{-- endWrapper --}}
+
+
+
+
 
 
                             {{-- imageFile --}}
@@ -382,7 +472,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="not-sure-banner-box">
+                    <div class="not-sure-banner-box gradient-banner">
                         <div class="row">
 
 
@@ -398,9 +488,9 @@
 
 
                             {{-- imageFile --}}
-                            <div class="col-lg-4 col-md-6 col-12 order-lg-2 order-md-2 order-1">
+                            <div class="col-lg-4 col-md-6 col-12 order-lg-2 order-md-2 order-1 position-relative">
                                 <div class="img-box">
-                                    <img src="{{ asset('assets/images/thinking.png') }}" alt="">
+                                    <img src="{{ url('assets/images/nutrioniest.png') }}" alt="">
                                 </div>
                             </div>
 
@@ -448,7 +538,7 @@
 
                 {{-- leftBox --}}
                 <div class="col-lg-4 col-12">
-                    <div class="how-it-works-heading-box">
+                    <div class="how-it-works-heading-box align-items-center align-items-md-start">
                         <h2>How It Works</h2>
                         <p>Set your goal and let us do the work while you enjoy our meals at your convenience</p>
                         <a class="green-btn" href="javascript:void(0);">Get Satrted</a>
@@ -468,9 +558,9 @@
 
 
                         {{-- 1: selectPlanStep --}}
-                        <div class="col-lg-4 col-md-4 col-6">
+                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='600'>
                             <div class="how-it-works-item green">
-                                <img src="{{ asset('assets/images/select-your-meal-plan.png') }}" alt="">
+                                <img src="{{ url('assets/images/select-your-meal-plan.png') }}" alt="">
                                 <p class="title">Select your meal plan</p>
                                 <p class="desc">Select the best meal plan that perfectly aligns with your lifestyle,
                                     fitness goals, and fulfils your daily caloric needs.</p>
@@ -483,9 +573,9 @@
 
 
                         {{-- 2: weDeliver --}}
-                        <div class="col-lg-4 col-md-4 col-6">
+                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='300'>
                             <div class="how-it-works-item orange">
-                                <img src="{{ asset('assets/images/we-deliver.png') }}" alt="">
+                                <img src="{{ url('assets/images/we-deliver.png') }}" alt="">
                                 <p class="title">We Deliver</p>
                                 <p class="desc">We deliver customized and fresh meals in a cooler bag, constructed by
                                     our dietitian, and prepared by our specialized chefs.</p>
@@ -496,7 +586,7 @@
 
 
                         {{-- 3: enjoy --}}
-                        <div class="col-lg-4 col-md-4 col-12">
+                        <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0" data-aos='slide-left'>
                             <div class="how-it-works-item green">
                                 <img src="assets/images/enjiy.png" alt="">
                                 <p class="title">you enjoy</p>
@@ -732,24 +822,29 @@
 
 
                             {{-- cover --}}
-                            <div class="col-lg-4 col-md-6 col-12">
+                            <div class="col-lg-4 col-md-6 col-12 position-relative" data-aos='zoom-out'>
                                 <div class="img-box">
-                                    <img src="assets/images/thinking.png" alt="">
+                                    <img src="assets/images/personal-trainer-trimmed.png" alt="">
                                 </div>
                             </div>
 
 
                             {{-- col --}}
                             <div class="col-lg-8 col-md-6 col-12">
-                                <div class="content-box">
+                                <div class="content-box text-start ">
 
 
                                     {{-- breif --}}
-                                    <h2>Get Fit With Your Personal Trainner</h2>
-
+                                    <h2 class='mb-3'>Meet Our Expert Fitness Coaches</h2>
+                                    <p class='text-white'>{{'Aleens are proud to partner with a team of
+                                        industry-leading fitness and
+                                        lifestyle coaches. Here to create bespoke training and nutrition strategies that
+                                        perfectly fit your busy lifestyle, so you can maximise the results from your
+                                        meal plan'}}
+                                    </p>
 
                                     {{-- bookButton --}}
-                                    <a href="javascript:void(0);">
+                                    <a href="javascript:void(0);" data-bs-toggle='modal' data-bs-target='#trainer'>
                                         <i class="fal fa-play"></i>Book Your Trainer
                                     </a>
 
@@ -1010,7 +1105,7 @@
                 {{-- coverImage --}}
                 <div class="col-lg-4 col-md-6 col-12 order-lg-2 order-md-2 order-1">
                     <div class="img-box">
-                        <img class="banner-img" src="{{ asset('assets/images/competitive.png') }}" alt="">
+                        <img class="banner-img" src="{{ url('assets/images/competitive.png') }}" alt="">
                     </div>
                 </div>
 
@@ -1046,7 +1141,7 @@
 
     <!-- 9: FAQs -->
     <section class="faq-sec light-sec">
-        <div class="container">
+        <div class="container" data-aos="slide-up">
 
 
 
@@ -1121,10 +1216,10 @@
 
 
                 {{-- singleBlog --}}
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade'>
                     <div class="blog-card green">
                         <div class="img-box">
-                            <img src="{{ asset('assets/images/blog-1.png') }}" alt="">
+                            <img src="{{ url('assets/images/blog-1.png') }}" alt="">
                         </div>
 
 
@@ -1143,10 +1238,10 @@
 
 
                 {{-- singleBlog --}}
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="300">
                     <div class="blog-card orange">
                         <div class="img-box">
-                            <img src="{{ asset('assets/images/blog-2.png') }}" alt="">
+                            <img src="{{ url('assets/images/blog-2.png') }}" alt="">
                         </div>
 
 
@@ -1170,10 +1265,10 @@
 
 
                 {{-- singleblog --}}
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="600">
                     <div class="blog-card green">
                         <div class="img-box">
-                            <img src="{{ asset('assets/images/blog-3.png') }}" alt="">
+                            <img src="{{ url('assets/images/blog-3.png') }}" alt="">
                         </div>
 
 
@@ -1233,13 +1328,13 @@
 
                     {{-- subtitle --}}
                     <div class="col-lg-6 col-md-6 col-12">
-                        <p class="title">Eat Well, Live Better, Your Choice, Your Meal Plan.</p>
+                        <p class="title mb-4 mb-md-0">Eat Well, Live Better, Your Choice, Your Meal Plan.</p>
                     </div>
 
 
 
                     {{-- portalLinks --}}
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-12 mb-4 mb-md-0">
                         <div class="button-box">
                             <a class="light-green-btn me-2" href="javascript:void(0);">Login</a>
                             <a class="light-green-btn ms-2" href="javascript:void(0);">Manage</a>
@@ -1267,7 +1362,7 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="logo-box">
                             <a href="{{ route('website.home') }}">
-                                <img src="{{ asset('assets/images/logo.png') }}" alt="">
+                                <img src="{{ url('assets/images/logo.png') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -1309,15 +1404,25 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="copyright">
                             <p>&#169; {{ date('Y') }} Aleen's. All rights reserved.</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12">
+
+                    <div class="col-lg-4 col-12 text-center">
+                        <a href="https://doer.ae" target='_blank'>
+                            <img src="{{ url('assets/images/footer/doer.png') }}" alt="" class='of-contain'
+                                style="height: 56px; width: 125px;">
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="we-accept">
-                            <img src="{{ asset('assets/images/card-enhanced.png') }}" alt=""
-                                style="height: 56px; width: 125px; object-fit:contain;">
+                            <img src="{{ url('assets/images/card-enhanced.png') }}" alt="" class='of-contain'
+                                style="height: 56px; width: 125px;">
                         </div>
                     </div>
                 </div>
@@ -1326,6 +1431,59 @@
     </footer>
     {{-- endFooter --}}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- modals --}}
+    @section('modals')
+
+
+
+    {{-- 1: trainer --}}
+    <livewire:website.home.components.trainer key='trainer' />
+
+
+
+
+
+
+    @endsection
+    {{-- endSection --}}
+
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
 
 
 

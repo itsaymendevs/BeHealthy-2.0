@@ -38,7 +38,7 @@
 
 
             {{-- 1: step - plans --}}
-            <div class="row">
+            <div class="row d-none">
                 <div class="col-lg-7 offset-lg-5 col-md-6 col-12">
                     <div class='d-block'>
                         <div class="step">
@@ -67,7 +67,7 @@
                                 {{-- subHeading --}}
                                 Choose your preferences
                                 <span class="icon">
-                                    <img src="{{ asset('assets/images/Polygon.png') }}" alt="">
+                                    <img src="{{ url('assets/images/Polygon.png') }}" alt="">
                                 </span>
                             </p>
                             {{-- endHeading --}}
@@ -98,7 +98,7 @@
 
 
                         {{-- 1.5: step - plans - mobileViewOnly --}}
-                        <div class="prefrence-card-box mobile">
+                        <div class="prefrence-card-box mobile d-none">
                             <div class="collapse show" id="choosePrefrence" wire:ignore.self>
                                 <div class="row">
 
@@ -256,7 +256,7 @@
 
 
                         {{-- 1: step - plans --}}
-                        <div class="prefrence-card-box desktop">
+                        <div class="prefrence-card-box desktop d-none">
                             <div class="collapse show" id="choosePrefrence" wire:ignore.self>
                                 <div class="row">
 
@@ -313,7 +313,7 @@
                             {{-- header --}}
                             <p class="step-heading">
                                 <span>
-                                    Step 2
+                                    Step 1
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="27" x="0" y="0"
                                         viewBox="0 0 490.661 490.661" style="enable-background:new 0 0 512 512"
@@ -352,9 +352,9 @@
 
 
                                 {{-- loop - bundles --}}
-                                @foreach ($planBundles ?? [] as $planBundle)
+                                @foreach ($planBundles?->where('isForWebsite', true) ?? [] as $planBundle)
 
-                                <div class="col-11 col-sm-6 col-xl-4 mb-md-4">
+                                <div class="col-11 col-sm-6 col-xl-4 mb-md-4" key='plan-bunlde-{{ $planBundle->id }}'>
                                     <label class="check-box action bundle-options w-100">
 
 
@@ -427,13 +427,21 @@
 
 
 
-                                <div class="col-6 col-sm-4 col-md-6 col-xl-4 mb-3">
+                                {{-- checkRange --}}
+                                @if ($bundleRange->isForWebsite == true && $bundleRange->range->isForWebsite
+                                == true)
+
+
+
+
+                                <div class="col-6 col-sm-4 col-md-6 col-xl-4 mb-3"
+                                    key='bundle-ranges-{{ $bundleRange->range->id }}'>
                                     <label class="check-box action bundle-options w-100 ">
 
 
 
                                         {{-- input --}}
-                                        <input type="radio" name="bundleRange" value="{{ $bundleRange->id }}"
+                                        <input type="radio" name="bundleRange" value="{{ $bundleRange->range->id }}"
                                             wire:model='instance.bundleRangeId' class='d-none'
                                             wire:change='changeBundleRange'>
 
@@ -455,6 +463,16 @@
 
                                     </label>
                                 </div>
+
+
+
+
+                                @endif
+                                {{-- end if --}}
+
+
+
+
                                 @endforeach
                                 {{-- end loop --}}
 
@@ -510,7 +528,7 @@
                             {{-- heading --}}
                             <p class="step-heading">
                                 <span>
-                                    Step 3
+                                    Step 2
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="27" x="0" y="0"
                                         viewBox="0 0 490.661 490.661" style="enable-background:new 0 0 512 512"
@@ -593,7 +611,7 @@
 
 
                             {{-- B: question --}}
-                            <div class="row" id="secondRow" style="display: none;">
+                            <div class="row" id="secondRow" style="display: none;" wire:ignore>
 
 
                                 {{-- 1: in-person --}}
@@ -695,7 +713,7 @@
                             {{-- header --}}
                             <p class="step-heading">
                                 <span>
-                                    Step 4
+                                    Step 3
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="27" x="0" y="0"
                                         viewBox="0 0 490.661 490.661" style="enable-background:new 0 0 512 512"
@@ -900,7 +918,7 @@
                             {{-- header --}}
                             <p class="step-heading">
                                 <span>
-                                    Step 5
+                                    Step 4
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="27" x="0" y="0"
                                         viewBox="0 0 490.661 490.661" style="enable-background:new 0 0 512 512"

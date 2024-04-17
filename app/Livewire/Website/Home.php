@@ -32,6 +32,8 @@ class Home extends Component
 
 
 
+
+
     } // end function
 
 
@@ -92,14 +94,13 @@ class Home extends Component
 
 
 
+
         // 2.2: sampleMeals
         $sampleMeals = MenuCalendarScheduleMeal::with('meal')
             ->whereNotNull('mealId')
             ->whereIn('mealTypeId', $mealTypes)
             ->where('scheduleDate', $this->getCurrentDate())
             ->take(12)->get();
-
-
 
 
 

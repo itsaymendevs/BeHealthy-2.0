@@ -9,6 +9,9 @@
 
 
 
+
+
+
     {{-- wizard - subMenu --}}
     <livewire:website.plans.plans-step.components.sub-menu id='{{ $plan->id }}' key='submenu' />
 
@@ -37,7 +40,7 @@
 
 
             {{-- mainForm --}}
-            <form class="row justify-content-center">
+            <form wire:submit='initPayment' class="row justify-content-center">
 
 
 
@@ -70,7 +73,7 @@
                                                 <div class="select--single-wrapper">
                                                     <select class="form--select parent-select" id='city-select'
                                                         data-instance='instance.cityId' data-child='#district-select'
-                                                        data-second-child='#timing-select' required>
+                                                        data-second-child='#deliveryTime-select' required>
                                                         <option value=""></option>
 
                                                         @foreach ($cities as $city)
@@ -123,7 +126,7 @@
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
 
                                                 <div class="select--single-wrapper">
-                                                    <select class="form--select " id='timing-select'
+                                                    <select class="form--select " id='deliveryTime-select'
                                                         data-instance='instance.cityDeliveryTimeId' required>
                                                         <option value=""></option>
                                                     </select>
@@ -146,7 +149,8 @@
                                         {{-- locationAddress --}}
                                         <div class="col-lg-12 col-12">
                                             <div class="input-group margin">
-                                                <input required="" type="text" autocomplete="off" class="input">
+                                                <input required="" type="text" autocomplete="off" class="input"
+                                                    wire:model='instance.locationAddress'>
                                                 <label class="user-label">Your Address</label>
                                             </div>
                                         </div>
@@ -157,7 +161,8 @@
                                         {{-- apartment / villa --}}
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="input-group margin">
-                                                <input required="" type="text" autocomplete="off" class="input">
+                                                <input required="" type="text" autocomplete="off" class="input"
+                                                    wire:model='instance.apartment'>
                                                 <label class="user-label">Apartment / Villa</label>
                                             </div>
                                         </div>
@@ -167,7 +172,8 @@
                                         {{-- floor --}}
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="input-group margin">
-                                                <input required type="text" autocomplete="off" class="input">
+                                                <input required type="text" autocomplete="off" class="input"
+                                                    wire:model='instance.floor'>
                                                 <label class="user-label">Floor</label>
                                             </div>
                                         </div>
@@ -180,8 +186,42 @@
 
 
 
+
                                 {{-- --------------------------- --}}
                                 {{-- --------------------------- --}}
+
+
+
+
+
+
+
+
+
+                                {{-- paymennt --}}
+                                @if ($paymentMethod->name == 'Paymennt')
+
+
+                                {{-- :: card --}}
+                                <div id="paymenntWrapper" class="card-frame" wire:ignore></div>
+
+
+
+                                @endif
+                                {{-- end if - payment --}}
+
+
+
+
+
+
+                                {{-- --------------------------- --}}
+                                {{-- --------------------------- --}}
+
+
+
+
+
 
 
 
@@ -212,6 +252,11 @@
 
                 {{-- ----------------------------------------- --}}
                 {{-- ----------------------------------------- --}}
+                {{-- ----------------------------------------- --}}
+                {{-- ----------------------------------------- --}}
+                {{-- ----------------------------------------- --}}
+
+
 
 
 
@@ -245,9 +290,9 @@
                                 Do you have Coupon?
                             </a>
                             <div class="collapse show mt-2" id="promoCollapse">
-                                <div class="input-group">
-                                    <input required="" type="text" autocomplete="off" class="input">
-                                    <label class="user-label">Enter Code</label>
+                                <div class="input-group @if ($isCouponApplied) focus @endif">
+                                    <input type="text" autocomplete="off" class="input no-valid"
+                                        wire:model='instance.promoCode' wire:keyup.debounce.100ms='checkPromoCode'>
                                 </div>
                             </div>
                         </div>
@@ -265,17 +310,21 @@
                             {{-- plan - planDays - deliveryDays --}}
                             <div class="">
                                 <p class="title">{{ $plan->name }}</p>
-                                <p class="desc">{{ $instance->planDays }} days ({{ count($instance->deliveryDays ??
-                                    [])}} days per week)</p>
+                                <p class="desc d-flex justify-content-evenly">
+                                    <span>{{ $instance?->planDays ?? '' }} days</span>
+                                    <span class='mx-1'>-</span>
+                                    <span>{{count($instance?->deliveryDays ?? []) . ' days / week'}}</span>
+                                </p>
                             </div>
 
 
 
 
 
-                            {{-- totalPrice --}}
+
+                            {{-- totalBundleRangePrice => totalPrice - bagPrice --}}
                             <div class="">
-                                <p class="price">AED {{ $instance->totalPrice ?? 0 }}</p>
+                                <p class="price">AED {{ $instance->totalBundleRangePrice ?? 0 }}</p>
                             </div>
                         </div>
 
@@ -295,14 +344,14 @@
 
                             <div>
                                 <p class="title">
-                                    VAT 5% Amount
+                                    COUPON
                                 </p>
                             </div>
 
 
                             <div>
                                 <p class="price">
-                                    AED 165.71
+                                    AED {{ number_format($instance->promoCodeDiscountPrice ?? 0, 1) }}
                                 </p>
                             </div>
                         </div>
@@ -317,13 +366,13 @@
                         <div class="recepit-item">
 
                             <div>
-                                <p class="title">Cooler Bag</p>
+                                <p class="title">{{ $instance->bag }}</p>
                                 <p class="desc">(Refundable)</p>
                             </div>
 
 
                             <div>
-                                <p class="price">AED 200.00</p>
+                                <p class="price">AED {{ $instance->bagPrice }}</p>
                             </div>
                         </div>
 
@@ -338,7 +387,7 @@
                                 <p class="title">Total</p>
                             </div>
                             <div>
-                                <p class="price">AED 3,680.00</p>
+                                <p class="price">AED {{ $instance->totalCheckoutPrice }}</p>
                             </div>
                         </div>
                     </div>
@@ -362,10 +411,6 @@
 
             </form>
             {{-- endForm --}}
-
-
-
-
 
 
 
@@ -465,6 +510,7 @@
 
 
 
+    {{-- :: select --}}
     <script>
         // 1: handleSelect
         $(".form--select").on("change", function(event) {
@@ -496,15 +542,183 @@
             } // end if
 
 
-
-
         }) // end function
-
     </script>
 
 
 
 
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
+
+
+
+
+
+
+
+
+
+
+    {{-- :: PaymenntJS --}}
+    <script src="https://pay.paymennt.com/static/js/paymennt-frames.js"></script>
+
+
+
+
+
+
+
+
+
+
+    {{-- :: init / makeToken --}}
+    <script>
+        $(document).ready(function () {
+
+
+
+
+
+            // 1: initPayment
+            PaymenntJS.init({
+
+
+                // 1.2: mode - publicKey
+                publicKey: @json(env($paymentMethod->envKey)),
+                selector: "#paymenntWrapper",
+                mode: PaymenntJS.modes.TEST,
+
+
+
+                // 1.3: handleToken
+                onTokenized: function (data) {
+                    @this.set('payment.token', data.token);
+                    @this.makePayment();
+                },
+                onTokenizationFailed: function (data) {
+                    @this.updatePaymentMessage(data.error);
+                    @this.makeAlertJS(data.error);
+                },
+
+
+
+
+
+
+
+
+                // --------------------------------------------------
+                // --------------------------------------------------
+
+
+
+
+
+
+
+
+                // 1.4: validation
+                onValidationUpdate: function (data) {
+
+
+                    // 1: notValid
+                    if (!data.valid) {
+
+
+
+                        // 1.4.1: loop - errors
+                        var message = null;
+
+
+                        for (var i = 0; i < data.validationErrors.length; ++i) {
+
+                            var fieldValidation = data.validationErrors[i];
+
+
+                            if (!message || fieldValidation.field === data.lastActiveField)
+                                @this.set('payment.validationMessage', fieldValidation.message);
+
+
+                        } // end loop
+
+
+
+
+
+                        // 1.4.2: hasErrorMessage
+                        if (!message)
+                            @this.set('payment.validationMessage', data.error ? data.error : "Invalid card details");
+
+
+
+
+
+
+
+
+
+                    // 2: isValid
+                    } else {
+
+                        @this.set('payment.validationMessage', '');
+
+                    } // end if
+
+
+
+
+                }, // end validate
+
+
+
+
+
+
+
+            }); // end PaymentJS
+        }); // end documentReady
+
+
+
+
+
+
+
+
+
+
+
+        // --------------------------------------------------
+        // --------------------------------------------------
+
+
+
+
+
+
+
+
+        // :: makePaymenntToken
+        window.addEventListener("makePaymenntToken", (event) => {
+            $(document).ready(function () {
+
+
+                PaymenntJS.submitPayment();
+
+
+            }); // end documentReady
+        }); // end makePaymenntToken
+
+
+
+    </script>
 
 
 
