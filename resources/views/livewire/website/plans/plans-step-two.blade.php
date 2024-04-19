@@ -98,7 +98,8 @@
 
 
                                         {{-- location --}}
-                                        <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='100'
+                                            wire:ignore.self>
 
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
 
@@ -127,7 +128,8 @@
 
 
                                         {{-- district --}}
-                                        <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='200'
+                                            wire:ignore.self>
 
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
 
@@ -153,7 +155,8 @@
 
 
                                         {{-- district --}}
-                                        <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='300'
+                                            wire:ignore.self>
 
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
 
@@ -179,7 +182,8 @@
 
 
                                         {{-- locationAddress --}}
-                                        <div class="col-lg-12 col-12">
+                                        <div class="col-lg-12 col-12" data-aos='fade' data-aos-delay='400'
+                                            wire:ignore.self>
                                             <div class="input-group margin">
                                                 <input required="" type="text" autocomplete="off" class="input"
                                                     wire:model='instance.locationAddress'>
@@ -191,7 +195,8 @@
 
 
                                         {{-- apartment / villa --}}
-                                        <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='500'
+                                            wire:ignore.self>
                                             <div class="input-group margin">
                                                 <input required="" type="text" autocomplete="off" class="input"
                                                     wire:model='instance.apartment'>
@@ -202,7 +207,8 @@
 
 
                                         {{-- floor --}}
-                                        <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='600'
+                                            wire:ignore.self>
                                             <div class="input-group margin">
                                                 <input required type="text" autocomplete="off" class="input"
                                                     wire:model='instance.floor'>
@@ -302,7 +308,7 @@
 
 
                 {{-- 2: summary --}}
-                <div class="col-lg-3 col-md-7 col-12" data-aos='slide-left' wire:ignore.self>
+                <div class="col-lg-3 col-md-7 col-12">
                     <div class="summary-right light-sec">
 
 
@@ -483,13 +489,13 @@
 
     <!-- 2: FAQs -->
     <section class="faq-sec light-sec personalize">
-        <div class="container" data-aos='slide-up' wire:ignore.self>
+        <div class="container">
 
 
 
 
             {{-- row --}}
-            <div class="row">
+            <div class="row" data-aos='slide-up' wire:ignore.self>
                 <div class="col-12">
                     <div class="section-heading">
                         <h2>Frequently Asked Questions</h2>

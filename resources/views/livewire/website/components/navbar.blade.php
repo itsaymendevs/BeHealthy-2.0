@@ -62,7 +62,7 @@
 
                         {{-- 4: dietitation --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);">DIETITIAN</a>
+                            <a class="nav-link" href="#!">DIETITIAN</a>
                         </li>
 
 
@@ -84,7 +84,7 @@
 
                         {{-- 6: contactUs --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);">CONTACT US</a>
+                            <a class="nav-link" href="#!">CONTACT US</a>
                         </li>
 
 
@@ -94,7 +94,7 @@
 
                         {{-- 7: login --}}
                         <li class="nav-item">
-                            <a class="green-outline-btn " href="javascript:void(0);">LOGIN</a>
+                            <a class="green-outline-btn " href="#!">LOGIN</a>
                         </li>
 
 

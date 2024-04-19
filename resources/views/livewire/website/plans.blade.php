@@ -9,6 +9,14 @@
 
 
 
+    {{-- calendly --}}
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+
+
+
+
     {{-- title - description - keywords meta --}}
     <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
 
@@ -170,7 +178,7 @@
                             <div class="col-lg-8 col-md-6 col-12 order-lg-1 order-md-1 order-2">
                                 <div class="content-box">
                                     <h2>Not Sure Which Meal Plan Suits You?</h2>
-                                    <a href="javascript:void(0);">
+                                    <a href="#!" id='toggleCalendly'>
                                         <i class="fal fa-play"></i>Get A Free Diet Consultation
                                     </a>
                                 </div>
@@ -224,10 +232,10 @@
 
     <!-- 3: FAQs -->
     <section class="faq-sec light-sec">
-        <div class="container" data-aos='slide-up' wire:ignore.self>
+        <div class="container">
 
             {{-- heading --}}
-            <div class="row">
+            <div class="row" data-aos="slide-up" wire:ignore.self>
                 <div class="col-12">
                     <div class="section-heading">
                         <h2>Frequently Asked Questions</h2>
@@ -252,6 +260,50 @@
 
 
 
+
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
+
+
+
+
+
+
+
+
+
+    {{-- initiateCalendly --}}
+    <script>
+        $(document).ready(function() {
+            var calendlyButton = document.getElementById('toggleCalendly');
+            calendlyButton.addEventListener("click", function() {
+                Calendly.initPopupWidget({ url: 'https://calendly.com/cynthiagfarsoun/30min' });
+                return false;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
 
 
 

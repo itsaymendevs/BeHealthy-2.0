@@ -84,7 +84,7 @@
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn" href="javascript:void(0);">
+                                            <a class="green-btn" href="#!">
                                                 Get Started
                                             </a>
                                         </div>
@@ -136,13 +136,14 @@
                                             {{-- description --}}
                                             <p class="desc">
                                                 Your Path To Personalized Wellness <br>
-                                                Expert Nutritionist Support <br>
-                                                Personalized Diet Plans
+                                                <span class="text-green bold-600 me-1">Expert</span>Nutritionist
+                                                Support<br>
+                                                Personalized<span class="text-green bold-600 ms-1">Diet Plans</span>
                                             </p>
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn" href="javascript:void(0);">
+                                            <a class="green-btn" href="#!">
                                                 Get Started
                                             </a>
                                         </div>
@@ -197,15 +198,17 @@
 
                                             {{-- description --}}
                                             <p class="desc">
-                                                Not sure what plan is best for you? Let our expert coaches remove all
+                                                Not sure what plan is best for you? Let our<span
+                                                    class="text-green bold-600 mx-1">expert coaches</span>remove all
                                                 the guesswork and help you pick the
-                                                perfect meal plan on a free 20-min call<br />
+                                                perfect meal plan on a<span class="text-green bold-600 mx-1">free
+                                                    20-min call</span><br />
                                                 We’ll also share the additional training and lifestyle strategies we use
                                             </p>
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn" href="javascript:void(0);">
+                                            <a class="green-btn" href="#!">
                                                 Get Started
                                             </a>
                                         </div>
@@ -525,7 +528,7 @@
                             <div class="col-lg-8 col-md-6 col-12 order-lg-1 order-md-1 order-2">
                                 <div class="content-box">
                                     <h2>Not Sure Which Meal Plan Suits You?</h2>
-                                    <a href="javascript:void(0);" id='toggleCalendly'>
+                                    <a href="#!" id='toggleCalendly'>
                                         <i class="fal fa-play"></i>Get A Free Diet Consultation
                                     </a>
                                 </div>
@@ -586,7 +589,7 @@
                     <div class="how-it-works-heading-box align-items-center align-items-md-start">
                         <h2>How It Works</h2>
                         <p>Set your goal and let us do the work while you enjoy our meals at your convenience</p>
-                        <a class="green-btn" href="javascript:void(0);">Get Satrted</a>
+                        <a class="green-btn" href="#!">Get Satrted</a>
                     </div>
                 </div>
 
@@ -892,7 +895,7 @@
                                     </p>
 
                                     {{-- bookButton --}}
-                                    <a href="javascript:void(0);" data-bs-toggle='modal' data-bs-target='#trainer'>
+                                    <a href="#!" data-bs-toggle='modal' data-bs-target='#trainer'>
                                         <i class="fal fa-play"></i>Book Your Trainer
                                     </a>
 
@@ -1151,7 +1154,8 @@
 
 
                 {{-- coverImage --}}
-                <div class="col-lg-4 col-md-6 col-12 order-lg-2 order-md-2 order-1">
+                <div class="col-lg-4 col-md-6 col-12 order-lg-2 order-md-2 order-1" data-aos='zoom-out'
+                    wire:ignore.self>
                     <div class="img-box">
                         <img class="banner-img" src="{{ url('assets/images/competitive.png') }}" alt="">
                     </div>
@@ -1189,12 +1193,12 @@
 
     <!-- 9: FAQs -->
     <section class="faq-sec light-sec">
-        <div class="container" data-aos="slide-up" wire:ignore.self>
+        <div class="container">
 
 
 
             {{-- title --}}
-            <div class="row">
+            <div class="row" data-aos="slide-up" wire:ignore.self>
                 <div class="col-12">
                     <div class="section-heading">
                         <h2>Frequently Asked Questions</h2>
@@ -1247,8 +1251,8 @@
             {{-- heading --}}
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading">
-                        <h2>Blogs & News</h2>
+                    <div class="section-heading mb-4 mb-lg-5">
+                        <h2 data-aos="slide-down" wire:ignore.self>Blogs & News</h2>
                         <p>Explore Our Latest Fresh Meal Plan Blogs and Updates</p>
                     </div>
                 </div>
@@ -1384,8 +1388,8 @@
                     {{-- portalLinks --}}
                     <div class="col-lg-6 col-md-6 col-12 mb-4 mb-md-0">
                         <div class="button-box">
-                            <a class="light-green-btn me-2" href="javascript:void(0);">Login</a>
-                            <a class="light-green-btn ms-2" href="javascript:void(0);">Manage</a>
+                            <a class="light-green-btn me-2" href="#!">Login</a>
+                            <a class="light-green-btn ms-2" href="#!">Manage</a>
                         </div>
                     </div>
                 </div>
@@ -1426,7 +1430,7 @@
                                 <li><a href="{{ route('website.home') }}">Home</a></li>
                                 <li><a href="{{ route('website.plans') }}">Meal Plan</a></li>
                                 <li><a href="{{ route('website.home') }}#blogs">Blogs</a></li>
-                                <li class="border-end-0 p-0 m-0"><a href="javascript:void(0);">Contact Us</a></li>
+                                <li class="border-end-0 p-0 m-0"><a href="#!">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1513,7 +1517,6 @@
             });
         });
     </script>
-
 
 
 
