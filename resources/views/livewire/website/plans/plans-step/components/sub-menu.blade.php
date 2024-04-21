@@ -45,10 +45,11 @@
 
 
                     {{-- 3: getStarted --}}
-                    <div class="wizard-steps" data-aos='fade-down' data-aos-delay='400' wire:ignore.self>
+                    <div class='wizard-steps @if (Request::is("plans/invoice")) active @endif' data-aos='fade-down'
+                        data-aos-delay='400' wire:ignore.self>
                         <p class="title">
                             <span class="number">3</span>
-                            <span class="text">Get Started</span>
+                            <span class="text">Invoice</span>
                         </p>
                     </div>
 

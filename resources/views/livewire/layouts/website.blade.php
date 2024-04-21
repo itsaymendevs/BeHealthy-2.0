@@ -92,7 +92,9 @@
         <link href="{{ url('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
         <link href="{{ url('assets/css/owl.theme.default.min.css') }}" rel="stylesheet">
         <link href="{{ url('assets/css/smart_wizard_all.min.css') }}" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/air-datepicker@3.4.0/air-datepicker.min.css" rel="stylesheet">
+        <link href="{{ url('assets/css/smart_wizard_all.min.css') }}" rel="stylesheet">
+        <link href="{{ url('assets/css/air-datepicker.css') }}" rel="stylesheet">
+
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" rel="stylesheet">

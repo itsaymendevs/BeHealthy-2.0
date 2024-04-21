@@ -3,6 +3,7 @@
 use App\Livewire\Website\Home;
 use App\Livewire\Website\Plans;
 use App\Livewire\Website\Plans\PlansStepOne;
+use App\Livewire\Website\Plans\PlansStepThree;
 use App\Livewire\Website\Plans\PlansStepTwo;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -135,3 +136,11 @@ Route::get('/plans/{id}/personalize', PlansStepOne::class)->name('website.plans.
 
 // 6.2: plans - checkout
 Route::get('/plans/{id}/checkout', PlansStepTwo::class)->name('website.plans.stepTwo');
+
+
+
+
+// 6.3: plans - invoice
+Route::get('/plans/invoice', PlansStepThree::class)->name('website.plans.stepThree');
+
+

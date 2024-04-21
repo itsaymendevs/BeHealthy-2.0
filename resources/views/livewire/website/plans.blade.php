@@ -88,7 +88,7 @@
 
 
                 <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper mb-4" data-aos='fade-up'
-                    data-aos-delay="{{ $key * 200 }}" wire:ignore.self>
+                    data-aos-delay="{{ $key * 100 }}" wire:ignore.self>
                     <div class="meal-plan-card @if ($key >= 3 && $key <= 6 || $key >= 6 && $key <= 9) reverse @endif">
                         <div class="img-box">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}"  }}' alt="">

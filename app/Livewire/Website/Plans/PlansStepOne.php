@@ -12,6 +12,7 @@ use App\Models\MenuCalendarScheduleMeal;
 use App\Models\Plan;
 use App\Models\PlanBundle;
 use App\Models\PlanBundleDay;
+use App\Models\PlanBundleRange;
 use App\Models\Type;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
@@ -51,6 +52,15 @@ class PlansStepOne extends Component
 
     public function mount($id)
     {
+
+
+        // :: resetSession
+        Session::forget('customer');
+
+
+
+
+
 
 
         // :: getParams
@@ -200,8 +210,13 @@ class PlansStepOne extends Component
 
 
         // 2: reset - getRanges - refreshSelect
-        $this->instance->bundleRangeId = null;
         $this->instance->planDays = null;
+        $this->instance->bundleRangeId = null;
+        $this->instance->bundleRangeName = null;
+        $this->instance->totalBundleRangePrice = 0;
+
+
+
 
         $this->bundleRanges = $planBundle?->ranges;
 
@@ -210,6 +225,14 @@ class PlansStepOne extends Component
 
         $this->refreshSelect('#planDays-select', 'bundle', 'days', $planBundle->id, true);
 
+
+
+
+
+
+
+        // 3: updateBundleName
+        $this->instance->planBundleName = $planBundle->name;
 
 
 
@@ -248,9 +271,8 @@ class PlansStepOne extends Component
 
 
 
-
         // 1: getPlanBundle - bundleRangePricePerDay
-        $planBundle = $this->plan->bundles->where('id', $this->instance->planBundleId)->first();
+        $planBundle = $this->plan->bundles->where('id', $this->instance->planBundleId)?->first();
 
 
         $this->instance->bundleRangePricePerDay = $planBundle->rangesByPrice->where('planRangeId', $this->instance->bundleRangeId)?->first()?->pricePerDay;
@@ -262,7 +284,7 @@ class PlansStepOne extends Component
 
 
         // 1.2: get totalPrice - totalCalories
-        $this->instance->totalBundleRangeCalories = $this->plan->ranges->where('id', $this->instance->bundleRangeId)->first()->caloriesRange;
+        $this->instance->totalBundleRangeCalories = $this->plan->ranges?->where('id', $this->instance->bundleRangeId)?->first()?->caloriesRange;
 
 
 
@@ -308,7 +330,6 @@ class PlansStepOne extends Component
 
 
 
-
         // ---------------------------
         // ---------------------------
 
@@ -332,6 +353,18 @@ class PlansStepOne extends Component
 
 
 
+
+
+
+        // 3: updateBundleRangeName
+        $this->instance->bundleRangeName = $this->plan?->ranges
+                ?->where('id', $this->instance->bundleRangeId)?->first()?->name ?? '';
+
+
+
+
+
+
     } // end function
 
 
@@ -341,10 +374,27 @@ class PlansStepOne extends Component
 
 
 
+    // --------------------------------------------------------------
 
 
 
 
+
+
+
+    public function updateSummary()
+    {
+
+
+
+
+        // 1: re-calculate
+
+
+
+
+
+    } // end function
 
 
 

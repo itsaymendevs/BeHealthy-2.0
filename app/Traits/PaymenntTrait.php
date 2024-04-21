@@ -111,7 +111,7 @@ trait PaymenntTrait
 
 
         // B: checkoutDetails
-        $requestBody->checkoutId = "1";
+        // $requestBody->checkoutId = "1";
         $requestBody->checkoutDetails = new stdClass();
 
 

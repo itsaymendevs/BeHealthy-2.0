@@ -98,7 +98,7 @@
 
 
                                         {{-- location --}}
-                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='100'
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='50'
                                             wire:ignore.self>
 
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
@@ -128,7 +128,7 @@
 
 
                                         {{-- district --}}
-                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='200'
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='100'
                                             wire:ignore.self>
 
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
@@ -155,7 +155,7 @@
 
 
                                         {{-- district --}}
-                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='300'
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='150'
                                             wire:ignore.self>
 
                                             <div class="input-group mb-4 w-100 margin focus" wire:ignore>
@@ -182,7 +182,7 @@
 
 
                                         {{-- locationAddress --}}
-                                        <div class="col-lg-12 col-12" data-aos='fade' data-aos-delay='400'
+                                        <div class="col-lg-12 col-12" data-aos='fade' data-aos-delay='200'
                                             wire:ignore.self>
                                             <div class="input-group margin">
                                                 <input required="" type="text" autocomplete="off" class="input"
@@ -195,7 +195,7 @@
 
 
                                         {{-- apartment / villa --}}
-                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='500'
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='250'
                                             wire:ignore.self>
                                             <div class="input-group margin">
                                                 <input required="" type="text" autocomplete="off" class="input"
@@ -207,7 +207,7 @@
 
 
                                         {{-- floor --}}
-                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='600'
+                                        <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay='300'
                                             wire:ignore.self>
                                             <div class="input-group margin">
                                                 <input required type="text" autocomplete="off" class="input"
@@ -267,7 +267,9 @@
 
                                 {{-- submitButton --}}
                                 <div class="text-center end-btn-desktop mb-5">
-                                    <button wire:loading.attr='disabled' class="green-btn">Checkout your plan</button>
+                                    <button wire:loading.attr='disabled' wire:target='initPayment'
+                                        class="green-btn">Checkout your
+                                        plan</button>
                                 </div>
 
                             </div>
@@ -345,14 +347,33 @@
                         <div class="recepit-item">
 
 
-                            {{-- plan - planDays - deliveryDays --}}
-                            <div class="">
+                            {{-- wrapper --}}
+                            <div>
+
+
+                                {{-- plan --}}
                                 <p class="title">{{ $plan->name }}</p>
-                                <p class="desc d-flex justify-content-evenly">
-                                    <span>{{ $instance?->planDays ?? '' }} days</span>
-                                    <span class='mx-1'>-</span>
-                                    <span>{{count($instance?->deliveryDays ?? []) . ' days / week'}}</span>
+
+
+
+                                {{-- planDays - deliveryDays --}}
+                                <p class="desc d-flex justify-content-start my-1">
+                                    <span>{{ $instance?->planDays ?? 0 }} days
+                                        {{ $instance?->startDate ? ' - ' . date('d/m/Y',
+                                        strtotime($instance?->startDate)) : ''}}</span>
                                 </p>
+
+
+
+
+                                {{-- bundle - range --}}
+                                <p class="desc d-flex justify-content-start">
+                                    <span class='me-1'>{{ $instance?->planBundleName ?? '' }}</span>
+                                    <span>{{ $instance?->bundleRangeName ? '- ' . $instance?->bundleRangeName : ''
+                                        }}</span>
+                                </p>
+
+
                             </div>
 
 
@@ -437,7 +458,8 @@
 
                     {{-- checkout --}}
                     <div class="text-end end-btn-mobile">
-                        <button class="green-btn" wire:loading.attr='disabled'>Checkout your plan</button>
+                        <button class="green-btn" wire:loading.attr='disabled' wire:target='initPayment'>Checkout your
+                            plan</button>
                     </div>
                 </div>
                 {{-- endSummary --}}

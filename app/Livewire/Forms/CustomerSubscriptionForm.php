@@ -32,6 +32,7 @@ class CustomerSubscriptionForm extends Form
 
 
     // :: helpers
+    public $planBundleName, $bundleRangeName;
     public $bundleRangePricePerDay, $totalBundleRangeCalories, $totalBundleRangePrice;
 
     public $bundleTypesInArray;

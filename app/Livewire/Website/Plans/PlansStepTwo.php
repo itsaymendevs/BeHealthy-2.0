@@ -11,6 +11,7 @@ use App\Models\PromoCode;
 use App\Models\PromoCodePlan;
 use App\Traits\HelperTrait;
 use App\Traits\PaymenntTrait;
+use DateTime;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use stdClass;
@@ -50,9 +51,9 @@ class PlansStepTwo extends Component
 
 
 
-        // :: extra - fixStartDate
-        $this->instance->startDate = date('Y-m-d', strtotime($this->instance->startDate));
 
+        // :: extra - fixStartDate
+        $this->instance->startDate = date('Y-m-d', strtotime(str_replace('/', '-', $this->instance->startDate)));
 
 
 
@@ -85,8 +86,7 @@ class PlansStepTwo extends Component
 
 
 
-        $this->promoCodes = PromoCode::where('isForWebsite', true)
-            ->where('isActive', true)
+        $this->promoCodes = PromoCode::where('isActive', true)
             ->whereIn('id', $planPromoCodes)
             ->whereColumn('currentUsage', '<', 'limit')
             ->get()
@@ -315,8 +315,6 @@ class PlansStepTwo extends Component
 
 
 
-
-
     } // end function
 
 
@@ -357,10 +355,18 @@ class PlansStepTwo extends Component
 
 
             // 1.2: makeDebitPayment
-            $this->makeDebitPaymennt($this->instance, $this->payment, $this->paymentMethod);
+            // $this->makeDebitPaymennt($this->instance, $this->payment, $this->paymentMethod);
+
+
+
+            // 1.3: continue
+            $this->continue();
 
 
         } // end if - PAYMENNT
+
+
+
 
 
 
@@ -376,6 +382,92 @@ class PlansStepTwo extends Component
 
 
 
+
+
+
+
+    // --------------------------------------------------------------------
+
+
+
+
+
+
+    public function continue()
+    {
+
+
+
+
+        // 1: re-format instance ..
+        // :: leave blank to continue
+
+
+
+
+
+        // 1.2: deliveryDays
+        $fixedDeliveryDays = [];
+
+
+        foreach ($this->instance?->deliveryDays ?? [] as $deliveryDay) {
+
+            $fixedDeliveryDays[$deliveryDay] = true;
+
+        } // end loop
+
+
+
+
+        $this->instance->deliveryDays = $fixedDeliveryDays ?? [];
+
+
+
+
+
+
+
+
+        // ----------------------------------------
+        // ----------------------------------------
+
+
+
+
+
+
+
+        // :: continue
+
+
+
+        // 2: makeSession
+        Session::put('customer', $this->instance);
+
+
+
+
+
+
+        // 2.1: makeRequest
+        $response = $this->makeRequest('subscription/customer/store', $this->instance);
+
+
+
+
+
+
+        // :: redirectToCheckout
+        return $this->redirect(route('website.plans.stepThree'), navigate: true);
+
+
+
+
+
+
+
+
+    } // end function
 
 
 

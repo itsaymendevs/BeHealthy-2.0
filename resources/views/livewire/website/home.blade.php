@@ -297,7 +297,7 @@
 
 
                 <div class="col-lg-4 col-md-6 col-6 meal-plan-wrapper mb-4" data-aos='fade-up'
-                    data-aos-delay="{{ $key * 200 }}" wire:ignore.self>
+                    data-aos-delay="{{ $key * 100 }}" wire:ignore.self>
                     <div class="meal-plan-card @if ($key >= 3 && $key <= 6 || $key >= 6 && $key <= 9) reverse @endif">
                         <div class="img-box">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}"  }}' alt="">
@@ -606,7 +606,7 @@
 
 
                         {{-- 1: selectPlanStep --}}
-                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='600'
+                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='400'
                             wire:ignore.self>
                             <div class="how-it-works-item green">
                                 <img src="{{ url('assets/images/select-your-meal-plan.png') }}" alt="">
@@ -622,7 +622,7 @@
 
 
                         {{-- 2: weDeliver --}}
-                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='300'
+                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='200'
                             wire:ignore.self>
                             <div class="how-it-works-item orange">
                                 <img src="{{ url('assets/images/we-deliver.png') }}" alt="">
@@ -1290,7 +1290,7 @@
 
 
                 {{-- singleBlog --}}
-                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="300" wire:ignore.self>
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="200" wire:ignore.self>
                     <div class="blog-card orange">
                         <div class="img-box">
                             <img src="{{ url('assets/images/blog-2.png') }}" alt="">
@@ -1317,7 +1317,7 @@
 
 
                 {{-- singleblog --}}
-                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="600" wire:ignore.self>
+                <div class="col-lg-4 col-md-6 col-12" data-aos='fade' data-aos-delay="400" wire:ignore.self>
                     <div class="blog-card green">
                         <div class="img-box">
                             <img src="{{ url('assets/images/blog-3.png') }}" alt="">
