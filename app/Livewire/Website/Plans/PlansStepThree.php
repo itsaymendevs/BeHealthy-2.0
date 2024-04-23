@@ -3,8 +3,10 @@
 namespace App\Livewire\Website\Plans;
 
 use App\Livewire\Forms\CustomerSubscriptionForm;
+use App\Models\Customer;
 use App\Models\Plan;
 use App\Traits\HelperTrait;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class PlansStepThree extends Component
@@ -20,7 +22,7 @@ class PlansStepThree extends Component
     // :: variables
     public CustomerSubscriptionForm $instance;
 
-    public $plan;
+    public $plan, $customer;
 
 
 
@@ -35,18 +37,19 @@ class PlansStepThree extends Component
 
 
         // :: checkSession
-        session('customer') && session('customer')->{'totalCheckoutPrice'} ?
-            $this->instance = session('customer') :
-            $this->redirect(route('website.plans'), navigate: true);
+        // session('customer') && session('customer')->{'totalCheckoutPrice'} ?
+        //     $this->instance = session('customer') :
+        //     $this->redirect(route('website.plans'), navigate: true);
 
 
 
 
 
 
-        // :: removeEmailForValidation
-        $this->instance->email = null;
-        session('customer', $this->instance);
+
+        // // :: migrateSession
+        // Session::forget('customer');
+        // Session::put('customerInvoice', $this->instance);
 
 
 
@@ -64,9 +67,9 @@ class PlansStepThree extends Component
 
 
 
-
-        // 1: getPlan
-        $this->plan = Plan::find($this->instance->planId);
+        // 1: getPlan / customer
+        $this->plan = Plan::find(session('customerInvoice')->{'planId'});
+        $this->customer = Customer::where('email', session('customerInvoice')->{'email'})->first();
 
 
 

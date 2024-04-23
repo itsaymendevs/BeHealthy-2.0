@@ -40,10 +40,6 @@
 
 
 
-
-
-
-
     {{-- wizard - subMenu --}}
     <livewire:website.plans.plans-step.components.sub-menu id='{{ $plan->id }}' key='submenu' />
 
@@ -81,7 +77,7 @@
                 {{-- 1: logo --}}
                 <div class="col-12 text-center mb-4">
 
-                    <img src="{{ asset('assets/images/logo.png') }}" alt="Aleens" class='w-100 of-contain px-3'
+                    <img src="{{ url('assets/images/logo.png') }}" alt="Aleens" class='w-100 of-contain px-3'
                         style="height: 30px; object-position:right;">
 
                 </div>
@@ -104,15 +100,40 @@
                 {{-- leftCol --}}
                 <div class="col-12 col-md-6">
 
-                    <h4 class='fw-semibold'>BILL TO</h4>
+                    <h4 class='fw-bold '>BILL TO</h4>
 
-                    <h6 class='mb-4 mb-md-0'>Chris Scarface<br>Dubai, Business Bay<br>Churchill Tower - Apartment 13B -
-                        Floor 3
+
+                    <h6 class='mb-4 mb-md-0'>
+
+                        {{-- name - phone - email --}}
+                        <span class='fw-bold d-block text-capitalize mb-2 header' style="letter-spacing: 0.3px">{{
+                            $customer->fullName() }}</span>
+
+                        <span class='d-block'>
+                            <span class='fw-bold me-1'>Tel.</span>{{ $customer->phone }}</span>
+
+                        <span class='d-block mb-3'>
+                            <span class='fw-bold me-1'>Email.</span>{{ $customer->email }}</span>
+
+
+
+                        {{-- city - district --}}
+
+
+                        <span class='d-block'>Apartment. {{ $customer?->latestAddress()?->apartment }} -
+                            Floor. {{ $customer?->latestAddress()?->floor }}<br>{{
+                            $customer?->latestAddress()?->locationAddress }}</span>
+
+
+                        <span class='d-block'>{{ $customer?->latestAddress()?->city?->name }}, {{
+                            $customer?->latestAddress()?->district?->name }}</span>
                     </h6>
 
 
                 </div>
                 {{-- endCol --}}
+
+
 
 
 
@@ -129,6 +150,12 @@
 
 
 
+
+
+
+
+
+
                 {{-- rightCol --}}
                 <div class="col-12 col-md-5 col-lg-4 col-xl-3 text-center">
 
@@ -137,7 +164,7 @@
                     {{-- invoiceDate --}}
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class='fw-semibold mb-3'>Invoice Date</h6>
-                        <h6 class='mb-3 fw-semibold fs-14'>{{ date('d / m / Y',
+                        <h6 class='mb-3 fw-bold fs-14'>{{ date('d / m / Y',
                             strtotime($globalTodayDate)) }}
                         </h6>
                     </div>
@@ -147,7 +174,7 @@
                     {{-- invoiceNumber --}}
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class='fw-semibold mb-0'>Invoice Number</h6>
-                        <h6 class='mb-0 fw-semibold  fs-14'>10285510</h6>
+                        <h6 class='mb-0 fw-bold  fs-14'># 102885</h6>
                     </div>
 
 
@@ -171,20 +198,23 @@
 
 
 
-                {{-- tableOfContent --}}
-                <div class='col-12 mt-4 d-none'>
 
-                    <table class="table table-hover" style="--bs-table-bg:#f9f9f9;">
+
+
+                {{-- tableOfContent --}}
+                <div class='col-12 mt-4' data-aos='slide-up' data-aos-delay='50'>
+
+                    <table class="table table-striped table-hover checkout--table" style="--bs-table-bg:#f9f9f9;">
 
 
 
                         {{-- header --}}
                         <thead>
                             <tr>
-                                <th scope="col" class='fw-semibold fs-13'>#</th>
-                                <th scope="col" class='fw-semibold fs-13'>Description</th>
-                                <th scope="col" class='fw-semibold fs-13'>Duration</th>
-                                <th scope="col" class='fw-semibold fs-13'>Price</th>
+                                <th scope="col" class='fw-semibold fs-14'>#</th>
+                                <th scope="col" class='fw-semibold fs-14'>Description</th>
+                                <th scope="col" class='fw-semibold fs-14'>QTY</th>
+                                <th scope="col" class='fw-semibold fs-14'>Price</th>
                             </tr>
                         </thead>
 
@@ -192,34 +222,95 @@
 
                         {{-- body --}}
                         <tbody>
+
+
+                            {{-- 1: plan --}}
                             <tr class='py-2'>
-                                <th scope="row" class='fs-14'>{{ $globalSNCounter++ }}</th>
-                                <td class='fs-14'>Weight Loss</td>
-                                <td class='fs-14'>24 Days</td>
-                                <td class='fs-14'>1,250<span class='fs-12 text-green ms-1'>(AED)</span></td>
+
+
+                                {{-- counter - name - price --}}
+                                <th scope="row">{{ $globalSNCounter++ }}</th>
+                                <td class='fw-bold'>{{ $plan->name }}</td>
+                                <td>x<span class='fs-6 fw-bold ms-1'>1</span></td>
+                                <td class='fw-bold'>{{ session('customerInvoice')->{'totalBundleRangePrice'} }}
+                                    <span class='fs-11 text-green ms-1 fw-semibold'>(AED)</span>
+                                </td>
                             </tr>
 
 
+
+
+
+
+
+                            {{-- ---------------------------- --}}
+                            {{-- ---------------------------- --}}
+
+
+
+
+
+
+
+
+                            {{-- 2: bag --}}
                             <tr class='py-2'>
-                                <th scope="row" class='fs-14'>{{ $globalSNCounter++ }}</th>
-                                <td class='fs-14'>Cool Bag</td>
-                                <td class='fs-14'></td>
-                                <td class='fs-14'>200<span class='fs-12 text-green ms-1'>(Refundable)</span></td>
+
+
+                                {{-- bagName - quantity - price --}}
+                                <th scope="row">{{ $globalSNCounter++ }}</th>
+                                <td class='fw-bold'>{{ session('customerInvoice')->{'bag'} }}</td>
+                                <td>x<span class='fs-6 fw-bold ms-1'>1</span></td>
+                                <td class='fw-bold'>{{ session('customerInvoice')->{'bagPrice'} }}
+                                    <span class='fs-11 text-green ms-1 fw-semibold'>(Refundable)</span>
+                                </td>
+
                             </tr>
+                            {{-- endRow --}}
+
+
+
+
+
+
+
+
+
+
+                            {{-- ---------------------------- --}}
+                            {{-- ---------------------------- --}}
+
+
+
+
+
+
+                            {{-- 3: total --}}
+                            <tr class='py-2'>
+
+
+                                {{-- empty --}}
+                                <th scope="row"></th>
+                                <td></td>
+                                <td></td>
+
+
+
+                                {{-- totalPrice --}}
+                                <td class='fs-4 fw-bold'>{{ session('customerInvoice')->{'totalCheckoutPrice'}
+                                    }}<span class='fs-11 text-green ms-1 fw-semibold'>(AED)</span></td>
+
+                            </tr>
+                            {{-- endRow --}}
+
 
 
 
                         </tbody>
                     </table>
-
-
-
                 </div>
-
             </div>
             {{-- endRow --}}
-
-
 
 
         </div>

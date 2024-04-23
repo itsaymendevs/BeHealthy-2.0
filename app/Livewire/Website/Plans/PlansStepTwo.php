@@ -428,6 +428,15 @@ class PlansStepTwo extends Component
 
 
 
+
+
+
+
+
+
+
+
+
         // ----------------------------------------
         // ----------------------------------------
 
@@ -435,7 +444,9 @@ class PlansStepTwo extends Component
 
 
 
-        dd('true');
+
+
+
 
         // :: continue
 
@@ -449,12 +460,32 @@ class PlansStepTwo extends Component
 
 
         // 2.1: makeRequest
-        $response = $this->makeRequest('subscription/customer/store', $this->instance);
+        if ($this->instance->isExistingCustomer) {
+
+
+
+            // :: existing
+            $response = $this->makeRequest('subscription/customer/existing/store', $this->instance);
 
 
 
 
-        dd($response);
+        } else {
+
+
+            // :: regular
+            $response = $this->makeRequest('subscription/customer/store', $this->instance);
+
+        } // end if
+
+
+
+
+
+
+
+
+
 
 
         // :: redirectToCheckout

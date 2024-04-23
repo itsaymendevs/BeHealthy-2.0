@@ -66,8 +66,8 @@
 
 
                                             {{-- heading --}}
-                                            <h1>
-                                                Cheers to a Healthy 2024!
+                                            <h1 class='text-uppercase'>
+                                                Cheers to<br>A Healthy 2024!
                                             </h1>
 
 
@@ -84,7 +84,7 @@
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn" href="#!">
+                                            <a class="green-btn fw-semibold text-uppercase fs-14" href="#!">
                                                 Get Started
                                             </a>
                                         </div>
@@ -126,7 +126,7 @@
 
 
                                             {{-- heading --}}
-                                            <h1>
+                                            <h1 class='text-uppercase'>
                                                 Crafting Nutritional
                                                 Excellence With
                                                 Every Dish
@@ -143,7 +143,7 @@
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn" href="#!">
+                                            <a class="green-btn fw-semibold text-uppercase fs-14" href="#!">
                                                 Get Started
                                             </a>
                                         </div>
@@ -193,7 +193,9 @@
 
 
                                             {{-- heading --}}
-                                            <h1>Want To Fast Track Your Results With A Free Strategy Call?</h1>
+                                            <h1 class='text-uppercase smaller'>Want To Fast Track Your Results With A
+                                                Free
+                                                Strategy Call?</h1>
 
 
                                             {{-- description --}}
@@ -202,13 +204,13 @@
                                                     class="text-green bold-600 mx-1">expert coaches</span>remove all
                                                 the guesswork and help you pick the
                                                 perfect meal plan on a<span class="text-green bold-600 mx-1">free
-                                                    20-min call</span><br />
+                                                    20-min call</span><br class='d-none d-md-block' />
                                                 We’ll also share the additional training and lifestyle strategies we use
                                             </p>
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn" href="#!">
+                                            <a class="green-btn fw-semibold text-uppercase fs-14" href="#!">
                                                 Get Started
                                             </a>
                                         </div>
@@ -276,7 +278,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading">
-                        <h2>Pick your meal plan</h2>
+                        <h2>Pick Your Meal Plan</h2>
                     </div>
                 </div>
             </div>
@@ -317,7 +319,7 @@
 
 
                             {{-- select --}}
-                            <a class="btn w-100 d-flex justify-content-center"
+                            <a class="btn w-100 d-flex justify-content-center text-uppercase"
                                 href="{{ route('website.plans.stepOne', [$plan->id]) }}">Select</a>
                         </div>
                     </div>
@@ -406,8 +408,8 @@
 
 
 
-                        <div class="meal-of-day-item orange" data-aos='fade' data-aos-delay="{{ $key * 150 }}"
-                            wire:ignore.self>
+                        <div class="meal-of-day-item @if($key % 2 == 0) orange @else green @endif" data-aos='fade'
+                            data-aos-delay="{{ $key * 150 }}" wire:ignore.self>
                             <div class="mela-info-box">
 
 
@@ -528,8 +530,10 @@
                             <div class="col-lg-8 col-md-6 col-12 order-lg-1 order-md-1 order-2">
                                 <div class="content-box">
                                     <h2>Not Sure Which Meal Plan Suits You?</h2>
-                                    <a href="#!" id='toggleCalendly'>
-                                        <i class="fal fa-play"></i>Get A Free Diet Consultation
+                                    <a href="javascript:void(0);" id='toggleCalendly'>
+                                        <i class="fal fa-play"></i>Book your Free online consultation online with our
+                                        clinical dietitian for a more individualized approach to reach your wellness
+                                        goals. Start your healthier journey today!
                                     </a>
                                 </div>
                             </div>
@@ -585,11 +589,11 @@
 
 
                 {{-- leftBox --}}
-                <div class="col-lg-4 col-12">
-                    <div class="how-it-works-heading-box align-items-center align-items-md-start">
+                <div class="col-lg-4 col-12 mb-md-4 mb-lg-0">
+                    <div class="how-it-works-heading-box align-items-center align-items-md-start ">
                         <h2>How It Works</h2>
                         <p>Set your goal and let us do the work while you enjoy our meals at your convenience</p>
-                        <a class="green-btn" href="#!">Get Satrted</a>
+                        <a class="green-btn fw-semibold fs-14 text-uppercase py-2" href="#!">Get Started</a>
                     </div>
                 </div>
 
@@ -601,18 +605,18 @@
 
                 {{-- steps --}}
                 <div class="col-lg-8 col-12">
-                    <div class="row">
+                    <div class="row justify-content-center">
 
 
 
                         {{-- 1: selectPlanStep --}}
-                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='400'
+                        <div class="col-lg-4 col-md-4 col-10 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='400'
                             wire:ignore.self>
                             <div class="how-it-works-item green">
                                 <img src="{{ url('assets/images/select-your-meal-plan.png') }}" alt="">
-                                <p class="title">Select your meal plan</p>
+                                <p class="title">Choose Your Plan</p>
                                 <p class="desc">Select the best meal plan that perfectly aligns with your lifestyle,
-                                    fitness goals, and fulfils your daily caloric needs.</p>
+                                    fitness goals, and fulfils your daily caloric needs</p>
                             </div>
                         </div>
 
@@ -622,13 +626,13 @@
 
 
                         {{-- 2: weDeliver --}}
-                        <div class="col-lg-4 col-md-4 col-6 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='200'
+                        <div class="col-lg-4 col-md-4 col-10 mb-4 mb-md-0" data-aos='slide-left' data-aos-delay='200'
                             wire:ignore.self>
                             <div class="how-it-works-item orange">
                                 <img src="{{ url('assets/images/we-deliver.png') }}" alt="">
                                 <p class="title">We Deliver</p>
                                 <p class="desc">We deliver customized and fresh meals in a cooler bag, constructed by
-                                    our dietitian, and prepared by our specialized chefs.</p>
+                                    our dietitian, and prepared by our specialized chefs</p>
                             </div>
                         </div>
 
@@ -636,12 +640,12 @@
 
 
                         {{-- 3: enjoy --}}
-                        <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0" data-aos='slide-left' wire:ignore.self>
+                        <div class="col-lg-4 col-md-4 col-10 mb-4 mb-md-0" data-aos='slide-left' wire:ignore.self>
                             <div class="how-it-works-item green">
                                 <img src="assets/images/enjiy.png" alt="">
-                                <p class="title">you enjoy</p>
+                                <p class="title">You Enjoy</p>
                                 <p class="desc">Enjoy your freshly made meals personalized to match your lifestyle. You
-                                    can simplyheat and eat your pre-portioned meals.</p>
+                                    can simplyheat and eat your pre-portioned meals</p>
                             </div>
                         </div>
 
@@ -895,7 +899,7 @@
                                     </p>
 
                                     {{-- bookButton --}}
-                                    <a href="#!" data-bs-toggle='modal' data-bs-target='#trainer'>
+                                    <a href="javascript:void(0);" data-bs-toggle='modal' data-bs-target='#trainer'>
                                         <i class="fal fa-play"></i>Book Your Trainer
                                     </a>
 
@@ -1200,7 +1204,7 @@
             {{-- title --}}
             <div class="row" data-aos="slide-up" wire:ignore.self>
                 <div class="col-12">
-                    <div class="section-heading">
+                    <div class="section-heading pt-5 pt-md-0">
                         <h2>Frequently Asked Questions</h2>
                     </div>
                 </div>
@@ -1253,7 +1257,7 @@
                 <div class="col-12">
                     <div class="section-heading mb-4 mb-lg-5">
                         <h2 data-aos="slide-down" wire:ignore.self>Blogs & News</h2>
-                        <p>Explore Our Latest Fresh Meal Plan Blogs and Updates</p>
+                        <p>Explore Our Latest Meal Plan Blogs and Updates</p>
                     </div>
                 </div>
             </div>
@@ -1277,9 +1281,8 @@
 
                         {{-- mainHeader - subHeader --}}
                         <div class="content-box">
-                            <p class="title">THE HOLY MONTH OF RAMADAN:<br class="d-none d-lg-block d-md-block">
-                                IFTAR RECOMMENDATIONS FROM O0R<br class="d-none d-lg-block d-md-block">
-                                NUTRITIONISTS
+                            <p class="title">The Holy Month of Ramadan<br class="">
+                                Iftar recommendation for our nutritionists
                             </p>
                         </div>
                     </div>
@@ -1300,9 +1303,8 @@
                         {{-- mainHeader - subHeader --}}
                         <div class="content-box">
                             <p class="title">
-                                FOOD SYNERGY:<br class="d-none d-lg-block d-md-block">
-                                THE IMPACT OF PAIRING FOODS FOR<br class="d-none d-lg-block d-md-block">
-                                ENHANCED HEALTH
+                                Food Synergy<br class="">
+                                The Impact of Pairing Foods for Enhanced Health
                             </p>
                         </div>
                     </div>
@@ -1327,8 +1329,8 @@
                         {{-- mainHeader - subHeader --}}
                         <div class="content-box">
                             <p class="title">
-                                OPTIMIZING PROTEIN INTAKE:<br class="d-none d-lg-block d-md-block">
-                                A GUIDE TO DAILY CONSUMPTION
+                                Optimizing Protein Intake<br class="">A Guide to Daily
+                                Consumption
                             </p>
                         </div>
                     </div>
@@ -1380,7 +1382,9 @@
 
                     {{-- subtitle --}}
                     <div class="col-lg-6 col-md-6 col-12">
-                        <p class="title mb-4 mb-md-0">Eat Well, Live Better, Your Choice, Your Meal Plan.</p>
+                        <p class="title mb-4 mb-md-0 fw-bold italic">Eat Well, Live Better, Your Choice, Your Meal
+                            Plan.
+                        </p>
                     </div>
 
 
@@ -1388,8 +1392,8 @@
                     {{-- portalLinks --}}
                     <div class="col-lg-6 col-md-6 col-12 mb-4 mb-md-0">
                         <div class="button-box">
-                            <a class="light-green-btn me-2" href="#!">Login</a>
-                            <a class="light-green-btn ms-2" href="#!">Manage</a>
+                            <a class="light-green-btn me-2 text-uppercase fw-semibold" href="#!">Login</a>
+                            <a class="light-green-btn ms-2 text-uppercase fw-semibold" href="#!">Manage</a>
                         </div>
                     </div>
                 </div>
@@ -1427,10 +1431,11 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="link-box">
                             <ul class='mb-0 justify-content-center justify-content-md-end'>
-                                <li><a href="{{ route('website.home') }}">Home</a></li>
-                                <li><a href="{{ route('website.plans') }}">Meal Plan</a></li>
-                                <li><a href="{{ route('website.home') }}#blogs">Blogs</a></li>
-                                <li class="border-end-0 p-0 m-0"><a href="#!">Contact Us</a></li>
+                                <li><a class='fw-semibold' href="{{ route('website.plans') }}">Meal Plans</a></li>
+                                <li><a class='fw-semibold' href="#">Terms & Conditions</a>
+                                </li>
+                                <li><a class="fw-semibold" href="#!">Privacy Policy</a></li>
+                                <li class='border-end-0 p-0 m-0'><a class=' fw-semibold' href="#">FAQs</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1453,19 +1458,22 @@
 
 
         {{-- footerBottom --}}
-        <div class="footer-bottom">
+        <div class="footer-bottom py-1">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-4 col-lg-4 text-center text-md-start mt-3 mt-md-0">
                         <div class="copyright">
-                            <p>&#169; {{ date('Y') }} Aleen's. All rights reserved.</p>
+                            <p class='fw-semibold'>&#169; {{ date('Y') }} Aleen's. All rights reserved.</p>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-4 col-lg-4 text-center">
-                        <a href="https://doer.ae" target='_blank'>
-                            <img src="{{ url('assets/images/footer/doer.png') }}" alt="" class='of-contain'
-                                style="height: 56px; width: 125px;">
+                        <a href="https://doer.ae" target='_blank'
+                            class='d-flex align-items-center justify-content-center'>
+                            <span class='text-dark fs-11 me-1 fw-bold text-uppercase powered-by'
+                                style="letter-spacing: 0.3px">Powered By</span>
+                            <img src="{{ url('assets/images/footer/doer-dark.png') }}" alt="" class='of-contain'
+                                style="height: 30px;">
                         </a>
 
                     </div>
@@ -1474,7 +1482,7 @@
                     <div class="col-lg-4 col-md-4 col-12 d-none d-md-block">
                         <div class="we-accept">
                             <img src="{{ url('assets/images/card-enhanced.png') }}" alt="" class='of-contain'
-                                style="height: 56px; width: 125px;">
+                                style="height: 30px; width: 100px;">
                         </div>
                     </div>
                 </div>

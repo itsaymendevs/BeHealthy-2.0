@@ -77,7 +77,8 @@
 
 
         {{-- fonts --}}
-        <link href="{{ url('assets/fonts/poppins/stylesheet.css') }}" rel="stylesheet">
+        <link href="{{ url('assets/fonts/montserrat/stylesheet.css') }}" rel="stylesheet">
+        <link href="{{ url('assets/fonts/open-sans/stylesheet.css') }}" rel="stylesheet">
 
 
 

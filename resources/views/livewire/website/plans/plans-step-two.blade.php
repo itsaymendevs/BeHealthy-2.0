@@ -72,7 +72,7 @@
 
 
             {{-- mainForm --}}
-            <form wire:submit='initPayment' class="row justify-content-center">
+            <form wire:submit='continue' class="row justify-content-center">
 
 
 
@@ -103,7 +103,7 @@
                                 @else
 
                                 <div class="checkout-box pb-3">
-                                    <h2 class="heading">Delivery & Payment Information</h2>
+                                    <h2 class="heading">Checkout Information</h2>
                                 </div>
 
                                 @endif
@@ -312,7 +312,8 @@
                                 {{-- submitButton --}}
                                 <div class="text-center end-btn-desktop mb-5">
                                     <button wire:loading.attr='disabled'
-                                        wire:target='initPayment, makePayment, continue' class="green-btn">Checkout your
+                                        wire:target='initPayment, makePayment, continue'
+                                        class="green-btn fw-semibold fs-14 text-uppercase">Checkout your
                                         plan</button>
                                 </div>
 
@@ -360,7 +361,7 @@
 
 
                         {{-- heading--}}
-                        <p class="heading">
+                        <p class="heading fs-5 mb-3">
                             Order Summary
                         </p>
 
@@ -447,7 +448,7 @@
 
                             <div>
                                 <p class="title">
-                                    COUPON
+                                    Coupon
                                 </p>
                             </div>
 
@@ -485,7 +486,7 @@
 
 
                         {{-- 5: totalCheckoutPrice --}}
-                        <div class="recepit-item total">
+                        <div class="recepit-item total mb-0">
                             <div>
                                 <p class="title">Total</p>
                             </div>
@@ -502,9 +503,9 @@
 
                     {{-- checkout --}}
                     <div class="text-end end-btn-mobile">
-                        <button class="green-btn" wire:loading.attr='disabled' wire:target='initPayment'>Checkout
-                            your
-                            plan</button>
+                        <button class="green-btn" wire:loading.attr='disabled'
+                            wire:target='initPayment, makePayment, continue'>Checkout
+                            your plan</button>
                     </div>
                 </div>
                 {{-- endSummary --}}
@@ -682,11 +683,9 @@
 
 
 
-
     {{-- :: init / makeToken --}}
     <script>
         $(document).ready(function () {
-
 
 
 

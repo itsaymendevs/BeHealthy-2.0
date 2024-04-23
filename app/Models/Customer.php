@@ -18,6 +18,9 @@ class Customer extends Authenticatable
 
 
 
+
+
+
     public function wallet()
     {
 
@@ -95,6 +98,20 @@ class Customer extends Authenticatable
 
 
 
+    public function latestAddress()
+    {
+
+        return $this->addresses()?->latest()?->first();
+
+
+    } // end function
+
+
+
+
+
+
+
 
 
     public function deliveryDays()
@@ -163,6 +180,27 @@ class Customer extends Authenticatable
 
 
 
+    public function fullName()
+    {
+
+        return $this->firstName . ' ' . $this->lastName;
+
+    } // end function
+
+
+
+
+
+
+
+
+
+    // --------------------------------------------------------
+
+
+
+
+
 
 
 
@@ -186,6 +224,54 @@ class Customer extends Authenticatable
     } // end function
 
 
+
+
+
+
+
+
+    // --------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+    public function deliveryWeekDays()
+    {
+
+
+        // 1: dependencies
+        $deliveryWeekDays = [];
+
+
+
+
+
+        // 1: getDeliveryDays
+        $deliveryDays = $this->deliveryDays()?->pluck('weekDay')?->toArray() ?? [];
+
+
+
+
+
+        // 1.2: loop - deliveryDays
+        foreach (array_unique($deliveryDays) as $deliveryDay)
+            array_push($deliveryWeekDays, $deliveryDay);
+
+
+
+
+        // :: return
+        return $deliveryWeekDays;
+
+
+
+    } // end function
 
 
 
@@ -219,6 +305,53 @@ class Customer extends Authenticatable
 
         // :: return
         return $deliveryDay ? $deliveryDay->customerAddress : null;
+
+
+
+    } // end function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // --------------------------------------------------------
+
+
+
+
+
+
+
+
+    public function deliveryTimeByDay($date)
+    {
+
+
+        // 1: getWeekDay
+        $currentWeekDay = date('l', strtotime($date));
+
+
+
+        // 1.2: loop - deliveryDays
+        $deliveryDay = $this->deliveryDays()->where('weekDay', $currentWeekDay)?->first() ?? null;
+
+
+
+
+        // :: return
+        return $deliveryDay ? $deliveryDay?->customerAddress?->deliveryTime ?? null : null;
+
 
 
 

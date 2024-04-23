@@ -1,41 +1,41 @@
 {{-- mainRow --}}
-<div class="row">
+<div class="row ">
     <div class="col-12">
         <div class="faq-main-box">
-            <div class="row align-items-center">
+            <div class="row align-items-start">
 
 
 
                 {{-- tabLinks --}}
-                <div class="col-lg-3 col-md-3 col-12">
+                <div class="col-lg-3 mb-4 mb-lg-0  col-12">
                     <div class="faq-category-box">
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
 
 
                             {{-- general --}}
-                            <button class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-general" type="button" role="tab"
+                            <button class="nav-link active text-uppercase fw-bold" id="v-pills-general-tab"
+                                data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab"
                                 aria-controls="v-pills-general" aria-selected="true">General</button>
 
 
                             {{-- delivery --}}
-                            <button class="nav-link" id="v-pills-delivery-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-delivery" type="button" role="tab"
+                            <button class="nav-link text-uppercase fw-bold" id="v-pills-delivery-tab"
+                                data-bs-toggle="pill" data-bs-target="#v-pills-delivery" type="button" role="tab"
                                 aria-controls="v-pills-delivery" aria-selected="false">Delivery</button>
 
 
 
                             {{-- service --}}
-                            <button class="nav-link" id="v-pills-service-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-service" type="button" role="tab"
+                            <button class="nav-link text-uppercase fw-bold" id="v-pills-service-tab"
+                                data-bs-toggle="pill" data-bs-target="#v-pills-service" type="button" role="tab"
                                 aria-controls="v-pills-service" aria-selected="false">Service</button>
 
 
                             {{-- planSubscription --}}
-                            <button class="nav-link" id="v-pills-plan-subscription-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-plan-subscription" type="button" role="tab"
-                                aria-controls="v-pills-plan-subscription" aria-selected="false">Plan
+                            <button class="nav-link text-uppercase fw-bold" id="v-pills-plan-subscription-tab"
+                                data-bs-toggle="pill" data-bs-target="#v-pills-plan-subscription" type="button"
+                                role="tab" aria-controls="v-pills-plan-subscription" aria-selected="false">Plan
                                 Subscription</button>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
 
 
                 {{-- content --}}
-                <div class="col-lg-9 col-md-9 col-12">
+                <div class="col-lg-9  col-12">
                     <div class="faq-accodain-box">
                         <div class="tab-content" id="v-pills-tabContent">
 

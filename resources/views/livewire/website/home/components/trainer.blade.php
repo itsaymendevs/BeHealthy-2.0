@@ -92,13 +92,13 @@
 
                         {{-- gender --}}
                         <div class="col-12 text-center mt-2">
-                            <button class="green-btn py-1 px-4 mx-2">
+                            <a class="green-btn py-1 px-4 mx-2" href='https://www.strongafmethod.com/aleens'>
                                 <i class="fal fa-venus me-2"></i>Female
-                            </button>
+                            </a>
 
-                            <button class="green-btn py-1 px-4  mx-2">
+                            <a class="green-btn py-1 px-4  mx-2" href='https://www.strongafmethod.com/tacoaching'>
                                 <i class="fal fa-mars me-2"></i> Male
-                            </button>
+                            </a>
 
                         </div>
 

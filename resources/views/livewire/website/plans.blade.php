@@ -59,7 +59,7 @@
 
 
             {{-- heading --}}
-            <div class="row">
+            <div class="row mt-3" data-aos='slide-down'>
                 <div class="col-12">
                     <div class="section-heading">
                         <h2>Pick your meal plan</h2>
@@ -108,7 +108,7 @@
 
 
                             {{-- select --}}
-                            <a class="btn w-100 d-flex justify-content-center"
+                            <a class="btn w-100 d-flex justify-content-center text-uppercase"
                                 href="{{ route('website.plans.stepOne', [$plan->id]) }}">Select</a>
                         </div>
                     </div>
@@ -178,8 +178,10 @@
                             <div class="col-lg-8 col-md-6 col-12 order-lg-1 order-md-1 order-2">
                                 <div class="content-box">
                                     <h2>Not Sure Which Meal Plan Suits You?</h2>
-                                    <a href="#!" id='toggleCalendly'>
-                                        <i class="fal fa-play"></i>Get A Free Diet Consultation
+                                    <a href="javascript:void(0);" id='toggleCalendly'>
+                                        <i class="fal fa-play"></i>Book your Free online consultation online with our
+                                        clinical dietitian for a more individualized approach to reach your wellness
+                                        goals. Start your healthier journey today!
                                     </a>
                                 </div>
                             </div>

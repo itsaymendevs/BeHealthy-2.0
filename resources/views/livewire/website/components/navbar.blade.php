@@ -40,7 +40,7 @@
 
                         {{-- 2: howItWorks --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.home') }}#howItWorks">HOW IT WORKS</a>
+                            <a class="nav-link" href="{{ route('website.home') }}#howItWorks">How it Works</a>
                         </li>
 
 
@@ -52,7 +52,7 @@
                         {{-- 3: mealPlans --}}
                         <li class="nav-item">
                             <a class="nav-link @if (Request::is('plans', 'plans/*')) active @endif"
-                                href="{{ route('website.plans') }}">MEAL PLANS</a>
+                                href="{{ route('website.plans') }}">Meal Plans</a>
                         </li>
 
 
@@ -62,7 +62,7 @@
 
                         {{-- 4: dietitation --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="#!">DIETITIAN</a>
+                            <a class="nav-link" href="#!">Dietitian</a>
                         </li>
 
 
@@ -73,7 +73,7 @@
 
                         {{-- 5: blogs --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.home') }}#blogs">BLOGS</a>
+                            <a class="nav-link" href="{{ route('website.home') }}#blogs">Blogs</a>
                         </li>
 
 
@@ -84,7 +84,7 @@
 
                         {{-- 6: contactUs --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="#!">CONTACT US</a>
+                            <a class="nav-link" href="#!">Contact Us</a>
                         </li>
 
 
@@ -94,7 +94,7 @@
 
                         {{-- 7: login --}}
                         <li class="nav-item">
-                            <a class="green-outline-btn " href="#!">LOGIN</a>
+                            <a class="green-outline-btn fw-semibold" href="#!">LOGIN</a>
                         </li>
 
 

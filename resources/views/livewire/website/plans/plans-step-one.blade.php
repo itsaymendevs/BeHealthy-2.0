@@ -240,8 +240,13 @@
 
                             {{-- viewButton --}}
                             <span class="shadow"></span>
-                            <a class="green-outline-btn" href="#!" data-bs-toggle="modal"
-                                data-bs-target="#plan-details">View Plan Full Detail</a>
+
+                            <div class="d-block text-start">
+                                <a class="green-outline-btn fw-semibold py-2 text-uppercase fs-13"
+                                    href="javascript:void(0);" data-bs-toggle="modal"
+                                    data-bs-target="#plan-details">View Details</a>
+                            </div>
+
 
 
                         </div>
@@ -476,7 +481,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                Customize your plan
+                                Customize Your Plan
                             </p>
                             {{-- endHeader --}}
 
@@ -725,7 +730,7 @@
 
 
                         {{-- 3: step - --}}
-                        <div class="step">
+                        <div class="step mb-3">
 
 
 
@@ -745,7 +750,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                Find Your Fit Plan with nutritionist?
+                                Interested in a Consultation with Our Dietitian
                             </p>
                             {{-- endhHeader --}}
 
@@ -819,26 +824,10 @@
                             <div class="row" id="secondRow" style="display: none;" wire:ignore>
 
 
-                                {{-- 1: in-person --}}
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <div class="check-box action">
-                                        <label>
-                                            <input type="radio" name="call-option" value="1">
-                                            <div class="check-item">
-                                                <div class="">
-                                                    <p class="title">
-                                                        <i class="fal fa-user me-2"></i>Meet in Person
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
 
 
-
-                                {{-- 2: phone --}}
-                                <div class="col-lg-4 col-md-6 col-12">
+                                {{-- 1: phone --}}
+                                <div class="col-lg-6 col-md-6 col-12">
                                     <div class="check-box action">
                                         <label>
                                             <input type="radio" name="call-option" value="2">
@@ -855,8 +844,8 @@
 
 
 
-                                {{-- 3: videoMeet --}}
-                                <div class="col-lg-4 col-md-6 col-12">
+                                {{-- 2: videoMeet --}}
+                                <div class="col-lg-6 col-md-6 col-12">
                                     <div class="check-box action">
                                         <label>
                                             <input type="radio" name="call-option" value="3">
@@ -916,7 +905,7 @@
 
 
                             {{-- header --}}
-                            <p class="step-heading">
+                            <p class="step-heading ">
                                 <span>
                                     Step 3
                                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -930,7 +919,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                Your Plan Information
+                                Your Plan Schedule & Serving Days
                             </p>
                             {{-- endHeader --}}
 
@@ -1032,7 +1021,7 @@
                                         {{-- weekDay --}}
                                         <div class="check-item flex-column">
                                             <div>
-                                                <p class="title mb-1">{{ $weekDay }}</p>
+                                                <p class="title mb-0 fs-6 open-sans">{{ $weekDay }}</p>
                                             </div>
                                         </div>
 
@@ -1391,7 +1380,7 @@
                         {{-- :: submitButton --}}
                         <div class="text-end">
                             <button type='button'
-                                class="green-btn @if (empty($instance?->bundleRangeId) || empty($instance->planDays) || empty($instance->startDate)) disabled @endif"
+                                class="green-btn fw-semibold fs-14 text-uppercase @if (empty($instance?->bundleRangeId) || empty($instance->planDays) || empty($instance->startDate)) disabled @endif"
                                 wire:click='continue' wire:loading.attr='disabled'
                                 wire:target='changeBundle, changeBundleRange, continue'>Get your plan</button>
                         </div>

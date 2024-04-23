@@ -7,7 +7,7 @@
 }
 
 .select2-container * {
-    font-family: "Antonio", sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
 }
 
 .select2-container .select2-selection--single {
@@ -75,7 +75,7 @@
     resize: none;
     height: 18px;
     vertical-align: bottom;
-    font-family: "Antonio", sans-serif;
+    font-family: "Open Sans", sans-serif;
     overflow: hidden;
     word-break: keep-all;
 }
@@ -330,6 +330,7 @@
     cursor: default;
     padding-left: 2px;
     padding-right: 5px;
+    font-weight: 600;
 }
 
 .select2-container--default
@@ -347,7 +348,7 @@
     left: 0;
     font-size: 18px;
     display: inline-block;
-    top: -2.5px;
+    top: 0px;
     height: 100% !important;
     border-right: none;
 }
@@ -361,6 +362,7 @@
     background-color: #f1f1f1;
     color: #333;
     outline: none;
+    font-weight: 600;
 }
 
 .select2-container--default[dir="rtl"]
@@ -706,6 +708,7 @@
     cursor: default;
     padding-left: 2px;
     padding-right: 5px;
+    font-weight: 600;
 }
 
 .select2-container--classic
