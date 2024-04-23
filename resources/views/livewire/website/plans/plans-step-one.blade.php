@@ -418,7 +418,8 @@
                                     <div class="col-lg-4 col-md-6 col-6" key='plan-desktop-{{ $plan->id }}'>
                                         <div class="prefrence-card pointer @if ($plan->id == $singlePlan->id) active @endif"
                                             style='background-image: url("{{ $storagePath }}/menu/plans/{{ $singlePlan->imageFile }}")'
-                                            wire:click='changePlan({{ $singlePlan->id }})' wire:loading.attr='disabled'>
+                                            wire:click='changePlan({{ $singlePlan->id }})'
+                                            wire:loading.class='no-events' wire:target='changePlan'>
                                             <p class="title">{{ $singlePlan->name }}</p>
                                         </div>
                                     </div>
@@ -506,7 +507,9 @@
 
                                 <div class="col-12 col-sm-6 col-xl-4 mb-4" key='plan-bunlde-{{ $planBundle->id }}'
                                     data-aos='fade' data-aos-delay='{{ $key * 200 }}' wire:ignore.self>
-                                    <label class="check-box action bundle-options w-100 h-100">
+                                    <label class="check-box action bundle-options w-100 h-100"
+                                        wire:loading.class='no-events'
+                                        wire:target='changeBundle, changeBundleRange, continue'>
 
 
 
@@ -588,7 +591,9 @@
 
                                 <div class="col-6 col-sm-4 col-md-6 col-xl-4 mb-3 h-100"
                                     key='bundle-ranges-{{ $bundleRange->range->id }}'>
-                                    <label class="check-box action bundle-options w-100 h-100">
+                                    <label class="check-box action bundle-options w-100 h-100"
+                                        wire:loading.class='no-events'
+                                        wire:target='changeBundle, changeBundleRange, continue'>
 
 
 
@@ -1387,7 +1392,8 @@
                         <div class="text-end">
                             <button type='button'
                                 class="green-btn @if (empty($instance?->bundleRangeId) || empty($instance->planDays) || empty($instance->startDate)) disabled @endif"
-                                wire:click='continue' wire:loading.attr='disabled'>Get your plan</button>
+                                wire:click='continue' wire:loading.attr='disabled'
+                                wire:target='changeBundle, changeBundleRange, continue'>Get your plan</button>
                         </div>
 
 
@@ -1651,10 +1657,30 @@
 
 
 
-    {{-- 2: customerDetails --}}
+
+
+    {{-- -------------------------------------- --}}
+    {{-- -------------------------------------- --}}
+
+
+
+
+
+
+
+
+
+    {{-- 2: personalInformation --}}
     <livewire:website.plans.plans-step-one.components.plans-step-one-personal-information :$plan
         key='personal-information-{{ $plan->id }}' />
 
+
+
+
+
+    {{-- 2.5: existingPersonalInformation --}}
+    <livewire:website.plans.plans-step-one.components.plans-step-one-existing-personal-information :$plan
+        key='existing-personal-information-{{ $plan->id }}' />
 
 
 

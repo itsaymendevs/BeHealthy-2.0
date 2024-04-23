@@ -435,7 +435,7 @@ class PlansStepTwo extends Component
 
 
 
-
+        dd('true');
 
         // :: continue
 
@@ -448,13 +448,13 @@ class PlansStepTwo extends Component
 
 
 
-
         // 2.1: makeRequest
         $response = $this->makeRequest('subscription/customer/store', $this->instance);
 
 
 
 
+        dd($response);
 
 
         // :: redirectToCheckout

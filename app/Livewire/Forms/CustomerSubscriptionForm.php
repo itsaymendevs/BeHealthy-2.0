@@ -10,6 +10,18 @@ class CustomerSubscriptionForm extends Form
 
 
 
+    // :: FLAGS
+    public $isExistingCustomer = false;
+
+
+
+
+
+    // --------------------------------------------------
+
+
+
+
     // :: STEP 1
     public $phone, $email, $name, $firstName, $lastName, $whatsapp, $gender, $planId, $password;
 
@@ -25,7 +37,7 @@ class CustomerSubscriptionForm extends Form
 
 
     // :: STEP 2
-    public $planBundleId, $bundleRangeId, $planDays, $startDate;
+    public $planBundleId, $bundleRangeId, $planDays, $startDate, $initStartDate;
 
 
     public $bundleTypes = [];
@@ -102,6 +114,18 @@ class CustomerSubscriptionForm extends Form
     public $paymentMethodId, $isPaymentDone = false;
 
 
+
+
+
+
+    // ---------------------------
+    // ---------------------------
+
+
+
+
+    // :: STEP 5 - Existing
+    public $useWallet = false, $walletDiscountPrice;
 
 
 

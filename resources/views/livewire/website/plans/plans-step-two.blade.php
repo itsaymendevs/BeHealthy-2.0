@@ -86,13 +86,54 @@
 
 
                                 {{-- title --}}
+
+
+
+                                {{-- 1: isExistingCustomer --}}
+                                @if ($this->instance->isExistingCustomer)
+
+
                                 <div class="checkout-box pb-3">
-                                    <h2 class="heading">Delivery & Payment Information</h2>
+                                    <h2 class="heading">Payment Information</h2>
                                 </div>
 
 
 
-                                {{-- wrapper --}}
+                                {{-- 2: regular --}}
+                                @else
+
+                                <div class="checkout-box pb-3">
+                                    <h2 class="heading">Delivery & Payment Information</h2>
+                                </div>
+
+                                @endif
+                                {{-- end if --}}
+
+
+
+
+
+
+
+
+                                {{-- ----------------------------- --}}
+                                {{-- ----------------------------- --}}
+
+
+
+
+
+
+
+
+
+                                {{-- deliveryInformations --}}
+
+
+                                {{-- 1: isExistingCustomer --}}
+                                @if (!$this->instance->isExistingCustomer)
+
+
                                 <div class="contact-info mb-4">
                                     <div class="row">
 
@@ -220,6 +261,9 @@
 
 
 
+                                @endif
+                                {{-- end if --}}
+
 
 
 
@@ -267,8 +311,8 @@
 
                                 {{-- submitButton --}}
                                 <div class="text-center end-btn-desktop mb-5">
-                                    <button wire:loading.attr='disabled' wire:target='initPayment'
-                                        class="green-btn">Checkout your
+                                    <button wire:loading.attr='disabled'
+                                        wire:target='initPayment, makePayment, continue' class="green-btn">Checkout your
                                         plan</button>
                                 </div>
 
@@ -458,7 +502,8 @@
 
                     {{-- checkout --}}
                     <div class="text-end end-btn-mobile">
-                        <button class="green-btn" wire:loading.attr='disabled' wire:target='initPayment'>Checkout your
+                        <button class="green-btn" wire:loading.attr='disabled' wire:target='initPayment'>Checkout
+                            your
                             plan</button>
                     </div>
                 </div>
