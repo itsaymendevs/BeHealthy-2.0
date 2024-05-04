@@ -8,6 +8,7 @@
                 {{-- logo --}}
                 <a class="navbar-brand" href="{{ route('website.home') }}">
                     <img src="{{ url('assets/images/logo.png') }}" alt="">
+                    <small class='logo--caption'>Nutritious Meal Plan</small>
                 </a>
 
 
@@ -94,7 +95,7 @@
 
                         {{-- 7: login --}}
                         <li class="nav-item">
-                            <a class="green-outline-btn fw-semibold" href="#!">LOGIN</a>
+                            <a class="green-outline-btn fw-semibold" href="{{ $profile->applicationURL }}">LOGIN</a>
                         </li>
 
 

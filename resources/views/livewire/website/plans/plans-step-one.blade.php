@@ -202,7 +202,7 @@
 
 
             {{-- mainRow --}}
-            <div class="row">
+            <div class="row justify-content-center">
 
 
 
@@ -214,11 +214,11 @@
 
                 {{-- :: planInformation --}}
                 <div class="col-lg-5 col-md-6 col-12" data-aos='slide-right' wire:ignore.self>
-                    <div class="side-detail mb-md-5">
+                    <div class="side-detail mb-md-5 mx-auto mx-md-0 " style="max-width: 320px;">
 
 
                         {{-- imageFile --}}
-                        <div class="img-box">
+                        <div class="img-box text-center">
                             <img src='{{ "{$storagePath}/menu/plans/{$plan->imageFile}" }}' class='of-cover'>
                         </div>
 
@@ -226,7 +226,7 @@
 
 
                         {{-- information --}}
-                        <div class="content-box">
+                        <div class="content-box text-center">
 
 
                             {{-- name --}}
@@ -241,7 +241,7 @@
                             {{-- viewButton --}}
                             <span class="shadow"></span>
 
-                            <div class="d-block text-start">
+                            <div class="d-block text-center">
                                 <a class="green-outline-btn fw-semibold py-2 text-uppercase fs-13"
                                     href="javascript:void(0);" data-bs-toggle="modal"
                                     data-bs-target="#plan-details">View Details</a>
@@ -272,7 +272,7 @@
 
 
                     {{-- summary (DESKTOP) --}}
-                    <div class="summary-right light-sec d-none d-md-block" style="max-width: 320px;">
+                    <div class="summary-right light-sec d-none d-lg-block " style="max-width: 320px;">
 
 
 
@@ -402,7 +402,7 @@
 
 
                 {{-- :: steps --}}
-                <div class="col-lg-7 col-md-6 col-12">
+                <div class="col-12 col-md-12 col-lg-7">
                     <div class="personalize-side">
 
 
@@ -504,14 +504,15 @@
 
 
                             {{-- row - bundles --}}
-                            <div class="row justify-content-center justify-content-sm-start">
+                            <div class="row justify-content-center justify-content-md-start">
 
 
                                 {{-- loop - bundles --}}
                                 @foreach ($planBundles?->where('isForWebsite', true) ?? [] as $key => $planBundle)
 
-                                <div class="col-12 col-sm-6 col-xl-4 mb-4" key='plan-bunlde-{{ $planBundle->id }}'
-                                    data-aos='fade' data-aos-delay='{{ $key * 200 }}' wire:ignore.self>
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4 mb-4"
+                                    key='plan-bunlde-{{ $planBundle->id }}' data-aos='fade'
+                                    data-aos-delay='{{ $key * 200 }}' wire:ignore.self>
                                     <label class="check-box action bundle-options w-100 h-100"
                                         wire:loading.class='no-events'
                                         wire:target='changeBundle, changeBundleRange, continue'>
@@ -524,7 +525,7 @@
 
 
                                         {{-- information --}}
-                                        <div class="check-item flex-column h-100 justify-content-start">
+                                        <div class="check-item full-width flex-column h-100 justify-content-start">
 
 
 
@@ -534,7 +535,7 @@
 
 
                                             {{-- name - remarks --}}
-                                            <div>
+                                            <div class='content-wrap'>
                                                 <p class="title mb-1">{{ $planBundle->name }}</p>
                                                 <p class="desc">{{ $planBundle->remarks }}</p>
                                             </div>
@@ -665,7 +666,7 @@
 
 
                             {{-- overviewOfBunldePrice --}}
-                            <div class="summary-right light-sec d-md-none mb-4 mx-auto"
+                            <div class="summary-right light-sec d-lg-none mb-4 mx-auto"
                                 style="padding-top: 15px; padding-bottom: 5px">
 
 
@@ -1255,7 +1256,7 @@
 
 
                         {{-- summary (MOBILE) --}}
-                        <div class="summary-right light-sec d-md-none mb-4 mx-auto">
+                        <div class="summary-right light-sec d-lg-none mb-4 mx-auto">
 
 
 
@@ -1378,7 +1379,7 @@
 
 
                         {{-- :: submitButton --}}
-                        <div class="text-end">
+                        <div class="text-center text-md-end">
                             <button type='button'
                                 class="green-btn fw-semibold fs-14 text-uppercase @if (empty($instance?->bundleRangeId) || empty($instance->planDays) || empty($instance->startDate)) disabled @endif"
                                 wire:click='continue' wire:loading.attr='disabled'

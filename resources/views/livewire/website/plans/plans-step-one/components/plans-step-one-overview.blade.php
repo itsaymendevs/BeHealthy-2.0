@@ -49,7 +49,7 @@
 
 
                         {{-- name - desc --}}
-                        <div class="col-lg-7 col-md-12 col-12">
+                        <div class="col-lg-7 col-md-12 col-12 order-last order-lg-first">
                             <div class="content-box">
                                 <h2 class='fw-bold'>{{ $plan->name }}</h2>
                                 <p class="desc">{{ $plan->longDesc }}</p>
@@ -58,10 +58,10 @@
 
 
                         {{-- image --}}
-                        <div class="col-lg-5 col-md-12 col-12">
-                            <div class="img-box">
+                        <div class="col-lg-5 col-md-12 col-12 order-first order-lg-last mb-4 mb-lg-0">
+                            <div class="img-box plan text-start text-lg-center">
                                 <img src="{{ $storagePath . '/menu/plans/' . $plan->imageFile }}" alt=""
-                                    class='of-cover'>
+                                    class='of-contain'>
                             </div>
                         </div>
                     </div>

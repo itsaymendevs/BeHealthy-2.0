@@ -1430,12 +1430,32 @@
                     {{-- shortLinks --}}
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="link-box">
-                            <ul class='mb-0 justify-content-center justify-content-md-end'>
-                                <li><a class='fw-semibold' href="{{ route('website.plans') }}">Meal Plans</a></li>
-                                <li><a class='fw-semibold' href="#">Terms & Conditions</a>
+                            <ul class='mb-0 justify-content-around justify-content-md-end flex-sm-row'>
+
+                                {{-- 1: mealPlans --}}
+                                <li>
+                                    <a class='fw-semibold' href="{{ route('website.plans') }}">Meal Plans</a>
                                 </li>
-                                <li><a class="fw-semibold" href="#!">Privacy Policy</a></li>
-                                <li class='border-end-0 p-0 m-0'><a class=' fw-semibold' href="#">FAQs</a></li>
+
+
+
+                                {{-- terms --}}
+                                <li>
+                                    <a class='fw-semibold' href="#">Terms & Conditions</a>
+                                </li>
+
+
+                                {{-- privacy policy --}}
+                                <li>
+                                    <a wire:naviagte class="fw-semibold" href="{{ route('website.privacy') }}">Privacy
+                                        Policy</a>
+                                </li>
+
+
+                                {{-- faq --}}
+                                <li class='border-end-0 p-0 m-0'>
+                                    <a class='fw-semibold' href="#">FAQs</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -1461,28 +1481,29 @@
         <div class="footer-bottom py-1">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-12 col-md-4 col-lg-4 text-center text-md-start mt-3 mt-md-0">
+                    <div
+                        class="col-12 col-md-4 col-lg-4 text-center text-md-start mt-1  mt-md-0 order-last order-md-first">
                         <div class="copyright">
                             <p class='fw-semibold'>&#169; {{ date('Y') }} Aleen's. All rights reserved.</p>
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-4 col-lg-4 text-center">
+                    <div class="col-12 col-md-4 col-lg-4 mt-1 mt-md-0 text-center order-1 order-md-2">
                         <a href="https://doer.ae" target='_blank'
                             class='d-flex align-items-center justify-content-center'>
-                            <span class='text-dark fs-11 me-1 fw-bold text-uppercase powered-by'
+                            <span class='text-dark fs-10 me-1 fw-semibold text-uppercase powered-by'
                                 style="letter-spacing: 0.3px">Powered By</span>
                             <img src="{{ url('assets/images/footer/doer-dark.png') }}" alt="" class='of-contain'
-                                style="height: 30px;">
+                                style="height: 26px;">
                         </a>
 
                     </div>
 
 
-                    <div class="col-lg-4 col-md-4 col-12 d-none d-md-block">
+                    <div class="col-lg-4 col-md-4 col-12 d-none d-md-block order-last">
                         <div class="we-accept">
                             <img src="{{ url('assets/images/card-enhanced.png') }}" alt="" class='of-contain'
-                                style="height: 30px; width: 100px;">
+                                style="height: 26px; width: 100px;">
                         </div>
                     </div>
                 </div>

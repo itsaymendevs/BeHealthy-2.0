@@ -32,6 +32,17 @@ class Meal extends Model
 
 
 
+    public function servingInstructions()
+    {
+
+        return $this->hasMany(MealServingInstruction::class, 'mealId');
+
+    } // end function
+
+
+
+
+
 
     public function sizes()
     {
@@ -75,6 +86,34 @@ class Meal extends Model
         return $this->belongsTo(Type::class, 'typeId');
 
     } // end function
+
+
+
+
+
+
+
+    public function container()
+    {
+
+        return $this->belongsTo(Container::class, 'containerId');
+
+    } // end function
+
+
+
+
+
+
+
+
+    public function label()
+    {
+
+        return $this->belongsTo(Label::class, 'labelId');
+
+    } // end function
+
 
 
 
@@ -183,6 +222,56 @@ class Meal extends Model
 
 
 
+
+
+
+    public function servingInstructionsInArray()
+    {
+
+
+        // :: root
+        $servingInstructionsInArray = [];
+
+
+
+
+        // 1: getMealServingInstructions
+        $mealServingInstructions = $this->servingInstructions()?->where('isActive', true)?->pluck('servingInstructionId')?->toArray() ?? [];
+
+
+
+
+        // 1.2: getServingInstructions
+        $servingInstructionsInArray = ServingInstruction::whereIn('id', $mealServingInstructions)?->get()?->pluck('name')?->toArray() ?? [];
+
+
+
+
+        return $servingInstructionsInArray;
+
+
+
+
+    } // end function
+
+
+
+
+
+
+
+
+
+
+    // ------------------------------------------
+
+
+
+
+
+
+
+
     public function totalGrams()
     {
 
@@ -202,6 +291,11 @@ class Meal extends Model
 
 
     } // end function
+
+
+
+
+
 
 
 
@@ -375,6 +469,14 @@ class Meal extends Model
 
 
     } // end function
+
+
+
+
+
+
+
+
 
 
 

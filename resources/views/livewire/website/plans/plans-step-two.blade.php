@@ -72,7 +72,7 @@
 
 
             {{-- mainForm --}}
-            <form wire:submit='continue' class="row justify-content-center">
+            <form wire:submit='initPayment' class="row justify-content-center">
 
 
 
@@ -686,7 +686,6 @@
     {{-- :: init / makeToken --}}
     <script>
         $(document).ready(function () {
-
 
 
 

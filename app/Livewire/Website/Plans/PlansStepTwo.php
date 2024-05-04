@@ -44,9 +44,18 @@ class PlansStepTwo extends Component
 
 
         // :: checkSession
-        session('customer') && session('customer')->{'email'} ?
-            $this->instance = session('customer') :
-            $this->redirect(route('website.plans.stepOne', [$id]), navigate: true);
+        if (session('customer') && session('customer')->{'email'}) {
+
+            $this->instance = session('customer');
+
+
+        } else {
+
+            return $this->redirect(route('website.plans.stepOne', [$id]), navigate: true);
+
+        } // end if
+
+
 
 
 
@@ -100,6 +109,7 @@ class PlansStepTwo extends Component
 
         // 2.1: updatePaymentMethod
         $this->paymentMethod = CustomerSubscriptionSetting::all()->first()?->paymentMethod ?? null;
+
 
         $this->instance->paymentMethodId = $this->paymentMethod->id ?? null;
 
@@ -355,12 +365,15 @@ class PlansStepTwo extends Component
 
 
             // 1.2: makeDebitPayment
-            // $this->makeDebitPaymennt($this->instance, $this->payment, $this->paymentMethod);
+            $response = $this->makeDebitPaymennt($this->instance, $this->payment, $this->paymentMethod);
 
 
 
             // 1.3: continue
-            $this->continue();
+            if ($response?->success == true)
+                $this->continue();
+            else
+                $this->makeAlert('info', $response?->error ?? 'Invalid Payment');
 
 
         } // end if - PAYMENNT

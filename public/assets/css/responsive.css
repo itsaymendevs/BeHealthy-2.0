@@ -15,6 +15,7 @@
     .navbar-collapse {
         width: 100%;
         z-index: 10000;
+        margin-top: 4px;
         background-color: white;
         display: flex;
         align-items: center;
@@ -51,6 +52,12 @@
     }
 }
 @media only screen and (max-width: 768px) {
+    .check-box .check-item.full-width .content-wrap {
+        padding-bottom: 0px;
+    }
+    .light-green-btn {
+        font-size: 15px;
+    }
     .meal-plan-card {
         display: block;
         padding: 10px;
@@ -59,10 +66,10 @@
     .meal-plan-card .img-box {
         width: 100%;
         border-radius: 10px;
+        min-width: unset;
     }
     .meal-plan-card .img-box img {
         border-radius: 10px;
-        height: 100px;
     }
     .meal-plan-card .content-box {
         width: 100%;
@@ -311,6 +318,7 @@
     .main-personalize-sec .side-detail .content-box p {
         font-size: 14px;
     }
+
     .check-box .check-item .title {
         font-size: 15px;
     }
@@ -328,8 +336,9 @@
         margin-bottom: 10px;
     }
     .plan-detail-modal-box .content-box .desc {
-        font-size: 13px;
+        font-size: 14px;
     }
+
     .included-meal-item .content-box .title {
         transform: translateY(0);
         margin-top: 5px;
@@ -447,8 +456,30 @@
     .blog-card .content-box {
         min-height: auto;
     }
+
+    .footer-top .title {
+        font-size: 26px;
+    }
+
+    .footer-main .link-box ul li {
+        border-right: none;
+        margin-right: 0px;
+        padding-right: 0px;
+    }
+
+    .footer-main .link-box ul li a {
+        border-bottom: 1px dashed #e8e8e8;
+        font-size: 12px;
+    }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
+    .check-box .check-item.full-width {
+        max-width: 250px;
+        margin: auto;
+    }
+    .check-box .check-item.full-width img {
+        max-height: 200px;
+    }
 }
 @media only screen and (max-width: 400px) {
 }

@@ -111,7 +111,6 @@ trait PaymenntTrait
 
 
         // B: checkoutDetails
-        // $requestBody->checkoutId = "1";
         $requestBody->checkoutDetails = new stdClass();
 
 
@@ -123,7 +122,7 @@ trait PaymenntTrait
         $requestBody->checkoutDetails->requestId = "ORDER-REQ-" . $nextRequestId;
         $requestBody->checkoutDetails->orderId = "ORDER-" . $nextRequestId;
         $requestBody->checkoutDetails->currency = 'AED';
-        $requestBody->checkoutDetails->amount = doubleval($instance->totalCheckoutPrice);
+        $requestBody->checkoutDetails->amount = doubleval($instance->totalCheckoutPrice); // $instance->totalCheckoutPrice
 
 
 
@@ -138,7 +137,7 @@ trait PaymenntTrait
         $requestBody->checkoutDetails->items[0] = new stdClass();
         $requestBody->checkoutDetails->items[0]->name = $plan->name;
         $requestBody->checkoutDetails->items[0]->quantity = 1;
-        $requestBody->checkoutDetails->items[0]->linetotal = doubleval($instance->totalCheckoutPrice);
+        $requestBody->checkoutDetails->items[0]->linetotal = doubleval($instance->totalCheckoutPrice); // $instance->totalCheckoutPrice
 
 
 
@@ -182,16 +181,13 @@ trait PaymenntTrait
 
 
         // 2.5: returnURL
-        $requestBody->checkoutDetails->returnUrl = "https://aleens.ae";
+        $requestBody->checkoutDetails->returnUrl = "https://aleens.ae/hook";
 
 
 
 
         // ----------------------------------------------
         // ----------------------------------------------
-
-
-
 
 
 
@@ -211,10 +207,6 @@ trait PaymenntTrait
 
 
 
-
-
-
-        dd($response, $requestBody);
 
 
         // 4: convertToObject

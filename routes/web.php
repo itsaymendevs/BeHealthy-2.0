@@ -5,6 +5,7 @@ use App\Livewire\Website\Plans;
 use App\Livewire\Website\Plans\PlansStepOne;
 use App\Livewire\Website\Plans\PlansStepThree;
 use App\Livewire\Website\Plans\PlansStepTwo;
+use App\Livewire\Website\Privacy;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 
@@ -102,11 +103,23 @@ Route::get('/dietitian', Home::class)->name('website.dietitian');
 
 
 
+
+
+
+
+
 // 5: how-it-works
 Route::get('/how-it-works', Home::class)->name('website.howItWorks');
 
 
 
+
+
+
+
+
+// 6: privacy
+Route::get('/privacy-policy', Privacy::class)->name('website.privacy');
 
 
 

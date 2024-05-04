@@ -62,10 +62,16 @@ class PlansStepOneExistingPersonalInformation extends Component
 
 
         // :: checkSession
-        session('customer') && session('customer')->{'planDays'} ?
-            $this->instance = session('customer') :
-            $this->redirect(route('website.plans.stepOne', [$this->plan->id]), navigate: true);
+        if (session('customer') && session('customer')->{'planDays'}) {
 
+            $this->instance = session('customer');
+
+
+        } else {
+
+            return $this->redirect(route('website.plans.stepOne', [$this->plan->id]), navigate: true);
+
+        } // end if
 
 
 

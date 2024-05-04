@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HelperTrait;
 use App\Traits\MenuCalendarTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,9 +14,9 @@ use stdClass;
 class Customer extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
     use MenuCalendarTrait;
-
-
+    use HelperTrait;
 
 
 
@@ -70,6 +71,9 @@ class Customer extends Authenticatable
 
 
 
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+
 
 
 
@@ -80,6 +84,67 @@ class Customer extends Authenticatable
         return $this->subscriptions()->latest()->first();
 
     } // end function
+
+
+
+
+
+
+
+
+    public function currentSubscription()
+    {
+
+
+
+        // 1: getCurrent
+        $currentSubscription = $this->subscriptions()?->where('untilDate', '>=', $this->getCurrentDate())?->first();
+
+
+
+
+        // :: extra: getLatest if empty
+        if (empty($currentSubscription))
+            $currentSubscription = $this->latestSubscription();
+
+
+
+        return $currentSubscription;
+
+
+    } // end function
+
+
+
+
+
+
+
+
+    public function activeSubscriptions()
+    {
+
+
+        $activeSubscriptions = $this->subscriptions()?->where('untilDate', '>=', $this->getCurrentDate())?->get();
+
+
+        return $activeSubscriptions;
+
+
+    } // end function
+
+
+
+
+
+
+
+
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+
+
+
 
 
 
@@ -212,7 +277,7 @@ class Customer extends Authenticatable
 
 
         // 1: dependencies
-        $todayDate = date('Y-m-d', strtotime('+4 hours'));
+        $todayDate = $this->getCurrentDate();
 
 
         return $this->deliveries()?->where('isBagCollected', 0)

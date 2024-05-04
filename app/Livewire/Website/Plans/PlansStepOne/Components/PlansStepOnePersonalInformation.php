@@ -4,6 +4,7 @@ namespace App\Livewire\Website\Plans\PlansStepOne\Components;
 
 use App\Livewire\Forms\CustomerSubscriptionForm;
 use App\Models\Bag;
+use App\Models\Customer;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\On;
@@ -60,11 +61,16 @@ class PlansStepOnePersonalInformation extends Component
 
 
         // :: checkSession
-        session('customer') && session('customer')->{'planDays'} ?
-            $this->instance = session('customer') :
-            $this->redirect(route('website.plans.stepOne', [$this->plan->id]), navigate: true);
+        if (session('customer') && session('customer')->{'planDays'}) {
+
+            $this->instance = session('customer');
 
 
+        } else {
+
+            return $this->redirect(route('website.plans.stepOne', [$this->plan->id]), navigate: true);
+
+        } // end if
 
 
 
@@ -96,6 +102,35 @@ class PlansStepOnePersonalInformation extends Component
 
     public function continue()
     {
+
+
+
+
+        // 1: checkEmail
+        $emailExists = Customer::where('email', $this->instance->email)->count();
+        $phoneExists = Customer::where('phone', $this->instance->phone)->count();
+
+
+        if ($emailExists) {
+
+            $this->makeAlert('info', 'Email Already Exists');
+            return false;
+
+        } else if ($phoneExists) {
+
+            $this->makeAlert('info', 'Phone Already Exists');
+            return false;
+
+        } // end if
+
+
+
+
+        // ----------------------------------------
+        // ----------------------------------------
+
+
+
 
 
 

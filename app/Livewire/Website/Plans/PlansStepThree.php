@@ -37,9 +37,16 @@ class PlansStepThree extends Component
 
 
         // :: checkSession
-        // session('customer') && session('customer')->{'totalCheckoutPrice'} ?
-        //     $this->instance = session('customer') :
-        //     $this->redirect(route('website.plans'), navigate: true);
+        if (session('customer') && session('customer')->{'totalCheckoutPrice'}) {
+
+            $this->instance = session('customer');
+
+
+        } else {
+
+            return $this->redirect(route('website.plans'), navigate: true);
+
+        } // end if
 
 
 
@@ -47,9 +54,11 @@ class PlansStepThree extends Component
 
 
 
-        // // :: migrateSession
-        // Session::forget('customer');
-        // Session::put('customerInvoice', $this->instance);
+
+
+        // :: migrateSession
+        Session::forget('customer');
+        Session::put('customerInvoice', $this->instance);
 
 
 
