@@ -84,7 +84,8 @@
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn fw-semibold text-uppercase fs-14" href="#!">
+                                            <a class="green-btn fw-semibold text-uppercase fs-14"
+                                                href="{{ route('website.plans') }}">
                                                 Get Started
                                             </a>
                                         </div>
@@ -143,7 +144,8 @@
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn fw-semibold text-uppercase fs-14" href="#!">
+                                            <a class="green-btn fw-semibold text-uppercase fs-14"
+                                                href="{{ route('website.plans') }}">
                                                 Get Started
                                             </a>
                                         </div>
@@ -210,7 +212,8 @@
 
 
                                             {{-- actionButton --}}
-                                            <a class="green-btn fw-semibold text-uppercase fs-14" href="#!">
+                                            <a class="green-btn fw-semibold text-uppercase fs-14"
+                                                href="{{ route('website.plans') }}">
                                                 Get Started
                                             </a>
                                         </div>
@@ -593,7 +596,8 @@
                     <div class="how-it-works-heading-box align-items-center align-items-md-start ">
                         <h2>How It Works</h2>
                         <p>Set your goal and let us do the work while you enjoy our meals at your convenience</p>
-                        <a class="green-btn fw-semibold fs-14 text-uppercase py-2" href="#!">Get Started</a>
+                        <a class="green-btn fw-semibold fs-14 text-uppercase py-2"
+                            href="{{ route('website.plans') }}">Get Started</a>
                     </div>
                 </div>
 

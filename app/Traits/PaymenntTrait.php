@@ -5,66 +5,35 @@ namespace App\Traits;
 use App\Models\City;
 use App\Models\Customer;
 use App\Models\CustomerSubscription;
+use App\Models\CustomerSubscriptionSetting;
+use App\Models\Lead;
 use App\Models\Plan;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 use stdClass;
 
 
 trait PaymenntTrait
 {
 
-
-
-
-    protected function makePaymenntToken()
-    {
-
-
-        // :: makePaymenntToken
-        $this->dispatch('makePaymenntToken');
-
-        return true;
-
-
-
-    } // end function
+    use HelperTrait;
 
 
 
 
 
-
-
-
-
-
-
-
-    // --------------------------------------------------------------
-    // --------------------------------------------------------------
-    // --------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-    protected function makeDebitPaymennt($instance, $payment, $paymentMethod)
+    protected function makeCheckoutPaymennt($instance, $payment, $paymentMethod)
     {
 
 
 
         // :: dependencies
+        $random = date('dmhis');
+
+
         $city = City::find($instance->cityId);
         $plan = Plan::find($instance->planId);
-        $nextRequestId = CustomerSubscription::latest()->first()->id;
-
+        $lead = Lead::where('email', $instance->email)->latest()->first();
 
 
 
@@ -72,7 +41,8 @@ trait PaymenntTrait
 
 
         // 1: URL
-        $requestURL = "https://api.test.paymennt.com/mer/v2.0/payment/debit";
+        $requestURL = "https://api.test.paymennt.com/mer/v2.0/checkout/web";
+        // $requestURL = "https://api.paymennt.com/mer/v2.0/checkout/web";
 
 
 
@@ -86,32 +56,8 @@ trait PaymenntTrait
 
 
 
-        // A: source
-        $requestBody->source = new stdClass();
-        $requestBody->source->type = "TOKEN";
-        $requestBody->source->token = $payment->token;
-        $requestBody->source->shopperInteraction = "SUBSCRIPTION";
 
-
-
-
-
-
-
-
-
-
-        // ------------------------------
-        // ------------------------------
-
-
-
-
-
-
-
-        // B: checkoutDetails
-        $requestBody->checkoutDetails = new stdClass();
+        // A: checkoutDetails
 
 
 
@@ -119,10 +65,10 @@ trait PaymenntTrait
 
 
         // 2.1: general
-        $requestBody->checkoutDetails->requestId = "ORDER-REQ-" . $nextRequestId;
-        $requestBody->checkoutDetails->orderId = "ORDER-" . $nextRequestId;
-        $requestBody->checkoutDetails->currency = 'AED';
-        $requestBody->checkoutDetails->amount = doubleval($instance->totalCheckoutPrice); // $instance->totalCheckoutPrice
+        $requestBody->requestId = "CUS-" . $random . "-" . $lead->id;
+        $requestBody->orderId = "ORD-" . $lead->id;
+        $requestBody->currency = 'AED';
+        $requestBody->amount = doubleval($instance->totalCheckoutPrice); // $instance->totalCheckoutPrice
 
 
 
@@ -132,12 +78,12 @@ trait PaymenntTrait
 
 
         // 2.2: items
-        $requestBody->checkoutDetails->items = [];
+        $requestBody->items = [];
 
-        $requestBody->checkoutDetails->items[0] = new stdClass();
-        $requestBody->checkoutDetails->items[0]->name = $plan->name;
-        $requestBody->checkoutDetails->items[0]->quantity = 1;
-        $requestBody->checkoutDetails->items[0]->linetotal = doubleval($instance->totalCheckoutPrice); // $instance->totalCheckoutPrice
+        $requestBody->items[0] = new stdClass();
+        $requestBody->items[0]->name = $plan->name;
+        $requestBody->items[0]->quantity = 1;
+        $requestBody->items[0]->linetotal = doubleval($instance->totalCheckoutPrice); // $instance->totalCheckoutPrice
 
 
 
@@ -149,12 +95,13 @@ trait PaymenntTrait
 
 
         // 2.3: customer
-        $requestBody->checkoutDetails->customer = new stdClass();
+        $requestBody->customer = new stdClass();
 
-
-        $requestBody->checkoutDetails->customer->firstName = $instance->firstName;
-        $requestBody->checkoutDetails->customer->lastName = $instance->lastName;
-        $requestBody->checkoutDetails->customer->email = $instance->email;
+        $requestBody->customer->id = $lead->id;
+        $requestBody->customer->firstName = $instance->firstName;
+        $requestBody->customer->lastName = $instance->lastName;
+        $requestBody->customer->email = $instance->email;
+        $requestBody->customer->phone = $instance->phone;
 
 
 
@@ -164,13 +111,14 @@ trait PaymenntTrait
 
 
         // 2.4: billingAddress
-        $requestBody->checkoutDetails->billingAddress = new stdClass();
+        $requestBody->billingAddress = new stdClass();
 
 
-        $requestBody->checkoutDetails->billingAddress->name = $instance->firstName . ' ' . $instance->lastName;
-        $requestBody->checkoutDetails->billingAddress->address1 = $instance->locationAddress;
-        $requestBody->checkoutDetails->billingAddress->city = $city->name;
-        $requestBody->checkoutDetails->billingAddress->country = "AE";
+        $requestBody->billingAddress->name = $instance->firstName . ' ' . $instance->lastName;
+        $requestBody->billingAddress->address1 = $instance->locationAddress;
+        $requestBody->billingAddress->city = $city->name;
+        $requestBody->billingAddress->country = "AE";
+        $requestBody->billingAddress->set = false;
 
 
 
@@ -181,13 +129,26 @@ trait PaymenntTrait
 
 
         // 2.5: returnURL
-        $requestBody->checkoutDetails->returnUrl = "https://aleens.ae/hook";
+        $requestBody->returnUrl = route('website.plans.stepThree');
+
+
+
+
+
 
 
 
 
         // ----------------------------------------------
         // ----------------------------------------------
+
+
+
+
+
+
+        // B: makeCheckout
+
 
 
 
@@ -196,11 +157,43 @@ trait PaymenntTrait
         // 3: sendRequest
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Connection' => 'keep-alive',
             'X-Paymennt-Api-Key' => env($paymentMethod->envThirdKey),
             'X-Paymennt-Api-Secret' => env($paymentMethod->envSecondKey),
-        ])->post($requestURL, [
-                    $requestBody
-                ], )->json();
+        ])->post($requestURL . "", [
+                    "requestId" => $requestBody->requestId,
+                    "orderId" => $requestBody->orderId,
+                    "currency" => $requestBody->currency,
+                    "amount" => $requestBody->amount,
+                    "customer" => array(
+                        "id" => $lead->id,
+                        "firstName" => $requestBody->customer->firstName,
+                        "lastName" => $requestBody->customer->lastName,
+                        "email" => $requestBody->customer->email,
+                        "phone" => $requestBody->customer->phone,
+                    ),
+                    "billingAddress" => array(
+                        "name" => $requestBody->billingAddress->name,
+                        "address1" => $requestBody->billingAddress->address1,
+                        "city" => $requestBody->billingAddress->city,
+                        "country" => $requestBody->billingAddress->country,
+                        "set" => $requestBody->billingAddress->set,
+                    ),
+                    "items" => array(
+                        array(
+                            "name" => $requestBody->items[0]->name,
+                            "quantity" => $requestBody->items[0]->quantity,
+                            "linetotal" => $requestBody->items[0]->linetotal
+                        )
+                    ),
+                    "returnUrl" => $requestBody->returnUrl,
+                    "allowedPaymentMethods" => array(
+                        "CARD"
+                    ),
+                    "defaultPaymentMethod" => "CARD",
+                    "language" => "EN"
+                ])->json();
 
 
 
@@ -209,12 +202,70 @@ trait PaymenntTrait
 
 
 
-        // 4: convertToObject
+        // ----------------------------------------------
+        // ----------------------------------------------
+
+
+
+
+
+
+        // C: paymentURL - paymentReference
         $response = json_decode(json_encode($response));
 
 
 
-        return $response;
+
+
+
+        // 1: success
+        if ($response->success == true) {
+
+
+
+
+            // :: continue
+
+
+
+            // 1.2: updateURL - Reference
+            $lead->paymentReference = $response->result->id;
+            $lead->paymentURL = $response->result->redirectUrl;
+
+            $lead->save();
+
+
+
+
+            // 1.3: removeSessions - disableSubmitButton
+            Session::forget('customer');
+            $this->dispatch('processing');
+
+
+
+
+
+
+            return $this->redirect($lead->paymentURL);
+
+
+
+
+
+
+        } else {
+
+
+
+            // :: alertFail
+            $this->makeAlert('info', 'Please Try Again ..');
+
+
+        } // end if
+
+
+
+
 
 
     } // end function
@@ -222,6 +273,105 @@ trait PaymenntTrait
 
 
 
+
+
+
+
+
+
+
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
+    // ----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+    protected function checkCheckoutPaymennt($checkoutId)
+    {
+
+
+
+        // :: dependencies
+        $paymentMethod = CustomerSubscriptionSetting::all()->first()?->paymentMethod ?? null;
+
+
+
+
+
+
+
+        // 1: URL
+        $requestURL = "https://api.test.paymennt.com/mer/v2.0/checkout/{$checkoutId}";
+        // $requestURL = "https://api.paymennt.com/mer/v2.0/checkout/{$checkoutId}";
+
+
+
+
+
+        // 1.2: makeRequest
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Connection' => 'keep-alive',
+            'X-Paymennt-Api-Key' => env($paymentMethod->envThirdKey),
+            'X-Paymennt-Api-Secret' => env($paymentMethod->envSecondKey),
+        ])->get($requestURL)->json();
+
+
+
+
+
+
+
+
+
+
+        // ----------------------------------------------
+        // ----------------------------------------------
+
+
+
+
+
+
+        // 2: getResponse
+        $response = json_decode(json_encode($response));
+
+
+
+
+        // 2.1: Paid
+        if (! empty($response?->result?->status) && $response?->result?->status == 'PAID') {
+
+
+            return true;
+
+
+            // 2.2: notPaid
+        } else {
+
+
+            return false;
+
+
+        } // end if
+
+
+
+
+
+    } // end if
 
 
 

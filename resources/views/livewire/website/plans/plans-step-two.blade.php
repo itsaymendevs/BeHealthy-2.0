@@ -4,8 +4,6 @@
 
 
 
-
-
     {{-- head --}}
     @section('head')
 
@@ -269,31 +267,6 @@
 
 
 
-                                {{-- --------------------------- --}}
-                                {{-- --------------------------- --}}
-
-
-
-
-
-
-
-
-
-                                {{-- paymennt --}}
-                                @if ($paymentMethod->name == 'Paymennt')
-
-
-                                {{-- :: card --}}
-                                <div id="paymenntWrapper" class="card-frame" wire:ignore></div>
-
-
-
-                                @endif
-                                {{-- end if - payment --}}
-
-
-
 
 
 
@@ -311,10 +284,9 @@
 
                                 {{-- submitButton --}}
                                 <div class="text-center end-btn-desktop mb-5">
-                                    <button wire:loading.attr='disabled'
-                                        wire:target='initPayment, makePayment, continue'
-                                        class="green-btn fw-semibold fs-14 text-uppercase">Checkout your
-                                        plan</button>
+                                    <button id='submitButton' wire:loading.attr='disabled'
+                                        wire:target='initPayment, continue'
+                                        class="green-btn fw-semibold fs-14 text-uppercase">Proceed to payment</button>
                                 </div>
 
                             </div>
@@ -502,11 +474,24 @@
 
 
                     {{-- checkout --}}
+                    @if (!$isProcessing)
+
+
                     <div class="text-end end-btn-mobile">
                         <button class="green-btn" wire:loading.attr='disabled'
-                            wire:target='initPayment, makePayment, continue'>Checkout
+                            wire:target='initPayment, continue'>Checkout
                             your plan</button>
                     </div>
+
+
+
+                    @endif
+                    {{-- end if - processing --}}
+
+
+
+
+
                 </div>
                 {{-- endSummary --}}
 
@@ -634,7 +619,6 @@
 
 
 
-
          //  1.2: refreshChild to defaultValue
          if ($(this).hasClass('parent-select')) {
 
@@ -652,176 +636,6 @@
     </script>
 
 
-
-
-
-
-
-
-
-
-    {{-- -------------------------------------------------- --}}
-    {{-- -------------------------------------------------- --}}
-
-
-
-
-
-
-
-
-
-
-    {{-- :: PaymenntJS --}}
-    <script src="https://pay.paymennt.com/static/js/paymennt-frames.js"></script>
-
-
-
-
-
-
-
-
-
-    {{-- :: init / makeToken --}}
-    <script>
-        $(document).ready(function () {
-
-
-
-            // 1: initPayment
-            PaymenntJS.init({
-
-
-                // 1.2: mode - publicKey
-                publicKey: @json(env($paymentMethod->envKey)),
-                selector: "#paymenntWrapper",
-                mode: PaymenntJS.modes.TEST,
-
-
-
-                // 1.3: handleToken
-                onTokenized: function (data) {
-                    @this.set('payment.token', data.token);
-                    @this.makePayment();
-                },
-                onTokenizationFailed: function (data) {
-                    @this.updatePaymentMessage(data.error);
-                    @this.makeAlertJS(data.error);
-                },
-
-
-
-
-
-
-
-
-                // --------------------------------------------------
-                // --------------------------------------------------
-
-
-
-
-
-
-
-
-                // 1.4: validation
-                onValidationUpdate: function (data) {
-
-
-                    // 1: notValid
-                    if (!data.valid) {
-
-
-
-                        // 1.4.1: loop - errors
-                        var message = null;
-
-
-                        for (var i = 0; i < data.validationErrors.length; ++i) {
-
-                            var fieldValidation = data.validationErrors[i];
-
-
-                            if (!message || fieldValidation.field === data.lastActiveField)
-                                @this.set('payment.validationMessage', fieldValidation.message);
-
-
-                        } // end loop
-
-
-
-
-
-                        // 1.4.2: hasErrorMessage
-                        if (!message)
-                            @this.set('payment.validationMessage', data.error ? data.error : "Invalid card details");
-
-
-
-
-
-
-
-
-
-                    // 2: isValid
-                    } else {
-
-                        @this.set('payment.validationMessage', '');
-
-                    } // end if
-
-
-
-
-                }, // end validate
-
-
-
-
-
-
-
-            }); // end PaymentJS
-        }); // end documentReady
-
-
-
-
-
-
-
-
-
-
-
-        // --------------------------------------------------
-        // --------------------------------------------------
-
-
-
-
-
-
-
-
-        // :: makePaymenntToken
-        window.addEventListener("makePaymenntToken", (event) => {
-            $(document).ready(function () {
-
-
-                PaymenntJS.submitPayment();
-
-
-            }); // end documentReady
-        }); // end makePaymenntToken
-
-
-
-    </script>
 
 
 

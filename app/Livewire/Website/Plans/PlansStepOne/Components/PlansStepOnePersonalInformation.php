@@ -142,6 +142,8 @@ class PlansStepOnePersonalInformation extends Component
         // 1: appendMissingInformation
 
 
+        // :: markAsRegular
+        $this->instance->isExistingCustomer = false;
 
 
 

@@ -29,7 +29,7 @@ class PlansStepTwo extends Component
     public PaymenntForm $payment;
 
     public $plan, $paymentMethod, $promoCodes;
-    public $isCouponApplied = false;
+    public $isCouponApplied = false, $isProcessing = false;
 
 
 
@@ -130,29 +130,6 @@ class PlansStepTwo extends Component
 
 
 
-
-
-    // --------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-    public function makeAlertJS($message)
-    {
-
-
-
-        // :: makeAlertJS
-        $this->makeAlert('info', $message);
-
-
-
-    } // end function
 
 
 
@@ -294,31 +271,46 @@ class PlansStepTwo extends Component
 
 
 
-
-        // 1: PAYMENNT OPTION
-
-
-        if ($this->paymentMethod->name == 'Paymennt') {
+        // :: checkProcessing [ValidationForSubmit]
+        if ($this->isProcessing == false) {
 
 
 
 
-            // 1.2: check - paymentMessage
-            if (empty($this->payment->validationMessage)) {
 
 
-                // 1.3: makeToken
-                $this->makePaymenntToken();
+            $this->isProcessing = true;
 
 
-            } else {
-
-                $this->makeAlert('info', $this->payment->validationMessage);
-
-            } // end if
 
 
-        } // end if - PAYMENNT
+
+            // 1: PAYMENNT
+
+            if ($this->paymentMethod->name == 'Paymennt') {
+
+
+
+                // 2: storeLead
+                $this->continue('lead');
+
+
+
+                // 3: makeCheckoutPaymennt
+                $this->makeCheckoutPaymennt($this->instance, $this->payment, $this->paymentMethod);
+
+
+            } // end if - PAYMENNT
+
+
+
+
+
+
+
+
+        } // end if - processing
+
 
 
 
@@ -326,6 +318,13 @@ class PlansStepTwo extends Component
 
 
     } // end function
+
+
+
+
+
+
+
 
 
 
@@ -347,66 +346,7 @@ class PlansStepTwo extends Component
 
 
 
-
-
-
-
-    public function makePayment()
-    {
-
-
-
-
-        // 1: PAYMENNT
-
-
-        if ($this->paymentMethod->name == 'Paymennt') {
-
-
-
-            // 1.2: makeDebitPayment
-            $response = $this->makeDebitPaymennt($this->instance, $this->payment, $this->paymentMethod);
-
-
-
-            // 1.3: continue
-            if ($response?->success == true)
-                $this->continue();
-            else
-                $this->makeAlert('info', $response?->error ?? 'Invalid Payment');
-
-
-        } // end if - PAYMENNT
-
-
-
-
-
-
-
-
-
-
-    } // end function
-
-
-
-
-
-
-
-
-
-
-
-    // --------------------------------------------------------------------
-
-
-
-
-
-
-    public function continue()
+    public function continue($type = 'customer')
     {
 
 
@@ -445,23 +385,16 @@ class PlansStepTwo extends Component
 
 
 
-
-
-
-
-
         // ----------------------------------------
         // ----------------------------------------
-
-
-
-
-
 
 
 
 
         // :: continue
+
+
+
 
 
 
@@ -472,37 +405,70 @@ class PlansStepTwo extends Component
 
 
 
-        // 2.1: makeRequest
-        if ($this->instance->isExistingCustomer) {
-
-
-
-            // :: existing
-            $response = $this->makeRequest('subscription/customer/existing/store', $this->instance);
+        // A: regular
+        if ($type == 'customer') {
 
 
 
 
-        } else {
+
+            // 2.1: makeRequest
+            if ($this->instance->isExistingCustomer) {
 
 
-            // :: regular
-            $response = $this->makeRequest('subscription/customer/store', $this->instance);
+
+                // :: existing
+                $response = $this->makeRequest('subscription/customer/existing/store', $this->instance);
+
+
+
+
+            } else {
+
+
+                // :: regular
+                $response = $this->makeRequest('subscription/customer/store', $this->instance);
+
+            } // end if
+
+
+
+
+
+
+
+            // :: redirectToCheckout
+            return $this->redirect(route('website.plans.stepThree'), navigate: true);
+
+
+
+
+
+
+
+            // ------------------------------------------------
+            // ------------------------------------------------
+            // ------------------------------------------------
+            // ------------------------------------------------
+
+
+
+
+
+
+
+            // B: lead
+        } elseif ($type == 'lead') {
+
+
+
+            // :: makeRequest - getLead
+            $response = $this->makeRequest('subscription/lead/store', $this->instance);
+
+
 
         } // end if
 
-
-
-
-
-
-
-
-
-
-
-        // :: redirectToCheckout
-        return $this->redirect(route('website.plans.stepThree'), navigate: true);
 
 
 

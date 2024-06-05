@@ -41,7 +41,7 @@
 
 
     {{-- wizard - subMenu --}}
-    <livewire:website.plans.plans-step.components.sub-menu id='{{ $plan->id }}' key='submenu' />
+    <livewire:website.plans.plans-step.components.sub-menu id='{{ $subscription->plan->id }}' key='submenu' />
 
 
 
@@ -105,6 +105,9 @@
 
                     <h6 class='mb-4 mb-md-0'>
 
+
+
+
                         {{-- name - phone - email --}}
                         <span class='fw-bold d-block text-capitalize mb-2 header' style="letter-spacing: 0.3px">{{
                             $customer->fullName() }}</span>
@@ -114,6 +117,9 @@
 
                         <span class='d-block mb-3'>
                             <span class='fw-bold me-1'>Email.</span>{{ $customer->email }}</span>
+
+
+
 
 
 
@@ -174,7 +180,7 @@
                     {{-- invoiceNumber --}}
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class='fw-semibold mb-0'>Invoice Number</h6>
-                        <h6 class='mb-0 fw-bold  fs-14'># 102885</h6>
+                        <h6 class='mb-0 fw-bold  fs-14'># {{ substr($subscription->paymentReference, 0, 7) }}</h6>
                     </div>
 
 
@@ -230,9 +236,9 @@
 
                                 {{-- counter - name - price --}}
                                 <th scope="row">{{ $globalSNCounter++ }}</th>
-                                <td class='fw-bold'>{{ $plan->name }}</td>
+                                <td class='fw-bold'>{{ $subscription->plan->name }}</td>
                                 <td>x<span class='fs-6 fw-bold ms-1'>1</span></td>
-                                <td class='fw-bold'>{{ session('customerInvoice')->{'totalBundleRangePrice'} }}
+                                <td class='fw-bold'>{{ $subscription->planPrice }}
                                     <span class='fs-11 text-green ms-1 fw-semibold'>(AED)</span>
                                 </td>
                             </tr>
@@ -259,9 +265,9 @@
 
                                 {{-- bagName - quantity - price --}}
                                 <th scope="row">{{ $globalSNCounter++ }}</th>
-                                <td class='fw-bold'>{{ session('customerInvoice')->{'bag'} }}</td>
+                                <td class='fw-bold'>{{ $subscription->bag->name }}</td>
                                 <td>x<span class='fs-6 fw-bold ms-1'>1</span></td>
-                                <td class='fw-bold'>{{ session('customerInvoice')->{'bagPrice'} }}
+                                <td class='fw-bold'>{{ $subscription->bagPrice ?? 0 }}
                                     <span class='fs-11 text-green ms-1 fw-semibold'>(Refundable)</span>
                                 </td>
 
@@ -297,8 +303,8 @@
 
 
                                 {{-- totalPrice --}}
-                                <td class='fs-4 fw-bold'>{{ session('customerInvoice')->{'totalCheckoutPrice'}
-                                    }}<span class='fs-11 text-green ms-1 fw-semibold'>(AED)</span></td>
+                                <td class='fs-4 fw-bold'>{{ $subscription->totalCheckoutPrice }}<span
+                                        class='fs-11 text-green ms-1 fw-semibold'>(AED)</span></td>
 
                             </tr>
                             {{-- endRow --}}
@@ -376,72 +382,6 @@
         </div>
     </section>
     {{-- endFAQs --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- -------------------------------------------------- --}}
-    {{-- -------------------------------------------------- --}}
-
-
-
-
-
-
-
-    {{-- :: select --}}
-    <script>
-        // 1: handleSelect
-        $(".form--select").on("change", function(event) {
-
-
-         // 1.1: getValue - instance
-         selectValue = $(this).select2('val');
-         instance = $(this).attr('data-instance');
-
-         @this.set(instance, selectValue);
-
-
-
-
-        }) // end function
-    </script>
-
-
-
-
-
-
-
-
-
-
-    {{-- -------------------------------------------------- --}}
-    {{-- -------------------------------------------------- --}}
-
-
-
-
-
 
 
 

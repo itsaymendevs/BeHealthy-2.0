@@ -87,7 +87,7 @@
 
                         {{-- actions --}}
                         <div class="col-8 col-sm-6 col-lg-4 text-center">
-                            <button class="green-btn py-2 px-2 w-100 text-uppercase fw-semibold fs-14"
+                            <button class="green-btn py-2 px-2 w-100 text-uppercase fw-semibold fs-14 "
                                 wire:loading.attr='disabled'>Continue</button>
                         </div>
 

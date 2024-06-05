@@ -50,4 +50,32 @@ class User extends Authenticatable
 
 
 
+    // --------------------------------------
+    // --------------------------------------
+
+
+
+
+
+
+    public function checkPermission($name)
+    {
+
+        // 1: getPermissions
+        $rolePermissions = $this->role()->permissions;
+
+        // ?->permissions?->pluck('permissionId')?->toArray() ?? [];
+        // :: checkFound
+        $isFound = Permission::whereIn('id', $rolePermissions)->count();
+
+
+        return $isFound > 0 ? true : false;
+
+
+    } // end if
+
+
+
+
+
 } // end model

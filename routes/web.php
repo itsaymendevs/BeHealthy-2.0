@@ -5,6 +5,7 @@ use App\Livewire\Website\Plans;
 use App\Livewire\Website\Plans\PlansStepOne;
 use App\Livewire\Website\Plans\PlansStepThree;
 use App\Livewire\Website\Plans\PlansStepTwo;
+use App\Livewire\Website\Plans\PlansStepTwoHook;
 use App\Livewire\Website\Privacy;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -149,6 +150,7 @@ Route::get('/plans/{id}/personalize', PlansStepOne::class)->name('website.plans.
 
 // 6.2: plans - checkout
 Route::get('/plans/{id}/checkout', PlansStepTwo::class)->name('website.plans.stepTwo');
+
 
 
 

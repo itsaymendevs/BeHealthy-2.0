@@ -5,6 +5,7 @@ namespace App\Livewire\Website\Plans;
 use App\Livewire\Forms\CustomerSubscriptionForm;
 use App\Livewire\Website\Plans;
 use App\Models\Allergy;
+use App\Models\CityHoliday;
 use App\Models\CustomerSubscriptionSetting;
 use App\Models\Exclude;
 use App\Models\MealType;
@@ -574,7 +575,44 @@ class PlansStepOne extends Component
 
 
 
+
+
+
+        // 2: weekDays
         $weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+
+
+
+        // 2.1: getHolidays [Only Dubai]
+        $holidayWeekDays = CityHoliday::where('cityId', 1)->where('isActive', 1)
+                ?->get()?->pluck('weekday')?->toArray() ?? [];
+
+
+
+
+
+
+        // :: loop - holidays
+        foreach ($holidayWeekDays as $holidayWeekDay) {
+
+            if (($key = array_search($holidayWeekDay, $weekDays)) !== false)
+                unset($weekDays[$key]);
+
+
+        } // end loop - holidays
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

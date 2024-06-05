@@ -9,8 +9,13 @@ class PaymenntForm extends Form
 {
 
     // :: PAYMENNT
-    public $token, $isValid = false, $validationMessage = 'Invalid Payment';
+    public $paymentReference, $paymentURL, $isPaymentDone = false, $validationMessage = 'Invalid Payment';
 
+
+
+
+    // :: extra
+    public $token;
 
 
 

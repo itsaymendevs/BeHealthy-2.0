@@ -4,10 +4,15 @@ namespace App\Livewire\Website\Plans;
 
 use App\Livewire\Forms\CustomerSubscriptionForm;
 use App\Models\Customer;
+use App\Models\CustomerSubscription;
+use App\Models\Lead;
 use App\Models\Plan;
 use App\Traits\HelperTrait;
+use App\Traits\PaymenntTrait;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use stdClass;
 
 class PlansStepThree extends Component
 {
@@ -16,13 +21,16 @@ class PlansStepThree extends Component
 
 
     use HelperTrait;
+    use PaymenntTrait;
+
+
 
 
 
     // :: variables
     public CustomerSubscriptionForm $instance;
 
-    public $plan, $customer;
+    public $customer, $subscription;
 
 
 
@@ -31,20 +39,26 @@ class PlansStepThree extends Component
 
 
 
-    public function mount()
+    public function mount(Request $request)
     {
 
 
 
-        // :: checkSession
-        if (session('customer') && session('customer')->{'totalCheckoutPrice'}) {
-
-            $this->instance = session('customer');
 
 
-        } else {
 
-            return $this->redirect(route('website.plans'), navigate: true);
+        // :: checkPaymentStatus
+        $isPaymentDone = $this->checkCheckoutPaymennt($request?->checkout);
+
+
+
+
+        // :: notPaid
+        if (! $isPaymentDone) {
+
+
+            return $this->redirect(route('website.plans'));
+
 
         } // end if
 
@@ -56,9 +70,10 @@ class PlansStepThree extends Component
 
 
 
-        // :: migrateSession
-        Session::forget('customer');
-        Session::put('customerInvoice', $this->instance);
+
+
+        // ------------------------------------------------
+        // ------------------------------------------------
 
 
 
@@ -68,22 +83,117 @@ class PlansStepThree extends Component
 
 
 
-
-        // ---------------------------------------------
-        // ---------------------------------------------
-
-
-
-
-
-        // 1: getPlan / customer
-        $this->plan = Plan::find(session('customerInvoice')->{'planId'});
-        $this->customer = Customer::where('email', session('customerInvoice')->{'email'})->first();
+        // 1: getLead
+        $lead = Lead::where('paymentReference', $request?->checkout)?->latest()?->first() ?? null;
 
 
 
 
 
+        // :: found
+        if ($lead) {
+
+
+
+
+
+            // 1.2: checkIfPaymentDone
+            if (! $lead->isPaymentDone) {
+
+
+
+                // :: create instance
+                $instance = new stdClass();
+                $instance->id = $lead->id;
+
+
+
+                // 1.2: updatePayment / restructure
+                $response = $this->makeRequest('subscription/lead/convert', $instance);
+                $lead = $response->lead;
+
+
+
+
+
+
+                // :: invalid - error
+                if (empty($lead))
+                    return $this->redirect(route('website.plans'));
+
+
+
+
+
+
+
+                // ------------------------------------------
+                // ------------------------------------------
+
+
+
+
+
+
+                // 3.1: regular - existing
+                if (! $lead->isExistingCustomer)
+                    $response = $this->makeRequest('subscription/customer/store', $lead);
+                else
+                    $response = $this->makeRequest('subscription/customer/existing/store', $lead);
+
+
+
+
+
+
+
+
+                // ------------------------------------------
+                // ------------------------------------------
+
+
+
+
+
+
+                // 4: dependencies
+                $this->subscription = CustomerSubscription::where('paymentReference', $lead->paymentReference)->latest()->first();
+                $this->customer = $this->subscription->customer;
+
+
+
+
+
+
+
+
+                // 1.2: isAlreadyConfirmed
+            } else {
+
+
+                return $this->redirect(route('website.plans'));
+
+
+            } // end if
+
+
+
+
+
+
+
+
+
+            // :: notFound
+        } else {
+
+
+
+            return $this->redirect(route('website.plans'));
+
+
+
+        } // end if
 
 
 

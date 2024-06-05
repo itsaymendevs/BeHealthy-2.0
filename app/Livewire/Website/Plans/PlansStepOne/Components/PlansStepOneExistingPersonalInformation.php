@@ -118,6 +118,34 @@ class PlansStepOneExistingPersonalInformation extends Component
 
 
 
+            // :: check hasUpcomingSubscription
+            if ($customer->hasUpcomingSubscription()) {
+
+
+                // :: halt
+                $this->makeAlert('info', 'Account already have an upcoming subscription');
+                return false;
+
+
+            } // end if
+
+
+
+
+
+
+
+
+
+            // ----------------------------------------------
+            // ----------------------------------------------
+
+
+
+
+
+
+
             // 1.3: flag - getBasicInformation
             $this->instance->isExistingCustomer = true;
 
@@ -130,13 +158,17 @@ class PlansStepOneExistingPersonalInformation extends Component
 
 
 
+            // 1.4: getCityId - forPaymentOnly
+            $this->instance->cityId = $customer?->latestAddress()?->cityId ?? null;
+            $this->instance->locationAddress = $customer?->latestAddress()?->locationAddress ?? null;
 
 
-            // 1.4: get initStartDate
-            $this->instance->initStartDate = $customer?->latestSubscription()?->untilDate ?? null;
 
 
 
+            // 1.4: update startDate
+            $this->instance->startDate = $customer?->latestSubscription()?->untilDate ?
+                date('Y-m-d', strtotime($customer?->latestSubscription()?->untilDate . ' +1 day')) : null;
 
 
 

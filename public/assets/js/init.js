@@ -13,3 +13,8 @@ window.addEventListener("noBlur", (event) => {
         $("img").addClass("no-blur");
     });
 });
+
+window.addEventListener("processing", (event) => {
+    $(".submitButton").addClass("disabled");
+    console.log("first");
+}); // end function
