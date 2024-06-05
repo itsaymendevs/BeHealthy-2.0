@@ -12,7 +12,7 @@
 
 
     {{-- title - description - keywords meta --}}
-    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+    <title>Best Healthy Meal Plans in Dubai | BeHealthy</title>
 
 
 
@@ -102,7 +102,7 @@
                                 {{-- subHeading --}}
                                 Choose your preferences
                                 <span class="icon">
-                                    <img src="{{ url('assets/images/Polygon.png') }}" alt="">
+                                    <img src="{{ url('assets/subscirption/images/Polygon.png') }}" alt="">
                                 </span>
                             </p>
                             {{-- endHeading --}}
@@ -953,7 +953,7 @@
                                     <div class="input-group mb-4 w-100 focus">
                                         <input required="" type="text" name="text" autocomplete="off"
                                             class="input date-input w-100 " id="datepicker"
-                                            wire:model='instance.startDate' min='{{ $globalTodayDate }}'>
+                                            wire:model='instance.startDate' min='{{ $globalCurrentDate }}'>
                                         <label class="user-label">Start Date</label>
                                     </div>
                                 </div>
@@ -1432,31 +1432,7 @@
 
     <!-- 2: FAQs -->
     <section class="faq-sec light-sec personalize">
-        <div class="container">
 
-
-
-
-            {{-- row --}}
-            <div class="row" data-aos='slide-up' wire:ignore.self>
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>Frequently Asked Questions</h2>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-            {{-- row --}}
-            <livewire:website.home.components.faqs />
-
-
-
-        </div>
     </section>
     {{-- endFAQs --}}
 
@@ -1493,7 +1469,7 @@
 
 
     {{-- 1: datepicker --}}
-    <script src="{{ url('assets/js/air-datepicker.js') }}" data-navigate-once></script>
+    <script src="{{ url('assets/subscirption/js/air-datepicker.js') }}" data-navigate-once></script>
 
 
 

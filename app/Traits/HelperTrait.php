@@ -80,12 +80,12 @@ trait HelperTrait
 
 
 
-    protected function getTmwDate()
+    protected function getNextDate()
     {
 
 
         // 1: getDate
-        return $tmwDate = date('Y-m-d', strtotime('+1 day +4 hours'));
+        return $nextDate = date('Y-m-d', strtotime('+1 day +4 hours'));
 
 
     } // end function

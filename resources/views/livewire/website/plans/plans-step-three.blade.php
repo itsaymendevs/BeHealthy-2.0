@@ -13,7 +13,7 @@
 
 
     {{-- title - description - keywords meta --}}
-    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+    <title>Best Healthy Meal Plans in Dubai | BeHealthy</title>
 
 
 
@@ -77,8 +77,8 @@
                 {{-- 1: logo --}}
                 <div class="col-12 text-center mb-4">
 
-                    <img src="{{ url('assets/images/logo.png') }}" alt="Aleens" class='w-100 of-contain px-3'
-                        style="height: 30px; object-position:right;">
+                    <img src="{{ url('assets/subscirption/images/logo.png') }}" alt="BeHealthy"
+                        class='w-100 of-contain px-3' style="height: 30px; object-position:right;">
 
                 </div>
                 {{-- end logo --}}
@@ -171,7 +171,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class='fw-semibold mb-3'>Invoice Date</h6>
                         <h6 class='mb-3 fw-bold fs-14'>{{ date('d / m / Y',
-                            strtotime($globalTodayDate)) }}
+                            strtotime($globalCurrentDate)) }}
                         </h6>
                     </div>
 
@@ -355,31 +355,7 @@
 
     <!-- 2: FAQs -->
     <section class="faq-sec light-sec personalize">
-        <div class="container">
 
-
-
-
-            {{-- row --}}
-            <div class="row" data-aos='slide-up' wire:ignore.self>
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>Frequently Asked Questions</h2>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-            {{-- row --}}
-            <livewire:website.home.components.faqs />
-
-
-
-        </div>
     </section>
     {{-- endFAQs --}}
 

@@ -133,6 +133,7 @@
     .select2-results__option--highlighted.select2-results__option--selectable {
     border-bottom: solid 1.5px #9e9e9e;
     color: var(--text) !important;
+    background-color: #7dcfa5;
 }
 
 .select--single-wrapper .select2-results__option {

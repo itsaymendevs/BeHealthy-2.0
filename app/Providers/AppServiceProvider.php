@@ -46,9 +46,9 @@ class AppServiceProvider extends ServiceProvider
 
 
 
-        // 1.2: todayDate - tmwDate
-        View::share('globalTodayDate', $this->getCurrentDate());
-        View::share('globalTmwDate', $this->getTmwDate());
+        // 1.2: globalCurrentDate - nextDate
+        View::share('globalCurrentDate', $this->getCurrentDate());
+        View::share('globalNextDate', $this->getNextDate());
 
 
 

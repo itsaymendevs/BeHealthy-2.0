@@ -5,7 +5,6 @@ use App\Livewire\Website\Plans;
 use App\Livewire\Website\Plans\PlansStepOne;
 use App\Livewire\Website\Plans\PlansStepThree;
 use App\Livewire\Website\Plans\PlansStepTwo;
-use App\Livewire\Website\Plans\PlansStepTwoHook;
 use App\Livewire\Website\Privacy;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -83,22 +82,10 @@ Route::get('/', Home::class)->name('website.home');
 
 
 
-// 2: contact-us
-Route::get('/contact-us', Home::class)->name('website.contactUs');
 
 
-
-
-// 3: blogs
-Route::get('/blogs', Home::class)->name('website.blogs');
-
-
-
-
-
-
-// 4: dietitian
-Route::get('/dietitian', Home::class)->name('website.dietitian');
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 
 
@@ -106,35 +93,25 @@ Route::get('/dietitian', Home::class)->name('website.dietitian');
 
 
 
-
-
-
-// 5: how-it-works
-Route::get('/how-it-works', Home::class)->name('website.howItWorks');
-
-
-
-
-
-
-
-
-// 6: privacy
+// 2: privacy
 Route::get('/privacy-policy', Privacy::class)->name('website.privacy');
 
 
 
 
 
-// ---------------------------------
-// ---------------------------------
+
+
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
 
 
 
 
 
-// 6: plans
+// 3: plans
 Route::get('/plans', Plans::class)->name('website.plans');
 
 

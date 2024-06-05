@@ -11,7 +11,7 @@
 
 
     {{-- title - description - keywords meta --}}
-    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+    <title>Best Healthy Meal Plans in Dubai | BeHealthy</title>
 
 
 
@@ -542,31 +542,7 @@
 
     <!-- 2: FAQs -->
     <section class="faq-sec light-sec personalize">
-        <div class="container">
 
-
-
-
-            {{-- row --}}
-            <div class="row" data-aos='slide-up' wire:ignore.self>
-                <div class="col-12">
-                    <div class="section-heading">
-                        <h2>Frequently Asked Questions</h2>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-            {{-- row --}}
-            <livewire:website.home.components.faqs />
-
-
-
-        </div>
     </section>
     {{-- endFAQs --}}
 

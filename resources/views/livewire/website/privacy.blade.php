@@ -12,7 +12,7 @@
 
 
     {{-- title - description - keywords meta --}}
-    <title>Best Healthy Meal Plans in Dubai | Aleen’s</title>
+    <title>Best Healthy Meal Plans in Dubai | BeHealthy</title>
 
 
 
@@ -73,7 +73,7 @@
 
 
                     {{-- section --}}
-                    <h6 class='mb-4'>This Privacy Policy is provided by Aleen’s Kitchen known by its brand name.
+                    <h6 class='mb-4'>This Privacy Policy is provided by BeHealthy Kitchen known by its brand name.
                         This policy applies
                         whether you interact with us in our restaurants, over the phone, online, through our mobile
                         applications, or in any other way via our website or social media. We may request personally
@@ -220,7 +220,8 @@
 
 
                     <div class='mb-4 pb-2'>
-                        <h6>Aleen’s Kitchen respects the privacy of every individual and is committed to protecting any
+                        <h6>BeHealthy Kitchen respects the privacy of every individual and is committed to protecting
+                            any
                             personal information that you may provide us with. This Privacy Policy provides information
                             on how we treat information about you that we may receive from your use of our website.</h6>
                     </div>
