@@ -1,6 +1,10 @@
 <?php
 
+use App\Livewire\Website\Blogs;
+use App\Livewire\Website\Blogs\SingleBlog;
+use App\Livewire\Website\Contact;
 use App\Livewire\Website\Home;
+use App\Livewire\Website\Menu;
 use App\Livewire\Website\Plans;
 use App\Livewire\Website\Plans\PlansStepOne;
 use App\Livewire\Website\Plans\PlansStepThree;
@@ -92,8 +96,65 @@ Route::get('/', Home::class)->name('website.home');
 
 
 
+// 2: Menu
+Route::get('/menu', Menu::class)->name('website.menu');
 
-// 2: privacy
+
+
+
+
+
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
+
+
+
+
+
+// 3: Blogs
+Route::get('/blogs', Blogs::class)->name('website.blogs');
+
+
+
+// 3.2: singleBlog
+Route::get('/blogs/{id}', SingleBlog::class)->name('website.singleBlog');
+
+
+
+
+
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
+
+
+
+
+
+// 4: contact
+Route::get('/contact', Contact::class)->name('website.contact');
+
+
+
+
+
+
+
+
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
+
+
+
+
+
+
+// 5: privacy
 Route::get('/privacy-policy', Privacy::class)->name('website.privacy');
 
 
@@ -111,7 +172,7 @@ Route::get('/privacy-policy', Privacy::class)->name('website.privacy');
 
 
 
-// 3: plans
+// 6: plans
 Route::get('/plans', Plans::class)->name('website.plans');
 
 

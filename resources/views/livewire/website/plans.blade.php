@@ -9,13 +9,6 @@
 
 
 
-    {{-- calendly --}}
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-
-
-
 
     {{-- title - description - keywords meta --}}
     <title>Best Healthy Meal Plans in Dubai | BeHealthy</title>

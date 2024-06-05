@@ -3,17 +3,17 @@
 namespace App\Livewire\Website\Plans;
 
 use App\Livewire\Forms\CustomerSubscriptionForm;
-use App\Models\Customer;
 use App\Models\CustomerSubscription;
 use App\Models\Lead;
-use App\Models\Plan;
 use App\Traits\HelperTrait;
 use App\Traits\PaymenntTrait;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use stdClass;
 
+
+#[Layout('livewire.layouts.website-subscription')]
 class PlansStepThree extends Component
 {
 

@@ -9,7 +9,6 @@ use App\Models\Type;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
-use stdClass;
 
 class Home extends Component
 {
@@ -101,6 +100,9 @@ class Home extends Component
             ->whereIn('mealTypeId', $mealTypes)
             ->where('scheduleDate', $this->getCurrentDate())
             ->take(12)->get();
+
+
+
 
 
 

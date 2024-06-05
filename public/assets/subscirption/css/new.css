@@ -1,7 +1,7 @@
 @import url("./variables.css");
 
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
     position: relative;
     background-color: var(--white);
 }

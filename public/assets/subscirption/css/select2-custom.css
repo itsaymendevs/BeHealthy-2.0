@@ -240,8 +240,8 @@
     border: 1px solid transparent;
     color: var(--text);
     font-size: 13px;
-    margin-top: 8px !important;
-    margin-bottom: 8px !important;
+    /* margin-top: 8px !important; */
+    /* margin-bottom: 8px !important; */
     padding-left: 3px;
     padding-right: 5px;
     margin-left: 0px;

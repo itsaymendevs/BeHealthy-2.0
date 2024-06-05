@@ -11,11 +11,12 @@ use App\Models\PromoCode;
 use App\Models\PromoCodePlan;
 use App\Traits\HelperTrait;
 use App\Traits\PaymenntTrait;
-use DateTime;
 use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use stdClass;
 
+#[Layout('livewire.layouts.website-subscription')]
 class PlansStepTwo extends Component
 {
 

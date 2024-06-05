@@ -3,7 +3,6 @@
 namespace App\Livewire\Website\Plans;
 
 use App\Livewire\Forms\CustomerSubscriptionForm;
-use App\Livewire\Website\Plans;
 use App\Models\Allergy;
 use App\Models\CityHoliday;
 use App\Models\CustomerSubscriptionSetting;
@@ -13,13 +12,15 @@ use App\Models\MenuCalendarScheduleMeal;
 use App\Models\Plan;
 use App\Models\PlanBundle;
 use App\Models\PlanBundleDay;
-use App\Models\PlanBundleRange;
 use App\Models\Type;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use stdClass;
 
+
+#[Layout('livewire.layouts.website-subscription')]
 class PlansStepOne extends Component
 {
 

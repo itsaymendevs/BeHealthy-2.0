@@ -1,11 +1,8 @@
 @import url("./variables.css");
-/* font-family: "Montserrat", sans-serif; */
-/* font-family: "Open Sans", sans-serif; */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 body,
 html {
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
     position: relative;
     background-color: var(--white);
     overflow-x: hidden !important;
@@ -52,7 +49,7 @@ a {
     background-color: var(--green);
     color: var(--white);
     font-size: 20px;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     border: 1.5px solid var(--green);
     padding: 8px 30px 10px 30px;
     border-radius: 5px;
@@ -65,7 +62,7 @@ a {
     background-color: transparent;
     color: var(--green);
     font-size: 17px;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     border: 1.5px solid var(--green);
     padding: 8px 25px 10px 25px;
     border-radius: 5px;
@@ -76,18 +73,18 @@ a {
 }
 
 .light-green-btn {
-    background-color: #7dcfa5;
+    background-color: var(--secondary);
     color: var(--white);
     font-size: 18px;
     font-weight: 500;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     border: 1.5px solid var(--green);
     padding: 8px 30px 10px 30px;
     border-radius: 5px;
 }
 .light-green-btn:hover {
     background-color: var(--white);
-    color: #7dcfa5;
+    color: var(--secondary);
 }
 
 .of-contain {
@@ -118,7 +115,7 @@ button[disabled] {
 }
 
 .swal2-title {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 
 .navbar-toggler {
@@ -181,7 +178,7 @@ button[disabled] {
     font-size: 40px;
     line-height: 120%;
     text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     color: var(--black);
     font-weight: 800;
 }
@@ -273,7 +270,7 @@ button[disabled] {
     font-weight: 700;
     bottom: -8px;
     right: 0px;
-    font-family: "Montserrat";
+    font-family: Roboto, Helvetica;
     color: #00a651;
     width: 150px;
     text-align: right;
@@ -283,7 +280,7 @@ button[disabled] {
 
 .main-nav .nav-link {
     color: var(--text);
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
     font-size: 16px;
     font-weight: 500;
     padding: 16px 15px !important;
@@ -370,7 +367,7 @@ button[disabled] {
     background-color: #f8c78b;
 }
 .meal-plan-card.green {
-    background-color: #7dcfa5;
+    background-color: var(--secondary);
 }
 
 .meal-plan-wrapper:nth-of-type(even) .meal-plan-card {
@@ -378,7 +375,7 @@ button[disabled] {
 }
 
 .meal-plan-wrapper:nth-of-type(odd) .meal-plan-card {
-    background-color: #7dcfa5;
+    background-color: var(--secondary);
 }
 
 .meal-plan-card .img-box {
@@ -403,7 +400,7 @@ button[disabled] {
     padding: 0px 12px;
 }
 .meal-plan-card .content-box .title {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     color: var(--text);
     overflow: hidden;
     font-size: 21px;
@@ -435,7 +432,7 @@ button[disabled] {
     margin-bottom: 10px;
 }
 .meal-plan-card .content-box .btn {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     font-size: 15px;
     font-weight: bold;
     display: flex;
@@ -529,13 +526,13 @@ button[disabled] {
     background-color: #f8c78b;
 }
 .meal-of-day-item.green .mela-info-box {
-    background-color: #7dcfa5;
+    background-color: var(--green);
 }
 .meal-of-day-item:hover .mela-info-box {
     display: block;
 }
 .meal-of-day-item .mela-info-box .meal-name {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     color: var(--white);
     font-size: 15px;
     font-weight: 600;
@@ -559,14 +556,14 @@ button[disabled] {
     padding: 3px 15px;
 }
 .meal-of-day-item .mela-info-box .title {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     color: var(--text);
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 0;
 }
 .meal-of-day-item .mela-info-box .desc {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     color: var(--text);
     font-size: 13px;
     font-weight: 600;
@@ -598,7 +595,7 @@ button[disabled] {
     color: var(--white);
     font-size: 48px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 30px;
 }
@@ -606,7 +603,7 @@ button[disabled] {
     color: var(--white);
     font-size: 20px;
     font-weight: 500;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     transition: 0.3s all ease;
 }
@@ -656,7 +653,7 @@ button[disabled] {
     color: var(--white);
     font-size: 44px;
     font-weight: 700;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 30px;
 }
@@ -665,7 +662,7 @@ button[disabled] {
     color: var(--white);
     font-size: 20px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     transition: 0.3s all ease;
     background-color: var(--primary);
@@ -723,7 +720,7 @@ button[disabled] {
     font-size: 40px;
     color: var(--black);
     font-weight: 700;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 15px;
 }
@@ -739,7 +736,7 @@ button[disabled] {
 }
 
 .how-it-works-item.green {
-    background-color: #7dcfa5;
+    background-color: var(--green);
 }
 .how-it-works-item.orange {
     background-color: #f8c78b;
@@ -770,7 +767,7 @@ button[disabled] {
 .how-it-works-item .title {
     font-size: 20px;
     font-weight: 600;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 .how-it-works-item .desc {
     font-size: 15px;
@@ -786,7 +783,7 @@ button[disabled] {
     padding: 50px 0 70px 0;
 }
 .faq-category-box {
-    background-color: #7dcfa5;
+    background-color: var(--green);
     border-radius: 20px;
     padding: 20px 10px 20px 30px;
 }
@@ -794,7 +791,7 @@ button[disabled] {
     text-align: left;
     color: var(--white);
     font-size: 20px;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 .faq-category-box .nav-link.active {
     background-color: var(--green);
@@ -884,7 +881,7 @@ button[disabled] {
     color: var(--black);
     font-size: 22px;
     font-weight: 700;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -892,7 +889,7 @@ button[disabled] {
     position: relative;
 }
 .step-heading span {
-    background-color: #7dcfa5;
+    background-color: var(--green);
     color: var(--white);
     font-size: 14px;
     font-weight: 500;
@@ -956,7 +953,7 @@ button[disabled] {
     color: var(--text);
     font-size: 18px;
     font-weight: 700;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 0;
     letter-spacing: 0.5px;
@@ -1034,7 +1031,7 @@ button[disabled] {
     padding: 0 5px 0 10px;
     color: var(--white);
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 
 /* Meal Detail Modal */
@@ -1067,7 +1064,7 @@ button[disabled] {
     color: var(--white);
     font-size: 16px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 0;
 }
@@ -1087,7 +1084,7 @@ button[disabled] {
     color: var(--black);
     font-size: 35px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 20px;
 }
@@ -1128,7 +1125,7 @@ button[disabled] {
     color: var(--black);
     font-size: 20px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     text-align: center;
     margin-bottom: 0;
@@ -1164,7 +1161,7 @@ button[disabled] {
     color: var(--text);
     font-size: 20px;
     font-weight: 600;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1175,8 +1172,8 @@ button[disabled] {
     background-color: var(--green);
 }
 .wizard-steps .title .number {
-    background-color: #7dcfa5;
-    font-family: "Open Sans", sans-serif;
+    background-color: #eeeeee;
+    font-family: Roboto, Helvetica;
     font-size: 22px;
     display: flex;
     align-items: center;
@@ -1230,7 +1227,7 @@ button[disabled] {
     color: var(--text);
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 
 .date-input {
@@ -1245,7 +1242,7 @@ button[disabled] {
     pointer-events: none;
     transform: translateY(1rem);
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 
 .input:focus,
@@ -1288,7 +1285,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 30px;
     font-weight: 800;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 30px;
 }
@@ -1306,7 +1303,7 @@ input:valid ~ label {
 
 } */
 .calendarify {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     border-radius: 20px !important;
 }
@@ -1326,13 +1323,13 @@ input:valid ~ label {
     color: var(--black);
     font-size: 25px;
     font-weight: 700;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 20px;
 }
 .promo-box {
-    border-top: 1px solid #7dcfa5;
-    border-bottom: 1px solid #7dcfa5;
+    border-top: 1px solid var(--green);
+    border-bottom: 1px solid var(--green);
     padding: 10px 0;
     margin-bottom: 20px;
 }
@@ -1340,7 +1337,7 @@ input:valid ~ label {
     color: var(--text);
     font-size: 16px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     padding: 0;
     display: block;
@@ -1360,7 +1357,7 @@ input:valid ~ label {
     align-items: start;
     justify-content: space-between;
     padding-bottom: 10px;
-    border-bottom: 1px solid #7dcfa5;
+    border-bottom: 1px solid var(--green);
     margin-bottom: 10px;
 }
 .recepit-item.total {
@@ -1376,7 +1373,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 16px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 0;
 }
@@ -1390,7 +1387,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 14px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 0;
 }
@@ -1439,11 +1436,11 @@ input:valid ~ label {
     background-color: #f8c78b;
     color: var(--primary);
     font-weight: 700;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 .easy-accordian-box .accordion-button:hover {
     color: var(--green);
-    background-color: #7dcfa5;
+    background-color: var(--green);
 }
 .easy-accordian-box .accordion-button:focus {
     border-color: transparent;
@@ -1451,7 +1448,7 @@ input:valid ~ label {
 }
 .easy-accordian-box .accordion-button:not(.collapsed) {
     color: var(--green);
-    background-color: #7dcfa5;
+    background-color: var(--green);
 }
 .easy-accordian-box .accordion-body .text {
     color: var(--text);
@@ -1514,7 +1511,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 20px;
     font-weight: 600;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
 
     margin-bottom: 5px;
 }
@@ -1576,7 +1573,7 @@ input:valid ~ label {
     transform: translateY(-60px);
 }
 .blog-card.green .content-box {
-    background-color: #7dcfa5;
+    background-color: var(--green);
 }
 .blog-card.orange .content-box {
     background-color: #f8c78b;
@@ -1586,16 +1583,14 @@ input:valid ~ label {
     color: var(--white);
     font-size: 20px;
     font-weight: 500;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     margin-bottom: 0px;
 }
 
 /* =======================================================================
     Footer Section
 ========================================================================== */
-footer {
-    background-color: var(--green);
-}
+
 .footer-top {
     padding: 20px 0;
 }
@@ -1606,7 +1601,7 @@ footer {
     font-size: 30px;
     color: var(--white);
     font-weight: 500;
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto, Helvetica;
     margin-bottom: 0;
 }
 .footer-main {
@@ -1646,7 +1641,7 @@ footer {
     margin-bottom: 0;
     color: var(--black);
     font-size: 13px;
-    font-family: "Open Sans", sans-serif;
+    font-family: Roboto, Helvetica;
 }
 .footer-bottom .we-accept {
     text-align: end;
@@ -1667,5 +1662,5 @@ footer {
 }
 
 .open-sans {
-    font-family: "Open Sans" !important;
+    font-family: Roboto, Helvetica !important;
 }
