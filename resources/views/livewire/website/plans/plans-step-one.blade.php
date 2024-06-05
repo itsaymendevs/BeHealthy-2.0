@@ -1431,7 +1431,7 @@
 
 
     <!-- 2: FAQs -->
-    <section class="faq-sec light-sec personalize">
+    <section class="faq-sec light-sec personalize py-1">
 
     </section>
     {{-- endFAQs --}}

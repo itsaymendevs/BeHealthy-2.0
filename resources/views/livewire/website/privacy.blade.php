@@ -360,7 +360,7 @@
 
 
     <!-- 3: FAQs -->
-    <section class="faq-sec light-sec">
+    <section class="faq-sec light-sec ">
         <div class="container">
 
             {{-- heading --}}
