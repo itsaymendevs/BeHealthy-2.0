@@ -1,22 +1,23 @@
-@media only screen and (max-width: 991px){
-    .main-banner-div{
+@media only screen and (max-width: 991px) {
+    .main-banner-div {
         height: 604px;
-        background:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/banner/banner.jpg") left/cover no-repeat;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url("../images/banner/banner.jpg") left/cover no-repeat;
         /* background: url("../images/banner/banner_medium.jpg") bottom/cover no-repeat; */
     }
-    .btn-banner{
+    .btn-banner {
         display: none;
     }
-    .banner-inner{
-        -webkit-box-pack: center!important;
-        -ms-flex-pack: center!important;
-        justify-content: center!important;
-        -webkit-box-align: start!important;
-        -ms-flex-align: start!important;
-        align-items: flex-start!important;
-        padding: 62px 0 0!important;
+    .banner-inner {
+        -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+        justify-content: center !important;
+        -webkit-box-align: start !important;
+        -ms-flex-align: start !important;
+        align-items: flex-start !important;
+        padding: 62px 0 0 !important;
     }
-    .banner-wrapper .title{
+    .banner-wrapper .title {
         display: block;
         width: 90%;
         max-width: none;
@@ -27,7 +28,7 @@
         line-height: 40px;
         text-align: center;
     }
-    .banner-wrapper p{
+    .banner-wrapper p {
         display: block;
         width: 90%;
         max-width: none;
@@ -37,7 +38,7 @@
         line-height: 28px;
         text-align: center;
     }
-    .sub-banner-div .banner-wrapper p{
+    .sub-banner-div .banner-wrapper p {
         display: contents;
         width: auto;
         max-width: none;
@@ -47,76 +48,77 @@
         line-height: 28px;
         text-align: center;
     }
-    .banner-wrapper .breadcrumbs{
+    .banner-wrapper .breadcrumbs {
         justify-content: center;
     }
-    .sub-banner-div .banner-inner{
-        padding: 0!important;
-        display: flex!important;
-        justify-content: center!important;
-        align-items: center!important;
+    .sub-banner-div .banner-inner {
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
-    .btn-banner{
+    .btn-banner {
         position: absolute;
         right: 50%;
         bottom: 0px;
         -webkit-transform: translateX(50%);
         transform: translateX(50%);
     }
-    .macro-diff-image img{
+    .macro-diff-image img {
         margin-bottom: 70px;
     }
-    #footer .title{
+    #footer .title {
         text-align: center;
     }
-    #footer .social{
+    #footer .social {
         display: flex;
         align-items: center;
         justify-content: center;
     }
     /* How it works */
-    #how-it-works img{
+    #how-it-works img {
         margin-bottom: 50px;
     }
-    .about-us-content{
+    .about-us-content {
         margin-bottom: 50p;
     }
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
     #meal-plan-section .heading .title {
         font-size: 30px;
     }
-    .navbar-collapse{
+    .navbar-collapse {
         background-color: #fff;
         padding-top: 20px;
         width: 100%;
+        z-index: 1;
     }
-    .first-top-footer-links{
+    .first-top-footer-links {
         text-align: center;
         margin-bottom: 0px;
     }
-    .second-top-footer-links{
+    .second-top-footer-links {
         text-align: center;
         margin-bottom: 30px;
     }
-    .medium-footer-links{
+    .medium-footer-links {
         margin: 50px 0px;
         text-align: center;
     }
-    #footer .footer-bottom-inner .trustpilot-link{
+    #footer .footer-bottom-inner .trustpilot-link {
         justify-content: center;
     }
-    .copyright-footer-links-div{
+    .copyright-footer-links-div {
         margin-top: 0px;
         display: flex;
         justify-content: space-between;
     }
-    .remove-margin-768{
-        margin-top: 0px!important;
+    .remove-margin-768 {
+        margin-top: 0px !important;
     }
-    .card-btn-div{
+    .card-btn-div {
         position: relative;
         bottom: 0px;
         width: 100%;
@@ -124,65 +126,65 @@
         justify-content: center;
         margin-bottom: 30px;
     }
-    .meal-plan-card .card .card-body .card-title{
+    .meal-plan-card .card .card-body .card-title {
         font-size: 28px;
     }
-    .meal-plan-card .card .card-body .card-text{
+    .meal-plan-card .card .card-body .card-text {
         font-size: 16px;
     }
-    .meal-plan-card .card .card-body{
+    .meal-plan-card .card .card-body {
         padding: 20px 35px 0px;
         min-height: fit-content;
     }
-    .blog-card{
+    .blog-card {
         display: block;
     }
-    .blog-card .img-box img{
+    .blog-card .img-box img {
         width: 100%;
     }
-    .blog-card .content-box{
+    .blog-card .content-box {
         padding-bottom: 25px;
     }
-    #meal-detail-page .img-box img{
+    #meal-detail-page .img-box img {
         height: 350px;
     }
-    .meal-detail-content-box .ing-box .title{
+    .meal-detail-content-box .ing-box .title {
         text-align: left;
     }
-    .meal-detail-content-box .btn-black{
+    .meal-detail-content-box .btn-black {
         font-size: 16px;
     }
-    .meal-detail-tabs .nav-link{
+    .meal-detail-tabs .nav-link {
         margin-bottom: 10px;
     }
     .meal-detail-content-box .tags a {
         font-size: 12px;
     }
-    .contact-page .contact-card{
-        margin-bottom: 30px!important;
+    .contact-page .contact-card {
+        margin-bottom: 30px !important;
     }
 }
 
-@media only screen and (max-width: 575px){
-    #footer .subscribe-div-border{
+@media only screen and (max-width: 575px) {
+    #footer .subscribe-div-border {
         border-left: 0px;
         border-bottom: 1px solid var(--gray);
         padding: 0 20px;
         padding-bottom: 20px;
     }
-    .ft-2-num{
+    .ft-2-num {
         justify-content: center;
     }
-    .stay-connected-div{
+    .stay-connected-div {
         margin-top: 30px;
     }
-    #footer .subscribe{
+    #footer .subscribe {
         margin-top: 25px;
     }
-    #blog-detail-page .tagbox .tb{
+    #blog-detail-page .tagbox .tb {
         display: inline-block;
     }
-    #blog-detail-page .tagbox a{
+    #blog-detail-page .tagbox a {
         display: block;
         width: fit-content;
         margin-bottom: 20px;
@@ -190,13 +192,13 @@
     }
 }
 
-
-@media only screen and (max-width: 480px){
-    .main-banner-div{
-        background:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/banner/banner.jpg") left/cover no-repeat;
+@media only screen and (max-width: 480px) {
+    .main-banner-div {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url("../images/banner/banner.jpg") left/cover no-repeat;
         /* background: url("../images/banner/banner_mobile.jpg") bottom/cover no-repeat; */
     }
-    .get-started-main-div{
+    .get-started-main-div {
         padding: 40px 32px;
     }
 }

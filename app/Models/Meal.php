@@ -31,6 +31,15 @@ class Meal extends Model
 
 
 
+    public function menus()
+    {
+
+        return $this->hasMany(MealMenu::class, 'mealId');
+
+    } // end function
+
+
+
 
     public function servingInstructions()
     {
@@ -213,10 +222,41 @@ class Meal extends Model
     // ------------------------------------------
     // ------------------------------------------
     // ------------------------------------------
+    // ------------------------------------------
 
 
 
 
+
+
+
+
+
+
+    public function inMenu($id)
+    {
+
+
+        // 1: dependencies
+        $isIncluded = $this->menus()?->where('menuId', $id)?->count() ?? 0;
+
+
+        return $isIncluded > 0 ? true : false;
+
+
+    } // end function
+
+
+
+
+
+
+
+
+
+
+    // ------------------------------------------
+    // ------------------------------------------
 
 
 
@@ -264,6 +304,7 @@ class Meal extends Model
 
 
     // ------------------------------------------
+    // ------------------------------------------
 
 
 
@@ -282,8 +323,9 @@ class Meal extends Model
 
 
         // 1: getTotalPartGrams
-        $totalGrams += $this?->ingredients?->sum('amount') ?? 0;
-        $totalGrams += $this?->parts?->sum('amount') ?? 0;
+        $totalGrams += $this?->ingredients?->where('isDefault', 1)?->sum('amount') ?? 0;
+        $totalGrams += $this?->parts?->where('isDefault', 1)?->sum('amount') ?? 0;
+
 
 
 
@@ -308,6 +350,7 @@ class Meal extends Model
 
 
 
+    // ------------------------------------------
     // ------------------------------------------
 
 
@@ -369,6 +412,7 @@ class Meal extends Model
 
 
     // ------------------------------------------
+    // ------------------------------------------
 
 
 
@@ -390,11 +434,11 @@ class Meal extends Model
 
 
 
-        foreach ($mealIngredients as $mealIngredient) {
+        foreach ($mealIngredients?->where('isDefault', 1) ?? [] as $mealIngredient) {
 
-            if ($mealIngredient->ingredient && $mealIngredient->ingredient->excludeId) {
+            if ($mealIngredient->ingredient && $mealIngredient->ingredient->excludes) {
 
-                array_push($excludes, $mealIngredient->ingredient->excludeId);
+                array_push($excludes, ...$mealIngredient->ingredient->excludesInArray());
                 array_push($excludeIngredients, $mealIngredient->ingredient->id);
 
             } // end if
@@ -402,9 +446,9 @@ class Meal extends Model
 
 
 
-            if ($mealIngredient->ingredient && $mealIngredient->ingredient->allergyId) {
+            if ($mealIngredient->ingredient && $mealIngredient->ingredient->allergies) {
 
-                array_push($allergies, $mealIngredient->ingredient->allergyId);
+                array_push($allergies, ...$mealIngredient->ingredient->allergiesInArray());
                 array_push($allergyIngredients, $mealIngredient->ingredient->id);
 
             } // end if
@@ -431,7 +475,7 @@ class Meal extends Model
         $mealParts = $this->parts()?->get() ?? [];
 
 
-        foreach ($mealParts as $mealPart) {
+        foreach ($mealParts?->where('isDefault', 1) ?? [] as $mealPart) {
 
 
             // :: recursion
@@ -458,8 +502,6 @@ class Meal extends Model
 
 
 
-
-
         return ['allergies' => array_unique($allergies ?? []),
             'excludes' => array_unique($excludes ?? []),
             'allergyIngredients' => array_unique($allergyIngredients ?? []),
@@ -473,6 +515,15 @@ class Meal extends Model
 
 
 
+
+
+
+
+
+
+
+    // ------------------------------------------
+    // ------------------------------------------
 
 
 

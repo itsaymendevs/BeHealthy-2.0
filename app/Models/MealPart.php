@@ -9,6 +9,7 @@ use stdClass;
 
 class MealPart extends Model
 {
+
     use HasFactory;
     use MacroTrait;
 
@@ -49,6 +50,19 @@ class MealPart extends Model
 
 
 
+    public function mealSize()
+    {
+
+        return $this->belongsTo(Type::class, 'typeId');
+
+    } // end function
+
+
+
+
+
+
+
     // ------------------------------------------
     // ------------------------------------------
     // ------------------------------------------
@@ -63,7 +77,7 @@ class MealPart extends Model
 
 
 
-    public function totalMacro($currentAmount = 0)
+    public function totalMacro($currentAmount = 0, $brandId = null, $partId = null)
     {
 
 
@@ -75,12 +89,13 @@ class MealPart extends Model
 
 
         // 1: getPart
-        $part = $this->part()->first();
+        $part = $partId ? Meal::find($partId) : $this->part()->first();
+
 
 
 
         // 1.2: MacroHelper
-        $partMacro = $part ? $this->getMacro($part, $currentAmount) : [];
+        $partMacro = $part ? $this->getMacro($part, $currentAmount, $brandId) : [];
 
 
 
@@ -96,6 +111,7 @@ class MealPart extends Model
         $totalMacros->proteins = round($partMacro[2] ?? 0, 2);
         $totalMacros->carbs = round($partMacro[3] ?? 0, 2);
         $totalMacros->fats = round($partMacro[4] ?? 0, 2);
+        $totalMacros->cost = round($partMacro[5] ?? 0, 2);
 
 
 
@@ -105,6 +121,58 @@ class MealPart extends Model
 
 
     } // end function
+
+
+
+
+
+
+
+    // ------------------------------------------
+    // ------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+    public function ingredientsWithGrams($currentAmount = 0)
+    {
+
+
+        // :: root
+        $ingredientsWithGrams = [];
+
+
+
+
+
+        // 1: getPart
+        $part = $this->part()->first();
+
+
+
+
+        // 1.2: MacroHelper
+        $ingredientsWithGrams = $part ? $this->getIngredientsWithGrams($part, $currentAmount, $ingredientsWithGrams) : [];
+
+
+
+
+
+
+        return $ingredientsWithGrams;
+
+
+    } // end function
+
+
 
 
 

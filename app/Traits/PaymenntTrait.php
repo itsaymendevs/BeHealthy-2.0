@@ -3,8 +3,6 @@
 namespace App\Traits;
 
 use App\Models\City;
-use App\Models\Customer;
-use App\Models\CustomerSubscription;
 use App\Models\CustomerSubscriptionSetting;
 use App\Models\Lead;
 use App\Models\Plan;
@@ -16,8 +14,8 @@ use stdClass;
 trait PaymenntTrait
 {
 
-    use HelperTrait;
 
+    use HelperTrait;
 
 
 
@@ -41,8 +39,7 @@ trait PaymenntTrait
 
 
         // 1: URL
-        $requestURL = "https://api.test.paymennt.com/mer/v2.0/checkout/web";
-        // $requestURL = "https://api.paymennt.com/mer/v2.0/checkout/web";
+        $requestURL = $paymentMethod?->isLive ? "https://api.paymennt.com/mer/v2.0/checkout/web" : "https://api.test.paymennt.com/mer/v2.0/checkout/web";
 
 
 
@@ -100,8 +97,8 @@ trait PaymenntTrait
         $requestBody->customer->id = $lead->id;
         $requestBody->customer->firstName = $instance->firstName;
         $requestBody->customer->lastName = $instance->lastName;
-        $requestBody->customer->email = $instance->email;
-        $requestBody->customer->phone = $instance->phone;
+        $requestBody->customer->email = $instance->email . $instance->emailProvider;
+        $requestBody->customer->phone = $instance->phoneKey . $instance->phone;
 
 
 
@@ -129,7 +126,7 @@ trait PaymenntTrait
 
 
         // 2.5: returnURL
-        $requestBody->returnUrl = route('website.plans.stepThree');
+        $requestBody->returnUrl = route('website.plans.invoice');
 
 
 
@@ -159,8 +156,8 @@ trait PaymenntTrait
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
             'Connection' => 'keep-alive',
-            'X-Paymennt-Api-Key' => env($paymentMethod->envThirdKey),
-            'X-Paymennt-Api-Secret' => env($paymentMethod->envSecondKey),
+            'X-Paymennt-Api-Key' => ($paymentMethod?->isLive ? $paymentMethod->envThirdKey : $paymentMethod->envTestThirdKey),
+            'X-Paymennt-Api-Secret' => ($paymentMethod?->isLive ? $paymentMethod->envSecondKey : $paymentMethod->envTestSecondKey),
         ])->post($requestURL . "", [
                     "requestId" => $requestBody->requestId,
                     "orderId" => $requestBody->orderId,
@@ -257,8 +254,9 @@ trait PaymenntTrait
 
 
 
-            // :: alertFail
-            $this->makeAlert('info', 'Please Try Again ..');
+
+            // failed
+            $this->redirect(route('website.plans.customization', [$plan->nameURL]));
 
 
         } // end if
@@ -301,7 +299,7 @@ trait PaymenntTrait
 
 
 
-        // :: dependencies
+        // 1: dependencies
         $paymentMethod = CustomerSubscriptionSetting::all()->first()?->paymentMethod ?? null;
 
 
@@ -310,22 +308,21 @@ trait PaymenntTrait
 
 
 
-        // 1: URL
-        $requestURL = "https://api.test.paymennt.com/mer/v2.0/checkout/{$checkoutId}";
-        // $requestURL = "https://api.paymennt.com/mer/v2.0/checkout/{$checkoutId}";
+        // 1.2: URL
+        $requestURL = $paymentMethod?->isLive ? "https://api.paymennt.com/mer/v2.0/checkout/{$checkoutId}" : "https://api.test.paymennt.com/mer/v2.0/checkout/{$checkoutId}";
 
 
 
 
 
-        // 1.2: makeRequest
 
+        // 1.3: makeRequest
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
             'Connection' => 'keep-alive',
-            'X-Paymennt-Api-Key' => env($paymentMethod->envThirdKey),
-            'X-Paymennt-Api-Secret' => env($paymentMethod->envSecondKey),
+            'X-Paymennt-Api-Key' => ($paymentMethod?->isLive ? $paymentMethod->envThirdKey : $paymentMethod->envTestThirdKey),
+            'X-Paymennt-Api-Secret' => ($paymentMethod?->isLive ? $paymentMethod->envSecondKey : $paymentMethod->envTestSecondKey),
         ])->get($requestURL)->json();
 
 
@@ -345,6 +342,8 @@ trait PaymenntTrait
 
 
 
+
+
         // 2: getResponse
         $response = json_decode(json_encode($response));
 
@@ -354,16 +353,11 @@ trait PaymenntTrait
         // 2.1: Paid
         if (! empty($response?->result?->status) && $response?->result?->status == 'PAID') {
 
-
             return true;
 
-
-            // 2.2: notPaid
         } else {
 
-
             return false;
-
 
         } // end if
 

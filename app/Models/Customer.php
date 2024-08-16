@@ -282,33 +282,35 @@ class Customer extends Authenticatable
 
 
 
-
-
-    // --------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-    public function unCollectedBags()
+    public function fullEmail()
     {
 
+        return $this->email . $this->emailProvider;
 
-        // 1: dependencies
-        $todayDate = $this->getCurrentDate();
-
-
-        return $this->deliveries()?->where('isBagCollected', 0)
-                ?->where('deliveryDate', '<', $todayDate)
-                ?->count() ?? 0;
+    } // end function
 
 
+
+
+
+
+
+    public function fullPhone()
+    {
+
+        return $this->phoneKey . ' ' . $this->phone;
+
+    } // end function
+
+
+
+
+
+
+    public function fullWhatsapp()
+    {
+
+        return $this->whatsappKey . ' ' . $this->whatsapp;
 
     } // end function
 
@@ -393,7 +395,7 @@ class Customer extends Authenticatable
 
 
         // :: return
-        return $deliveryDay ? $deliveryDay->customerAddress : null;
+        return $deliveryDay ? $deliveryDay?->customerAddress : null;
 
 
 
@@ -497,6 +499,7 @@ class Customer extends Authenticatable
 
         // :: return
         $content = new stdClass();
+
 
         $content->excludes = $excludes;
         $content->allergies = $allergies;

@@ -62,11 +62,9 @@ class User extends Authenticatable
     {
 
         // 1: getPermissions
-        $rolePermissions = $this->role()->permissions;
+        $rolePermissions = $this->role()?->first()?->permissions?->pluck('permissionId')?->toArray() ?? [];
 
-        // ?->permissions?->pluck('permissionId')?->toArray() ?? [];
-        // :: checkFound
-        $isFound = Permission::whereIn('id', $rolePermissions)->count();
+        $isFound = Permission::whereIn('id', $rolePermissions)->where('name', $name)->count();
 
 
         return $isFound > 0 ? true : false;

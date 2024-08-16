@@ -36,12 +36,15 @@ trait MenuCalendarTrait
 
 
 
+
         // 1.2: checkDefault - 3x
         foreach (['isDefault', 'isDefaultSecond', 'isDefaultThird'] as $defaultIndex) {
 
 
+
             // 1.3: loop - scheduleMeals
-            foreach ($calendarSchedule->meals->where('mealTypeId', $mealTypeId)->where($defaultIndex, true) as $scheduleMeal) {
+            foreach ($calendarSchedule->meals->where('mealTypeId', $mealTypeId)->where($defaultIndex, true) ?? [] as $scheduleMeal) {
+
 
 
 
@@ -50,14 +53,15 @@ trait MenuCalendarTrait
                 $combinedArray = $this->checkMealValidity($scheduleMeal->mealId);
 
 
-                $excludeIngredients = $combinedArray['excludes'];
-                $allergyIngredients = $combinedArray['allergies'];
+
+                $excludes = $combinedArray['excludes'];
+                $allergies = $combinedArray['allergies'];
 
 
 
 
                 // 1.4: mealValid
-                if (empty(array_intersect($allergyIngredients, $customerAllergies)) && empty(array_intersect($excludeIngredients, $customerExcludes))) {
+                if (count(array_intersect($allergies, $customerAllergies)) === 0 && count(array_intersect($excludes, $customerExcludes)) === 0) {
 
 
                     return $scheduleMeal->mealId;
@@ -97,7 +101,7 @@ trait MenuCalendarTrait
 
 
         // 2: loop - checkRegular
-        foreach ($calendarSchedule->meals->where('mealTypeId', $mealTypeId)->where('isDefault', 0)->where('isDefaultSecond', 0)->where('isDefaultThird', 0) as $scheduleMeal) {
+        foreach ($calendarSchedule->meals->where('mealTypeId', $mealTypeId)->where('isDefault', 0)->where('isDefaultSecond', 0)->where('isDefaultThird', 0) ?? [] as $scheduleMeal) {
 
 
 
@@ -106,14 +110,14 @@ trait MenuCalendarTrait
             $combinedArray = $this->checkMealValidity($scheduleMeal->mealId);
 
 
-            $excludeIngredients = $combinedArray['excludes'];
-            $allergyIngredients = $combinedArray['allergies'];
+            $excludes = $combinedArray['excludes'];
+            $allergies = $combinedArray['allergies'];
 
 
 
 
             // 1.4: mealValid
-            if (empty(array_intersect($allergyIngredients, $customerAllergies)) && empty(array_intersect($excludeIngredients, $customerExcludes))) {
+            if (count(array_intersect($allergies, $customerAllergies)) === 0 && count(array_intersect($excludes, $customerExcludes)) === 0) {
 
 
                 return $scheduleMeal->mealId;
@@ -234,6 +238,7 @@ trait MenuCalendarTrait
         $meal = Meal::find($id);
 
         $combinedArray = $meal?->allergiesAndExcludesInArray();
+
 
 
 
@@ -370,12 +375,22 @@ trait MenuCalendarTrait
 
 
 
-                if (! in_array($scheduleMeal->mealId, $calendarScheduleMeals)) {
+
+                /* :: This Was The Condition ! in_array($scheduleMeal->mealId, $calendarScheduleMeals)
+                   :: Now => im overriding regardless */
+                if (true) {
+
+
+
+
+
+                    // :: getSubscription
+                    $subscription = CustomerSubscription::find($scheduleMeal->subscription->id);
 
 
 
                     // 2.2:  getMeal - CalendarSchedule
-                    $scheduleMeal->mealId = $calendarSchedule ? $this->getScheduleMeal($scheduleMeal->subscription, $calendarSchedule, $scheduleMeal->mealTypeId) ?? null : null;
+                    $scheduleMeal->mealId = $calendarSchedule ? $this->getScheduleMeal($subscription, $calendarSchedule, $scheduleMeal->mealTypeId) ?? null : null;
 
 
 

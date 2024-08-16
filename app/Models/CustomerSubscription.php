@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CustomerSubscription extends Model
 {
     use HasFactory;
-
+    use HelperTrait;
 
 
 
@@ -143,6 +144,71 @@ class CustomerSubscription extends Model
 
 
 
+    public function bagRefund()
+    {
+        return $this->hasOne(BagRefund::class, 'customerSubscriptionId');
+
+    } // end function
+
+
+
+
+
+
+    // --------------------------------------------------------
+
+
+
+
+
+
+
+
+    public function unCollectedBags()
+    {
+
+
+        // 1: latestCollected - Delivery
+        $latestCollectedDelivery = $this->deliveries()?->where('isBagCollected', 1)
+                ?->where('deliveryDate', '<=', $this->getCurrentDate())
+                ?->latest()?->first();
+
+
+
+
+        // :: exists
+        if ($latestCollectedDelivery) {
+
+
+            return $unCollectedBags = $this->deliveries()
+                    ?->where('deliveryDate', '>', $latestCollectedDelivery->deliveryDate)
+                    ?->where('deliveryDate', '<=', $this->getCurrentDate())
+                    ?->where('isBagCollected', 0)
+                    ?->count();
+
+
+
+        } else {
+
+
+            return $unCollectedBags = $this->deliveries()
+                    ?->where('deliveryDate', '<=', $this->getCurrentDate())
+                    ?->where('isBagCollected', 0)
+                    ?->count();
+
+
+        } // end if
+
+
+
+
+
+    } // end function
+
+
+
+
+
 
 
 
@@ -203,6 +269,11 @@ class CustomerSubscription extends Model
         return $this->types()?->get()?->pluck('mealTypeId')?->toArray();
 
     } // end function
+
+
+
+
+
 
 
 

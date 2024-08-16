@@ -9,6 +9,7 @@ trait CalendarTrait
 {
 
 
+    use HelperTrait;
 
 
     protected function getWeeksOptions()
@@ -16,11 +17,18 @@ trait CalendarTrait
 
         // :: root
         $weeks = [];
-        $currentDate = date('Y-m-d', strtotime('+4 hours'));
+        $currentDate = $this->getCurrentDate();
+
+
+        // 1: getPreviousWeeks - 3 weeks
+        for ($i = 3; $i > 0; $i--)
+            array_push($weeks, date('Y-m-d', strtotime($currentDate . '-' . $i . ' week')));
 
 
 
-        // 1: getUpcomingWeeks
+
+
+        // 1: getUpcomingWeeks - current + 4 weeks
         for ($i = 0; $i < 5; $i++)
             array_push($weeks, date('Y-m-d', strtotime($currentDate . '+' . $i . ' week')));
 

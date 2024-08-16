@@ -4,11 +4,14 @@ namespace App\Traits;
 
 use App\Models\CityDeliveryTime;
 use App\Models\CityDistrict;
-use App\Models\PlanBundleDay;
-use Illuminate\Http\Request;
+use App\Models\Container;
+use App\Models\Item;
+use App\Models\Label;
+use App\Models\VendorContainer;
+use App\Models\VendorItem;
+use App\Models\VendorLabel;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use stdClass;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
@@ -16,6 +19,62 @@ trait HelperTrait
 {
 
    use LivewireAlert;
+
+
+
+   // :: globalVariables
+   public $removeId, $removeType, $temporaryId;
+
+
+
+
+
+
+   protected function getGramToKG()
+   {
+
+
+      return 1000;
+
+
+   } // end function
+
+
+
+
+
+
+
+
+   // --------------------------------------------------------------
+
+
+
+
+
+
+   protected function getNameURL($name = '')
+   {
+
+      return str_replace(" ", "-", strtolower($name));
+
+
+   } // end function
+
+
+
+
+
+
+
+
+
+   // --------------------------------------------------------------
+   // --------------------------------------------------------------
+   // --------------------------------------------------------------
+
+
+
 
 
 
@@ -85,10 +144,14 @@ trait HelperTrait
 
 
       // 1: getDate
-      return $nextDate = date('Y-m-d', strtotime('+1 day +4 hours'));
+      return $tmwDate = date('Y-m-d', strtotime('+1 day +4 hours'));
 
 
    } // end function
+
+
+
+
 
 
 
@@ -107,15 +170,21 @@ trait HelperTrait
 
 
 
-   protected function getPauseDate()
+   protected function getDateByDays($days)
    {
 
 
       // 1: getDate
-      return $pauseDate = date('Y-m-d', strtotime('+1 day +4 hours'));
+      return $date = date('Y-m-d', strtotime("+{$days} day +4 hours"));
 
 
    } // end function
+
+
+
+
+
+
 
 
 
@@ -132,15 +201,18 @@ trait HelperTrait
 
 
 
-   protected function getUnPauseDate()
+   protected function getDateByDate($originalDate, $days)
    {
 
 
       // 1: getDate
-      return $unPauseDate = date('Y-m-d', strtotime('+1 day +4 hours'));
+      return $date = date('Y-m-d', strtotime("{$originalDate} +{$days} day +4 hours"));
 
 
    } // end function
+
+
+
 
 
 
@@ -216,6 +288,7 @@ trait HelperTrait
 
 
 
+   } // end function
 
 
 
@@ -223,20 +296,73 @@ trait HelperTrait
 
 
 
-      // 3: bundle - days
-      if ($parentModel == 'bundle' && $childModel == 'days') {
-
-         $bundleDays = $parentValue ?
-            PlanBundleDay::where('planBundleId', $parentValue)
-               ->get(['days as id', 'days as text'])->toArray() : [];
 
 
 
-         // :: makeEmpty
-         $isEmpty ? array_unshift($bundleDays, ['id' => '', 'text' => '']) : null;
 
 
-         $this->dispatch('refreshSelect', id: $childSelectId, data: $bundleDays);
+
+
+   // --------------------------------------------------------------
+   // --------------------------------------------------------------
+   // --------------------------------------------------------------
+
+
+
+
+
+   public function levelSelect($levelType, $levelFilterId = null, $value, $levelId = null)
+   {
+
+
+
+      // 1: items
+      if ($levelType == 'items') {
+
+
+         // A: containers - labels
+         if ($value == 'Containers') {
+
+            $items = Container::get(['id', 'name as text'])?->toArray() ?? [];
+
+         } elseif ($value == 'Labels') {
+
+            $items = Label::get(['id', 'name as text'])?->toArray() ?? [];
+
+         } elseif ($value == 'Items') {
+
+            $items = Item::get(['id', 'name as text'])?->toArray() ?? [];
+
+         } // end if
+
+
+
+
+
+
+
+
+         // B: validateEmpty
+         count($items ?? []) ? array_unshift($items, ['id' => '', 'text' => '']) : null;
+
+
+
+
+         // C: refreshSelect
+         if ($levelId) {
+
+            $this->dispatch('refreshSelect', id: ".level--two[data-id='{$levelId}']", data: $items ?? ['id' => '', 'text' => '']);
+
+         } else {
+
+            $this->dispatch('refreshSelect', id: '.level--two', data: $items ?? ['id' => '', 'text' => '']);
+
+         } // end if
+
+
+
+
+
 
 
       } // end if
@@ -246,7 +372,160 @@ trait HelperTrait
 
 
 
+      // -----------------------------------------------------------------
+      // -----------------------------------------------------------------
+
+
+
+
+
+
+
+      // 2: vendorItems
+      if ($levelType == 'vendorItems') {
+
+
+
+         // A: containers - labels - items
+         if ($value == 'Containers') {
+
+
+            $items = VendorContainer::where('vendorId', $levelFilterId)
+                  ?->get()?->pluck('containerId')?->toArray() ?? [];
+
+            $items = Container::whereIn('id', $items)?->get(['id', 'name as text'])?->toArray() ?? [];
+
+
+
+         } elseif ($value == 'Labels') {
+
+
+            $items = VendorLabel::where('vendorId', $levelFilterId)
+                  ?->get()?->pluck('labelId')?->toArray() ?? [];
+
+            $items = Label::whereIn('id', $items)?->get(['id', 'name as text'])?->toArray() ?? [];
+
+
+
+         } elseif ($value == 'Items') {
+
+
+            $items = VendorItem::where('vendorId', $levelFilterId)
+                  ?->get()?->pluck('itemId')?->toArray() ?? [];
+
+
+            $items = Item::whereIn('id', $items)?->get(['id', 'name as text'])?->toArray() ?? [];
+
+
+         } // end if
+
+
+
+
+
+
+
+         // B: validateEmpty
+         count($items ?? []) ? array_unshift($items, ['id' => '', 'text' => '']) : null;
+
+
+
+
+
+         // C: refreshSelect
+         if ($levelId) {
+
+            $this->dispatch('refreshSelect', id: ".level--two[data-id='{$levelId}']", data: $items ?? ['id' => '', 'text' => '']);
+
+         } else {
+
+            $this->dispatch('refreshSelect', id: '.level--two', data: $items ?? ['id' => '', 'text' => '']);
+
+         } // end if
+
+
+
+
+      } // end if
+
+
+
+
+
+
+
+
+
+
+
+      // -----------------------------------------------------------------
+      // -----------------------------------------------------------------
+      // -----------------------------------------------------------------
+      // -----------------------------------------------------------------
+      // -----------------------------------------------------------------
+
+
+
+
+
+
+
+      // 32: city
+      if ($levelType == 'city') {
+
+
+         if ($value) {
+
+            $districts = CityDistrict::where('cityId', $value)?->get(['id', 'name as text'])?->toArray() ?? [];
+
+            $deliveryTimes = CityDeliveryTime::where('isActive', true)?->where('cityId', $value)
+                  ?->get(['id', 'title as text'])?->toArray() ?? [];
+
+         } // end if
+
+
+
+
+
+
+         // B: validateEmpty
+         count($districts ?? []) ? array_unshift($districts, ['id' => '', 'text' => '']) : null;
+         count($deliveryTimes ?? []) ? array_unshift($deliveryTimes, ['id' => '', 'text' => '']) : null;
+
+
+
+
+         // C: refreshSelect
+         if ($levelId) {
+
+            $this->dispatch('refreshSelect', id: ".level--two[data-id='{$levelId}']", data: $districts ?? ['id' => '', 'text' => '']);
+
+            $this->dispatch('refreshSelect', id: ".level--two-second[data-id='{$levelId}']", data: $deliveryTimes ?? ['id' => '', 'text' => '']);
+
+
+         } else {
+
+            $this->dispatch('refreshSelect', id: '.level--two', data: $districts ?? ['id' => '', 'text' => '']);
+            $this->dispatch('refreshSelect', id: '.level--two-second', data: $deliveryTimes ?? ['id' => '', 'text' => '']);
+
+         } // end if
+
+
+
+
+      } // end if
+
+
+
+
+
+
+
+
+
+
    } // end function
+
 
 
 
@@ -407,12 +686,12 @@ trait HelperTrait
 
 
 
-   protected function uploadFile($instanceFile, $path)
+   protected function uploadFile($instanceFile, $path, $key = 'ITM')
    {
 
 
-      // 1: makeFileName - upload
-      $fileName = date('h.iA') . rand(10, 10000) . rand(10, 10000) . rand(10, 10000) . $instanceFile->getClientOriginalName();
+      // 1: uploadFile - makeFileName
+      $fileName = $key . '-' . date('h.iA') . rand(10, 10000) . rand(10, 10000) . rand(10, 10000) . '.' . $instanceFile->getClientOriginalExtension();
       $instanceFile->storeAs($path, $fileName, 'public');
 
 
@@ -422,6 +701,58 @@ trait HelperTrait
 
 
    } // end function
+
+
+
+
+
+
+
+
+
+
+   // --------------------------------------------------------------
+   // --------------------------------------------------------------
+   // --------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+   protected function replaceFile($instanceFile, $path, $fileName, $key = 'ITM')
+   {
+
+
+      // 1: removeFile
+      if (! empty($fileName)) {
+         Storage::disk('public')->delete($path . '/' . $fileName);
+      } // end if
+
+
+
+
+
+      // 2: uploadFile - makeFileName
+      $fileName = $key . '-' . date('h.iA') . rand(10, 10000) . rand(10, 10000) . rand(10, 10000) . '.' . $instanceFile->getClientOriginalExtension();
+      $instanceFile->storeAs($path, $fileName, 'public');
+
+
+
+
+
+      // 1.2: return fileName
+      return $fileName;
+
+
+
+   } // end function
+
+
 
 
 
@@ -448,12 +779,25 @@ trait HelperTrait
 
 
       // 1: removeFile
-      Storage::disk('public')->delete($path . '/' . $fileName);
+      if (! empty($fileName))
+         Storage::disk('public')->delete($path . '/' . $fileName);
+
+
 
       return true;
 
 
    } // end function
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -637,6 +981,31 @@ trait HelperTrait
 
 
 
+
+
+
+
+
+   // --------------------------------------------------------------
+
+
+
+
+
+
+
+   function makeRegularToken()
+   {
+
+
+
+      // :: returnToken
+      return date('dmYhis');
+
+
+
+
+   } // end function
 
 
 

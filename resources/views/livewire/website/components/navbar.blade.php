@@ -50,7 +50,7 @@
                         <a class="nav-link" href="{{ route('website.menu') }}">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('website.home') }}#meal-plan-section">Plans</a>
+                        <a class="nav-link" href="{{ route('website.plans') }}">Plans</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('website.home') }}#how-it-works">About Us</a>
