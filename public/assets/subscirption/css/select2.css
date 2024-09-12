@@ -7,7 +7,7 @@
 }
 
 .select2-container * {
-    font-family: Roboto, Helvetica !important;
+    font-family: "Fira Sans", Helvetica !important;
 }
 
 .select2-container .select2-selection--single {
@@ -75,7 +75,7 @@
     resize: none;
     height: 18px;
     vertical-align: bottom;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     overflow: hidden;
     word-break: keep-all;
 }

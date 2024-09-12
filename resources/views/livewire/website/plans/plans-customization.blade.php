@@ -96,9 +96,8 @@
 
 
 
-
                     {{-- topRow --}}
-                    <div class="row justify-content-center mb-5 u--slideUp d-none" wire:ignore>
+                    <div class="row justify-content-center u--slideUp" wire:ignore>
                         <div class="col-12 col-lg-5 text-center">
 
 
@@ -252,7 +251,7 @@
                                     data-animate="active" wire:ignore.self>
                                     <div class="d-flex flex-column plan--macros for--proteins">
                                         <span class='fw-bold percentage'>30%</span>
-                                        <span class='fw-bold text-uppercase caption'>Protein</span>
+                                        <span class='fw-semibold text-uppercase caption'>Protein</span>
                                     </div>
                                 </div>
 
@@ -265,7 +264,7 @@
                                     data-animate="active" wire:ignore.self>
                                     <div class="d-flex flex-column plan--macros for--carbs">
                                         <span class='fw-bold percentage'>50%</span>
-                                        <span class='fw-bold text-uppercase caption'>Carb</span>
+                                        <span class='fw-semibold text-uppercase caption'>Carb</span>
                                     </div>
                                 </div>
 
@@ -278,7 +277,7 @@
                                     data-animate="active" wire:ignore.self>
                                     <div class="d-flex flex-column plan--macros for--fats">
                                         <span class='fw-bold percentage'>20%</span>
-                                        <span class='fw-bold text-uppercase caption'>Fat</span>
+                                        <span class='fw-semibold text-uppercase caption'>Fat</span>
                                     </div>
                                 </div>
 
@@ -851,6 +850,9 @@
 
 
 
+                                    {{-- 1: isExistingCustomer --}}
+                                    @if (!$instance->isExistingCustomer)
+
                                     <div class="col-12
                                         @if ($settings?->showPreferenceBag) col-md-6 @else col-md-7 @endif">
 
@@ -895,7 +897,7 @@
 
                                             <label class='w-100 d-flex align-items-center md' data-splitting="chars"
                                                 data-animate="active">
-                                                <span>Excludes</span>
+                                                <span>Dislikes</span>
                                             </label>
 
                                             {{-- select --}}
@@ -915,6 +917,9 @@
 
 
                                     </div>
+
+
+                                    @endif
                                     {{-- endCol --}}
 
 
@@ -941,7 +946,8 @@
                                     {{-- 1: withPicture --}}
                                     @if ($settings?->showPreferenceBag)
 
-                                    <div class="col-12 col-md-6">
+                                    <div
+                                        class="@if ($instance->isExistingCustomer) col-12 @else col-12 col-md-6 @endif">
 
 
                                         {{-- imageFile --}}
@@ -968,17 +974,11 @@
                                             {{-- switch --}}
                                             <div class="form-check form-switch bag--switch vertical">
                                                 <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="coolbag--checkbox" wire:model.live='instance.bag'>
+                                                    id="coolbag--checkbox" wire:model.live='instance.bag' required>
                                                 <label class="form-check-label" for="coolbag--checkbox">{{
                                                     $bag->name }}</label>
                                             </div>
                                         </div>
-
-
-
-
-
-
 
 
                                     </div>
@@ -1017,7 +1017,7 @@
 
 
                                                 <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="coolbag--checkbox" wire:model.live='instance.bag'>
+                                                    id="coolbag--checkbox" wire:model.live='instance.bag' required>
                                                 <label class="form-check-label" for="coolbag--checkbox">{{
                                                     $bag->name }}</label>
                                             </div>
@@ -1047,9 +1047,11 @@
 
 
                                     {{-- continueButton --}}
-                                    @if ($instance->planDays && $instance->startDate && $instance->planBundleId)
+                                    @if ($instance->planDays && $instance->startDate && $instance->planBundleId &&
+                                    $instance->bag)
 
-                                    <div class="col-12 col-md-7">
+                                    <div
+                                        class="@if ($instance->isExistingCustomer) col-12 @else col-12 col-md-7 @endif">
                                         <form class="d-flex form--input-wrapper justify-content-center mt-3
                                         @if (!$settings?->showButtonMotion) no--button-motion @endif"
                                             wire:submit='continue'>
@@ -2011,10 +2013,6 @@
     {{-- -------------------------------------------------- --}}
     {{-- -------------------------------------------------- --}}
     {{-- -------------------------------------------------- --}}
-
-
-
-
 
 
 

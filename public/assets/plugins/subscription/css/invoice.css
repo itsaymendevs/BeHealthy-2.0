@@ -45,8 +45,14 @@
 /* bottom wrapper */
 @media (max-width: 767px) {
     .invoice--bottom-wrapper {
-        border-top: 1px dashed var(--invoiceTableBorderColor);
-        padding-top: 30px;
+        /* border-top: 1px dashed var(--invoiceTableBorderColor);
+        padding-top: 30px; */
+    }
+
+    .invoice--top-wrapper p,
+    .invoice--bottom-wrapper p {
+        font-size: 12px !important;
+        flex-wrap: wrap !important;
     }
 }
 
@@ -108,7 +114,7 @@
 
 .invoice--final-table-quantity p span {
     margin-right: 5px;
-    color: var(--brandColor);
+    color: var(--preferenceInfoColor);
 }
 
 .invoice--final-table-numbers span {

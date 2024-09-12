@@ -98,7 +98,7 @@
 
 
                     {{-- topRow --}}
-                    <div class="row justify-content-center mb-5 u--slideUp" wire:ignore>
+                    <div class="row justify-content-center u--slideUp" wire:ignore>
                         <div class="col-12 col-lg-5 text-center">
 
 
@@ -385,7 +385,131 @@
 
 
                                 {{-- meals --}}
-                                <div class="row justify-content-center justify-content-md-start mt-5">
+                                <div class="row justify-content-start justify-content-md-start mt-4">
+
+
+
+
+
+                                    {{-- filters --}}
+
+
+
+
+                                    {{-- 1: types --}}
+                                    <div class="col-4">
+                                        <div class="d-flex form--input-wrapper flex-column mb-4">
+
+                                            <label class='w-100 d-flex align-items-center md fs-12'
+                                                data-splitting="chars" data-animate="active">
+                                                <span>Type</span>
+                                            </label>
+
+
+                                            {{-- select --}}
+                                            <div class="form--select-wrapper" wire:ignore>
+                                                <select class='init--select form--select' data-clear='true'
+                                                    data-instance='searchType'>
+
+                                                    <option value=""></option>
+
+                                                    @foreach ($types ?? [] as $type)
+                                                    <option value="{{ $type->id }}">
+                                                        {{ $type->name == 'Recipe' ? 'Meal' : $type->name }}
+                                                    </option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                    {{-- 2: cuisine --}}
+                                    <div class="col-4">
+                                        <div class="d-flex form--input-wrapper flex-column mb-4">
+
+                                            <label class='w-100 d-flex align-items-center md fs-12'
+                                                data-splitting="chars" data-animate="active">
+                                                <span>Cuisine</span>
+                                            </label>
+
+
+                                            {{-- select --}}
+                                            <div class="form--select-wrapper" wire:ignore>
+                                                <select class='init--select form--select' data-clear='true'
+                                                    data-instance='searchCuisine'>
+
+                                                    <option value=""></option>
+
+                                                    @foreach ($cuisines ?? [] as $cuisine)
+                                                    <option value="{{ $cuisine->id }}">
+                                                        {{ $cuisine->name }}
+                                                    </option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                    {{-- 3: diet --}}
+                                    <div class="col-4">
+                                        <div class="d-flex form--input-wrapper flex-column mb-4">
+
+                                            <label class='w-100 d-flex align-items-center md fs-12'
+                                                data-splitting="chars" data-animate="active">
+                                                <span>Diet</span>
+                                            </label>
+
+
+                                            {{-- select --}}
+                                            <div class="form--select-wrapper" wire:ignore>
+                                                <select class='init--select form--select' data-clear='true'
+                                                    data-instance='searchDiet'>
+
+                                                    <option value=""></option>
+
+                                                    @foreach ($diets ?? [] as $diet)
+                                                    <option value="{{ $diet->id }}">
+                                                        {{ $diet->name }}
+                                                    </option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    {{-- ----------------------------------- --}}
+                                    {{-- ----------------------------------- --}}
+                                    {{-- ----------------------------------- --}}
+                                    {{-- ----------------------------------- --}}
+
+
+
+                                    {{-- empty --}}
+                                    <div class="col-12"></div>
+
+
 
 
 
@@ -393,16 +517,36 @@
                                     {{-- pick --}}
                                     @foreach ($meals ?? [] as $meal)
 
-                                    <div class="col-4 mb-4 mb-lg-5">
+                                    <div class="col-6 col-sm-4 col-xl-3 mb-4 mb-lg-4" key='single-meal-{{ $meal->id }}'>
                                         <div class="pick--card">
 
 
                                             {{-- 1: imageFile & name --}}
-                                            <div class="d-block">
+                                            <div class="d-block position-relative">
                                                 <img src='{{ url("{$storagePath}/menu/meals/{$meal->imageFile}") }}'>
+
+
+
+
+                                                {{-- pickCounter --}}
+                                                <div class="pick--counter">
+                                                    <a href="javascript:void(0);" class="pick--action pick--minus"
+                                                        data-i='{{ $meal->id }}'>
+                                                        <i class="bi bi-dash"></i></a>
+
+                                                    <span class='pick--value' data-i='{{ $meal->id }}'>0</span>
+
+                                                    <a href="javascript:void(0);" class="pick--action pick--plus"
+                                                        data-i='{{ $meal->id }}'>
+                                                        <i class="bi bi-plus-lg"></i></a>
+                                                </div>
                                             </div>
 
-                                            <h4 class='text-center'>{{ $meal->name }}</h4>
+
+
+
+                                            {{-- name --}}
+                                            <h4 class='text-center mt-0 mb-3 truncate-text-2l'>{{ $meal->name }}</h4>
 
 
 
@@ -443,11 +587,11 @@
 
 
                                             {{-- 2: sizes --}}
-                                            <div class="row align-items-end">
+                                            <div class="row align-items-end justify-content-between">
 
 
                                                 {{-- swich --}}
-                                                <div class="col-5 pick--sizes-wrapper">
+                                                <div class="col-5 col-sm-4 col-lg-4 col-xl-4 pick--sizes-wrapper">
 
 
                                                     {{-- groupButtons --}}
@@ -461,9 +605,11 @@
                                                         @foreach ($meal?->sizes ?? [] as $key => $mealSize)
 
                                                         <button type="button" wire:loading.class='processing--button'
-                                                            wire:target='changePlanBundleRange'
+                                                            wire:target="changeSize"
                                                             key='single-bundle-range-{{ $mealSize->id }}'
-                                                            class="btn btn--regular sm fw-500 fs-14 ranges--btn @if ($key == 0) btn--collapse @endif">
+                                                            data-meal='meal-{{ $meal->id }}'
+                                                            data-i='{{ $mealSize->id }}'
+                                                            class="btn btn--regular sm fw-500 ranges--btn sizes--btn @if ($key == 0) btn--collapse @endif">
                                                             {{ $mealSize?->size?->shortName }}
                                                         </button>
 
@@ -483,11 +629,19 @@
 
 
                                                 {{-- macros --}}
-                                                <div class="col-7">
+
+
+                                                {{-- loop - sizes --}}
+                                                @foreach ($meal?->sizes ?? [] as $key => $mealSize)
+
+
+                                                <div class="col-7 col-sm-8 col-lg-8 col-xl-8 sizes--macro
+                                    @if ($key != 0) d-none @endif" data-meal='meal-{{ $meal->id }}'
+                                                    data-i='{{ $mealSize->id }}'>
 
 
                                                     {{-- 1: calories --}}
-                                                    <div class="size--macros">
+                                                    <div class="size--macros calories">
                                                         <span>{{ number_format($mealSize->afterCookCalories)
                                                             }}</span>
                                                         <small>Calorie</small>
@@ -496,16 +650,15 @@
 
 
                                                     {{-- 2: proteins --}}
-                                                    <div class="size--macros">
-                                                        <span>{{ number_format($mealSize->afterCookProteins)
-                                                            }}</span>
+                                                    <div class="size--macros proteins">
+                                                        <span>{{ number_format($mealSize->afterCookProteins) }}</span>
                                                         <small>Protein</small>
                                                     </div>
 
 
 
                                                     {{-- 3: carbs --}}
-                                                    <div class="size--macros">
+                                                    <div class="size--macros carbs">
                                                         <span>{{ number_format($mealSize->afterCookCarbs) }}</span>
                                                         <small>Carbs</small>
                                                     </div>
@@ -514,12 +667,15 @@
 
 
                                                     {{-- 4: fats --}}
-                                                    <div class="size--macros">
+                                                    <div class="size--macros fats">
                                                         <span>{{ number_format($mealSize->afterCookFats) }}</span>
                                                         <small>Fats</small>
                                                     </div>
 
                                                 </div>
+
+                                                @endforeach
+
 
 
                                             </div>
@@ -528,23 +684,9 @@
 
 
 
-
-
-
-
-
-
-                                            {{-- counter --}}
-                                            <span class='fw-semibold pick--counter text-center'>
-                                                <small>x</small>2
-                                            </span>
-
-
                                         </div>
                                     </div>
                                     {{-- endCol --}}
-
-
 
                                     @endforeach
                                     {{-- end loop --}}
@@ -738,8 +880,7 @@
                                                 key='single-other-plan-{{ $key }}'>
                                                 <div class="works-item other--item @if (($key + 1) % 2 == 0) active @endif scrolla-element-anim-1 scroll-animate"
                                                     data-animate="active">
-                                                    <a
-                                                        href="{{ route('website.plans.customization', [$singlePlan->nameURL]) }}">
+                                                    <a href="{{ route('website.plans.cart', [$singlePlan->nameURL]) }}">
 
                                                         {{-- imageFile --}}
                                                         <span class="image">
@@ -1012,6 +1153,73 @@
 
 
 
+
+
+    {{-- ----------------------------------------------- --}}
+    {{-- ----------------------------------------------- --}}
+
+
+
+
+
+    {{-- sizes --}}
+    <script>
+        $(document).on('click', '.sizes--btn', function() {
+         i = $(this).attr('data-i');
+         common = $(this).attr('data-meal');
+
+
+
+         // 1: removeActive
+         $(`.sizes--btn[data-meal=${common}]`).removeClass('btn--collapse');
+         $(`.sizes--btn[data-meal=${common}][data-i=${i}]`).addClass('btn--collapse');
+
+
+         $(`.sizes--macro[data-meal=${common}]`).addClass('d-none');
+         $(`.sizes--macro[data-meal=${common}][data-i=${i}]`).removeClass('d-none');
+
+      });
+    </script>
+
+
+
+
+
+
+
+    {{-- ----------------------------------------------- --}}
+    {{-- ----------------------------------------------- --}}
+
+
+
+
+
+    {{-- pickCounter --}}
+    <script>
+        $(document).on('click', '.pick--action', function() {
+         i = $(this).attr('data-i');
+         value = $(`.pick--value[data-i=${i}]`).text();
+
+
+         // 1: plus
+         if ($(this).hasClass('pick--plus')) {
+
+               value = parseInt(value) + 1;
+               $(`.pick--value[data-i=${i}]`).text(value);
+
+         } else {
+
+               if (value > 0) {
+
+                  value = parseInt(value) - 1;
+                  $(`.pick--value[data-i=${i}]`).text(value);
+
+               } // end if
+
+
+         } // end if
+      });
+    </script>
 
 
 

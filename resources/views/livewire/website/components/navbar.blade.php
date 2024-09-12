@@ -88,7 +88,8 @@
 
                         {{-- 2: login --}}
                         <li class="nav-item">
-                            <a class="btn btn-primary nav-button text-white" href="#">Login</a>
+                            <a class="btn btn-primary nav-button text-white"
+                                href="{{ $globalProfile->applicationURL }}">Login</a>
                         </li>
                     </ul>
                 </div>

@@ -201,8 +201,8 @@
                 <div class="offset-lg-2 offset-md-2 col-lg-2 col-md-2 col-12">
                     <div class="footer-links-div copyright-footer-links-div">
                         <p class="copyright-text">©2024 Be Healthy</p>
-                        <a href="#" class="footer-link"> Terms of Use </a>
-                        <a href="#" class="footer-link remove-margin-768">
+                        <a href="{{ route('website.privacy') }}" class="footer-link"> Terms of Use </a>
+                        <a href="{{ route('website.privacy') }}" class="footer-link remove-margin-768">
                             Privacy Policy
                         </a>
                     </div>
@@ -211,17 +211,37 @@
 
 
 
+
+                {{-- empty --}}
+                <div class="col-12 mt-4"></div>
+
+
+                {{-- ------------------------------- --}}
+                {{-- ------------------------------- --}}
+                {{-- ------------------------------- --}}
+
+
+
+
                 {{-- poweredBy --}}
-                <div class="col-12">
+                <div class="col-6 d-flex justify-content-start  align-items-center">
                     <div class="text-center">
-                        <a class="trustpilot-link justify-content-center" href="">
+                        <a class="d-flex justify-content-start justify-content-lg-center align-items-center" href="">
                             <span>Powered By</span>
-                            <img class="trustpilot-title" src="{{ url('assets/images/doer-tran.png') }}" alt="title" />
+                            <img class="trustpilot-title" src="{{ url('assets/images/doer.png') }}" alt="title" />
                         </a>
                     </div>
                 </div>
                 {{-- endWrap --}}
 
+
+
+
+
+                <div class="col-6 d-flex align-items-center justify-content-end">
+                    <img src="{{ url('assets/images/card-enhanced.png') }}"
+                        style="height: 30px; width: 100px; object-fit: contain;">
+                </div>
 
             </div>
         </div>

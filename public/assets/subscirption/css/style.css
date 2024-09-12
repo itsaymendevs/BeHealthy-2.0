@@ -2,7 +2,7 @@
 
 body,
 html {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     position: relative;
     background-color: var(--white);
     overflow-x: hidden !important;
@@ -49,7 +49,7 @@ a {
     background-color: var(--green);
     color: var(--white);
     font-size: 20px;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     border: 1.5px solid var(--green);
     padding: 8px 30px 10px 30px;
     border-radius: 5px;
@@ -62,7 +62,7 @@ a {
     background-color: transparent;
     color: var(--green);
     font-size: 17px;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     border: 1.5px solid var(--green);
     padding: 8px 25px 10px 25px;
     border-radius: 5px;
@@ -77,7 +77,7 @@ a {
     color: var(--white);
     font-size: 18px;
     font-weight: 500;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     border: 1.5px solid var(--green);
     padding: 8px 30px 10px 30px;
     border-radius: 5px;
@@ -115,7 +115,7 @@ button[disabled] {
 }
 
 .swal2-title {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 
 .navbar-toggler {
@@ -178,7 +178,7 @@ button[disabled] {
     font-size: 40px;
     line-height: 120%;
     text-transform: uppercase;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     color: var(--black);
     font-weight: 800;
 }
@@ -270,7 +270,7 @@ button[disabled] {
     font-weight: 700;
     bottom: -8px;
     right: 0px;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     color: #00a651;
     width: 150px;
     text-align: right;
@@ -280,7 +280,7 @@ button[disabled] {
 
 .main-nav .nav-link {
     color: var(--text);
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     font-size: 16px;
     font-weight: 500;
     padding: 16px 15px !important;
@@ -400,7 +400,7 @@ button[disabled] {
     padding: 0px 12px;
 }
 .meal-plan-card .content-box .title {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     color: var(--text);
     overflow: hidden;
     font-size: 21px;
@@ -432,7 +432,7 @@ button[disabled] {
     margin-bottom: 10px;
 }
 .meal-plan-card .content-box .btn {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     font-size: 15px;
     font-weight: bold;
     display: flex;
@@ -532,7 +532,7 @@ button[disabled] {
     display: block;
 }
 .meal-of-day-item .mela-info-box .meal-name {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     color: var(--white);
     font-size: 15px;
     font-weight: 600;
@@ -556,14 +556,14 @@ button[disabled] {
     padding: 3px 15px;
 }
 .meal-of-day-item .mela-info-box .title {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     color: var(--text);
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 0;
 }
 .meal-of-day-item .mela-info-box .desc {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     color: var(--text);
     font-size: 13px;
     font-weight: 600;
@@ -595,7 +595,7 @@ button[disabled] {
     color: var(--white);
     font-size: 48px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 30px;
 }
@@ -603,7 +603,7 @@ button[disabled] {
     color: var(--white);
     font-size: 20px;
     font-weight: 500;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     transition: 0.3s all ease;
 }
@@ -653,7 +653,7 @@ button[disabled] {
     color: var(--white);
     font-size: 44px;
     font-weight: 700;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 30px;
 }
@@ -662,7 +662,7 @@ button[disabled] {
     color: var(--white);
     font-size: 20px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     transition: 0.3s all ease;
     background-color: var(--primary);
@@ -720,7 +720,7 @@ button[disabled] {
     font-size: 40px;
     color: var(--black);
     font-weight: 700;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 15px;
 }
@@ -767,7 +767,7 @@ button[disabled] {
 .how-it-works-item .title {
     font-size: 20px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 .how-it-works-item .desc {
     font-size: 15px;
@@ -791,7 +791,7 @@ button[disabled] {
     text-align: left;
     color: var(--white);
     font-size: 20px;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 .faq-category-box .nav-link.active {
     background-color: var(--green);
@@ -881,7 +881,7 @@ button[disabled] {
     color: var(--black);
     font-size: 22px;
     font-weight: 700;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -953,7 +953,7 @@ button[disabled] {
     color: var(--text);
     font-size: 18px;
     font-weight: 700;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 0;
     letter-spacing: 0.5px;
@@ -1031,7 +1031,7 @@ button[disabled] {
     padding: 0 5px 0 10px;
     color: var(--white);
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 
 /* Meal Detail Modal */
@@ -1064,7 +1064,7 @@ button[disabled] {
     color: var(--white);
     font-size: 16px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 0;
 }
@@ -1084,7 +1084,7 @@ button[disabled] {
     color: var(--black);
     font-size: 35px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 20px;
 }
@@ -1125,7 +1125,7 @@ button[disabled] {
     color: var(--black);
     font-size: 20px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     text-align: center;
     margin-bottom: 0;
@@ -1161,7 +1161,7 @@ button[disabled] {
     color: var(--text);
     font-size: 20px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1173,7 +1173,7 @@ button[disabled] {
 }
 .wizard-steps .title .number {
     background-color: #eeeeee;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     font-size: 22px;
     display: flex;
     align-items: center;
@@ -1227,7 +1227,7 @@ button[disabled] {
     color: var(--text);
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 
 .date-input {
@@ -1242,7 +1242,7 @@ button[disabled] {
     pointer-events: none;
     transform: translateY(1rem);
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 
 .input:focus,
@@ -1285,7 +1285,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 30px;
     font-weight: 800;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 30px;
 }
@@ -1303,7 +1303,7 @@ input:valid ~ label {
 
 } */
 .calendarify {
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     border-radius: 20px !important;
 }
@@ -1323,7 +1323,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 25px;
     font-weight: 700;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 20px;
 }
@@ -1337,7 +1337,7 @@ input:valid ~ label {
     color: var(--text);
     font-size: 16px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     padding: 0;
     display: block;
@@ -1373,7 +1373,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 16px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 0;
 }
@@ -1387,7 +1387,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 14px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 0;
 }
@@ -1436,7 +1436,7 @@ input:valid ~ label {
     background-color: #f8c78b;
     color: var(--primary);
     font-weight: 700;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 .easy-accordian-box .accordion-button:hover {
     color: var(--green);
@@ -1511,7 +1511,7 @@ input:valid ~ label {
     color: var(--black);
     font-size: 20px;
     font-weight: 600;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 
     margin-bottom: 5px;
 }
@@ -1583,7 +1583,7 @@ input:valid ~ label {
     color: var(--white);
     font-size: 20px;
     font-weight: 500;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     margin-bottom: 0px;
 }
 
@@ -1601,7 +1601,7 @@ input:valid ~ label {
     font-size: 30px;
     color: var(--white);
     font-weight: 500;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
     margin-bottom: 0;
 }
 .footer-main {
@@ -1641,7 +1641,7 @@ input:valid ~ label {
     margin-bottom: 0;
     color: var(--black);
     font-size: 13px;
-    font-family: Roboto, Helvetica;
+    font-family: "Fira Sans", Helvetica;
 }
 .footer-bottom .we-accept {
     text-align: end;
@@ -1662,5 +1662,5 @@ input:valid ~ label {
 }
 
 .open-sans {
-    font-family: Roboto, Helvetica !important;
+    font-family: "Fira Sans", Helvetica !important;
 }

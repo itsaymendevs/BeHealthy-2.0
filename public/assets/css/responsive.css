@@ -113,7 +113,18 @@
     .copyright-footer-links-div {
         margin-top: 0px;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
+    }
+
+    .copyright-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #footer .footer-links-div .footer-link {
+        width: 100%;
+        text-align: center;
     }
     .remove-margin-768 {
         margin-top: 0px !important;

@@ -21,7 +21,6 @@ use App\Livewire\Website\PlansSecond;
 use App\Livewire\Website\PlansSeventh;
 use App\Livewire\Website\PlansSixth;
 use App\Livewire\Website\PlansThird;
-use App\Livewire\Website\Privacy;
 use App\Livewire\Website\PrivacyPolicy;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -151,7 +150,7 @@ Route::get('/contact', Contact::class)->name('website.contact');
 
 
 // 5: privacy
-Route::get('/privacy-policy', Privacy::class)->name('website.privacy');
+// Route::get('/privacy-policy', Privacy::class)->name('website.privacy');
 
 
 
@@ -365,7 +364,7 @@ Route::get('mails/invoice/{id}', [MailController::class, 'invoice'])->name('mail
 
 
 // 1: blogs
-Route::get('blogs', [Plans::class, 'blogs'])->name('website.blogs');
+// Route::get('blogs', [Blogs::class, 'blogs'])->name('website.blogs');
 
 
 
@@ -389,7 +388,7 @@ Route::get('blogs', [Plans::class, 'blogs'])->name('website.blogs');
 
 
 // 1: blogs
-Route::get('/policy', PrivacyPolicy::class)->name('website.policy');
+Route::get('/privacy-policy', PrivacyPolicy::class)->name('website.privacy');
 
 
 

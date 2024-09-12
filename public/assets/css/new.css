@@ -13,7 +13,7 @@ body {
     /* font-family: 'Poppins', sans-serif; */
     /* font-family: 'Bauhaus'; */
     /* font-family: 'Rajdhani', sans-serif; */
-    font-family: Roboto, Helvetica Neue, Arial, sans-serif;
+    font-family: "Fira Sans", Helvetica Neue, Arial, sans-serif;
     position: relative;
     background-color: var(--white);
 }
@@ -374,7 +374,7 @@ a {
     text-align: center;
 }
 .plan-personalize-sec .plan-detail .title {
-    font-family: "Panton Narrow", Helvetica Neue, Arial, sans-serif;
+    font-family: "Fira Sans", Helvetica Neue, Arial, sans-serif;
     font-size: 48px;
     font-weight: 900;
     color: var(--dark);
@@ -397,7 +397,7 @@ a {
 .plan-personalize-box .heading {
     font-size: 36px;
     color: var(--primary);
-    font-family: "Panton Narrow", Helvetica Neue, Arial, sans-serif;
+    font-family: "Fira Sans", Helvetica Neue, Arial, sans-serif;
     font-weight: 700;
     margin-bottom: 30px;
 }
@@ -1303,7 +1303,7 @@ a {
 }
 .sample-menu-sec .heading .title {
     text-align: center;
-    font-family: "Panton Narrow", Helvetica Neue, Arial, sans-serif;
+    font-family: "Fira Sans", Helvetica Neue, Arial, sans-serif;
     font-size: 48px;
     font-weight: 900;
     line-height: 52px;
