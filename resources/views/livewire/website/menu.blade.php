@@ -116,7 +116,7 @@
 
 
 
-            <div class="row shop-portfolio">
+            <div class="row shop-portfolio d-none">
 
 
 

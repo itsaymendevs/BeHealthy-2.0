@@ -267,6 +267,8 @@
 
 
                         </div>
+
+
                     </div>
                 </div>
                 {{-- endRow --}}
@@ -419,7 +421,7 @@
 
 
     {{-- aboutUs --}}
-    <section id="how-it-works" style="border-top: 1px dashed grey; margin-top: 60px;">
+    <section id="how-it-works" style="border-top: 1px dashed grey; margin-top: 40px;">
         <div class="container">
 
 
@@ -815,256 +817,257 @@
             {{-- row --}}
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 col-12">
-                    <div class="row">
 
 
 
-                        {{-- singleItem --}}
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="menu-card-v1">
+                    {{-- carousel --}}
+                    <div class="caoursel--wrapper">
+                        <div class="owl-carousel owl-theme meal-plan-slider" id="menu-meals-slider">
 
 
-                                {{-- image / tag --}}
+
+
+                            {{-- singleItem --}}
+                            @foreach ($dinningMeals ?? [] as $key => $dinningMeal)
+
+                            <div class="menu-card-v1" key='sample-meal-{{ $key }}'>
+
+
+                                {{-- image / diet --}}
                                 <div class="img-box">
-                                    <span class="tag"> 20% Off </span>
-                                    <img src="{{ url('assets/images/menu/chicken/behealthy-Chicken-Chicken-Fajita.jpeg') }}"
-                                        alt="" />
+
+
+                                    {{-- diet --}}
+                                    @if ($dinningMeal?->diet)
+
+                                    <span class="tag">{{ $dinningMeal?->diet?->name }}</span>
+
+                                    @endif
+                                    {{-- end if --}}
+
+
+                                    <img src='{{ url("{$storagePath}/menu/meals/{$dinningMeal->imageFile}") }}'
+                                        class='of-contain' />
                                 </div>
+
+
+
+
+
+                                {{-- ----------------------------- --}}
+                                {{-- ----------------------------- --}}
+
+
+
+
 
 
                                 {{-- content --}}
                                 <div class="content-box">
-
-
-                                    {{-- frontBox --}}
-                                    <div class="box-one">
-                                        <p class="title">Chicken Fajita</p>
-                                        <p class="desc">
-                                            Grilled chicken with Fajita marination
-                                        </p>
-                                    </div>
-
-                                    {{-- backBox --}}
                                     <div class="box-two">
-                                        <div class="price-box">
-                                            <p class="price">45.00 AED</p>
-                                            <p class="weight">
-                                                <!-- 3.50 G -->
-                                            </p>
-                                        </div>
-                                        <div class="ingradient-box">
-                                            <div class="row g-0">
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">Cal</p>
+
+                                        {{-- title - desc --}}
+                                        <p class="title px-2">{{ $dinningMeal?->name }}</p>
+
+                                        <p class="desc mb-2">
+                                            {{ $dinningMeal?->desc }}
+                                        </p>
+
+
+
+                                        {{-- ------------------ --}}
+                                        {{-- ------------------ --}}
+
+
+
+
+                                        {{-- navTabs --}}
+                                        <ul class="nav nav-tabs dinning--tabs" id="myTab" role="tablist">
+
+
+                                            {{-- navLinks --}}
+                                            @foreach ($dinningMeal?->sizes ?? [] as $outerKey => $mealSize)
+
+                                            <li class="nav-item" role="presentation" wire:ignore
+                                                key='dinning-meal-size-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}'>
+                                                <button class="nav-link @if ($outerKey == 0) active @endif"
+                                                    id="home-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}"
+                                                    type="button" role="tab"
+                                                    aria-controls="macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}"
+                                                    aria-selected="true">{{
+                                                    $mealSize?->size?->shortName }}</button>
+                                            </li>
+
+                                            @endforeach
+                                            {{-- end loop --}}
+
+
+                                        </ul>
+
+
+
+                                        {{-- ------------------------------ --}}
+                                        {{-- ------------------------------ --}}
+
+
+
+                                        {{-- tabContent --}}
+                                        <div class="tab-content" id="myTabContent">
+
+
+
+                                            {{-- 1: sizeTab --}}
+                                            @foreach ($dinningMeal?->sizes ?? [] as $outerKey => $mealSize)
+
+                                            <div class="tab-pane fade @if ($outerKey == 0) show active @endif pt-3"
+                                                id="macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}"
+                                                role="tabpanel"
+                                                aria-labelledby="macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}"
+                                                tabindex="0"
+                                                key='macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}'>
+
+
+
+
+                                                {{-- price --}}
+                                                <div class="price-box">
+                                                    <p class="price ls--price">
+                                                        {{ number_format($mealSize?->price ?? 0, 2) }}<span
+                                                            class='price--span ms-1'>AED</span></p>
+                                                </div>
+                                                {{-- endPrice --}}
+
+
+
+
+                                                {{-- -------------------------------------- --}}
+                                                {{-- -------------------------------------- --}}
+
+
+
+
+                                                {{-- macros --}}
+                                                <div class="ingradient-box">
+                                                    <div class="row g-0">
+
+
+                                                        {{-- 1: calories --}}
+                                                        <div class="col-3">
+                                                            <div class="border-end">
+                                                                <div class="ing-title">
+                                                                    <p class="">Cal</p>
+                                                                </div>
+                                                                <div class="ing-desc">
+                                                                    <p class="">
+                                                                        {{number_format($mealSize?->afterCookCalories ??
+                                                                        0, 1)}}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">164.4</p>
+
+
+
+
+                                                        <div class="col-3">
+                                                            <div class="border-end">
+                                                                <div class="ing-title">
+                                                                    <p class="">P</p>
+                                                                </div>
+                                                                <div class="ing-desc">
+                                                                    <p class="">
+                                                                        {{number_format($mealSize?->afterCookProteins ??
+                                                                        0, 1)}}g</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="border-end">
+                                                                <div class="ing-title">
+                                                                    <p class="">C</p>
+                                                                </div>
+                                                                <div class="ing-desc">
+                                                                    <p class="">
+                                                                        {{number_format($mealSize?->afterCookCarbs ??
+                                                                        0, 1)}}g
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <div class="border-end-0">
+                                                                <div class="ing-title">
+                                                                    <p class="">F</p>
+                                                                </div>
+                                                                <div class="ing-desc">
+                                                                    <p class="">
+                                                                        {{number_format($mealSize?->afterCookFats ??
+                                                                        0, 1)}}g
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">P</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">31g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">C</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">2g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end-0">
-                                                        <div class="ing-title">
-                                                            <p class="">F</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">3.6g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {{-- endMacros --}}
+
                                             </div>
+
+
+                                            @endforeach
+                                            {{-- end loop --}}
+
+
+
                                         </div>
+                                        {{-- endContent --}}
+
+
+
                                     </div>
                                     {{-- endBackBox --}}
+
+
                                 </div>
                             </div>
-                        </div>
-                        {{-- end singleItem --}}
+
+                            @endforeach
+                            {{-- end singleItem --}}
 
 
 
-
-
-                        {{-- singleItem (repeat)--}}
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="menu-card-v1">
-                                <div class="img-box">
-                                    <img src="{{ url('assets/images/menu/beef/behealthy-Beef-Beef-Broccoli.jpg') }}"
-                                        alt="" />
-                                </div>
-                                <div class="content-box">
-                                    <div class="box-one">
-                                        <p class="title">Beef Broccoli</p>
-                                        <p class="desc">
-                                            Beef and broccoli stir fry sauteed with fresh broccoli
-                                            florets and coated in a savory sauce.
-                                        </p>
-                                    </div>
-                                    <div class="box-two">
-                                        <div class="price-box">
-                                            <p class="price">50.00 AED</p>
-                                            <p class="weight">
-                                                <!-- 3.50 G -->
-                                            </p>
-                                        </div>
-                                        <div class="ingradient-box">
-                                            <div class="row g-0">
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">Cal</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">197</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">P</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">24g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">C</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">4g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end-0">
-                                                        <div class="ing-title">
-                                                            <p class="">F</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">6g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                        {{-- singleItem (repeat) --}}
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="menu-card-v1">
-                                <div class="img-box">
-                                    <img src="{{ url('assets/images/menu/salad/behealthy-Salads-Halloumi-Salad.jpg') }}"
-                                        alt="" />
-                                </div>
-                                <div class="content-box">
-                                    <div class="box-one">
-                                        <p class="title">Halloumi Salad</p>
-                                        <p class="desc">
-                                            Low fat Halloumi,Rocca Leaves,cherry Tomato,olive oil
-                                        </p>
-                                    </div>
-                                    <div class="box-two">
-                                        <div class="price-box">
-                                            <p class="price">29.50 AED</p>
-                                            <p class="weight">
-                                                <!-- 3.50 G -->
-                                            </p>
-                                        </div>
-                                        <div class="ingradient-box">
-                                            <div class="row g-0">
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">Cal</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">250.2</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">P</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">42.4g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end">
-                                                        <div class="ing-title">
-                                                            <p class="">C</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">6.2g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="border-end-0">
-                                                        <div class="ing-title">
-                                                            <p class="">F</p>
-                                                        </div>
-                                                        <div class="ing-desc">
-                                                            <p class="">6.2g</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        {{-- viewAll --}}
-                        <div class="col-12">
-                            <div class="text-center btn-box mb-5">
-                                <a href="#" class="btn btn-black"> View All </a>
-                            </div>
                         </div>
                     </div>
-                    {{-- endRow --}}
+                    {{-- endCarousel --}}
+
+
+
+
+
+
+
+
+                    {{-- ------------------------------------------- --}}
+                    {{-- ------------------------------------------- --}}
+
+
+
+
+
+                    {{-- viewAll --}}
+                    <div class="d-block">
+                        <div class="text-center btn-box mb-4 mt-3">
+                            <a href="#" class="btn btn-black">View Menu</a>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
-            {{-- endRow --}}
         </div>
+        {{-- endContainer --}}
+
     </section>
     {{-- endSection --}}
 
@@ -1092,13 +1095,13 @@
                 <div class="col-12">
                     <div class="get-started-inner-div">
                         <div class="get-started-main-div">
-                            <h2>Less preps, more reps!</h2>
-                            <p>
+                            <h2>LESS PREPS, MORE REPS!</h2>
+                            <p class='mb-3 fw-500'>
                                 Hit your goals faster with home-delivered,
                                 dietician-designed meals calibrated to suit your fitness
                                 needs. Pause or cancel anytime.
                             </p>
-                            <button type="button" class="btn btn-primary get-start-btn">
+                            <button type="button" class="btn btn-primary get-start-btn text-white">
                                 Get started
                             </button>
                         </div>
@@ -1159,17 +1162,21 @@
                                 <div id="collapseOne" class="accordion-collapse collapse show"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        To start your healthy journey, visit our meal plan
-                                        website and <br />
-                                        - Select your target. <br />
-                                        - Choose your calories and number of meals u want.
+                                        <i class="bi bi-dash-lg me-2"></i>To start your healthy journey, visit
+                                        our meal
+                                        plan
+                                        website and Select your target<br />
+                                        <i class="bi bi-dash-lg me-2"></i>Choose your calories and number of
+                                        meals u want
                                         <br />
-                                        - Mention any food allergies and specific dislikes.
+                                        <i class="bi bi-dash-lg me-2"></i>Mention any food allergies and
+                                        specific dislikes
                                         <br />
-                                        - Select your starting date. <br />
-                                        - Once your order is confirmed, our customer service
+                                        <i class="bi bi-dash-lg me-2"></i>Select your starting date<br />
+                                        <i class="bi bi-dash-lg me-2"></i>Once your order is confirmed, our
+                                        customer service
                                         will get in touch with you to affirm the details and
-                                        clue you through your meal plan.
+                                        clue you through your meal plan
                                     </div>
                                 </div>
                             </div>
@@ -1182,13 +1189,13 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        can i customize my meal plan?
+                                        Can i customize my meal plan?
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        yes! you can customize your meal plan based on the
+                                        Yes! you can customize your meal plan based on the
                                         calories and macros u need
                                     </div>
                                 </div>
@@ -1204,14 +1211,14 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        can I freeze my account if I want to travel or
+                                        Can I freeze my account if I want to travel or
                                         something?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        yes, u can freeze and resume it back from where u
+                                        Yes, u can freeze and resume it back from where u
                                         stopped
                                     </div>
                                 </div>
@@ -1233,7 +1240,7 @@
                                 <div id="collapseFour" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        because we offer u variety of meals with delicious taste
+                                        We offer u variety of meals with delicious taste
                                         and accurate calories counting and we deliver it freshly
                                         cooked early morning to your door step
                                     </div>

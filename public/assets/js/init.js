@@ -5,7 +5,7 @@ $(document).ready(function () {
         loop: true,
         margin: 10,
         nav: false,
-        dots: true,
+        dots: false,
         autoplay: true,
         autoplayTimeout: 2000,
         autoplayHoverPause: true,
@@ -22,8 +22,7 @@ $(document).ready(function () {
         },
     });
 
-
-// Sample Menu Salider
+    // Sample Menu Salider
     $("#sample-menu-slider").owlCarousel({
         loop: true,
         margin: 10,
@@ -50,11 +49,13 @@ $(document).ready(function () {
     // ---------------------------------------------------------------
 
     // 2: mealPlan Slider
-    $(".meal-plan-slider").owlCarousel({
+    $("#meal-plan-slider").owlCarousel({
         loop: true,
         margin: 10,
         nav: false,
+        autoplay: true,
         dots: true,
+        dots: false,
         responsive: {
             0: {
                 items: 1,
@@ -68,5 +69,29 @@ $(document).ready(function () {
         },
     });
 
+    // ---------------------------------------------------------------
 
+    // 2: menuMeals Slider
+    $("#menu-meals-slider").owlCarousel({
+        nav: false,
+        dots: false,
+        margin: 20,
+        animateOut: "slideOutDown",
+        animateIn: "flipInX",
+        stagePadding: 10,
+        smartSpeed: 450,
+        autoplay: true,
+        loop: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 2,
+            },
+            1200: {
+                items: 3,
+            },
+        },
+    });
 }); // end documentReady

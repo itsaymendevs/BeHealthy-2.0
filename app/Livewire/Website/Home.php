@@ -2,7 +2,10 @@
 
 namespace App\Livewire\Website;
 
+use App\Models\Meal;
+use App\Models\MealMenu;
 use App\Models\MealType;
+use App\Models\Menu;
 use App\Models\MenuCalendarScheduleMeal;
 use App\Models\Plan;
 use App\Models\Type;
@@ -100,12 +103,19 @@ class Home extends Component
 
 
 
+        // 1.2: sampleMeals
+        $menu = Menu::where('nameURL', 'website')?->first();
+        $mealsInArray = MealMenu::where('menuId', $menu->id)?->pluck('mealId')?->toArray() ?? [];
+
+
+        $dinningMeals = Meal::whereIn('id', $mealsInArray)?->get();
 
 
 
 
 
-        return view('livewire.website.home', compact('sampleMeals', 'plans'));
+
+        return view('livewire.website.home', compact('sampleMeals', 'plans', 'dinningMeals'));
 
 
 
