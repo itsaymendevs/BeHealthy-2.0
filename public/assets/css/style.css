@@ -792,7 +792,8 @@ a {
 }
 .menu-card-v1 .img-box img {
     width: 100%;
-    height: 250px;
+    height: 150px;
+    padding-top: 6px;
     object-fit: contain;
     border-radius: 20px 20px 0px 0px;
     transition: transform 0.3s;
@@ -1783,14 +1784,14 @@ a {
 }
 /* ------------------------------------ */
 
-.dinning--tabs {
+.dining--tabs {
     border-bottom: 1px solid #d6d6d6;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.dinning--tabs .nav-link {
+.dining--tabs .nav-link {
     border-radius: 0px;
     font-size: 13px;
     font-weight: 500;
@@ -1799,8 +1800,8 @@ a {
     color: initial;
 }
 
-.dinning--tabs .nav-link.active,
-.dinning--tabs .nav-link:hover {
+.dining--tabs .nav-link.active,
+.dining--tabs .nav-link:hover {
     background-color: var(--primary);
     border-color: var(--primary);
     color: white;

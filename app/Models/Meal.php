@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
     use HasFactory;
+    use HelperTrait;
+
 
 
 
@@ -17,6 +20,36 @@ class Meal extends Model
         return $this->hasMany(MealTag::class, 'mealId');
 
     } // end function
+
+
+
+
+
+    public function tagsInClasses()
+    {
+
+        // 1: getTags
+        $mealTags = $this->tags()->get();
+
+
+        // 1.2: create instance
+        $tagsInArray = [];
+
+        foreach ($mealTags ?? [] as $mealTag) {
+
+            array_push($tagsInArray, $this->getNameURL($mealTag?->tag?->name));
+
+        } // end loop
+
+
+
+        return implode(' ', $tagsInArray);
+
+
+
+    } // end function
+
+
 
 
 

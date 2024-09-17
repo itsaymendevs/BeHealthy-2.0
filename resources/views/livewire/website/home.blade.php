@@ -828,7 +828,7 @@
 
 
                             {{-- singleItem --}}
-                            @foreach ($dinningMeals ?? [] as $key => $dinningMeal)
+                            @foreach ($diningMeals ?? [] as $key => $diningMeal)
 
                             <div class="menu-card-v1" key='sample-meal-{{ $key }}'>
 
@@ -838,15 +838,15 @@
 
 
                                     {{-- diet --}}
-                                    @if ($dinningMeal?->diet)
+                                    @if ($diningMeal?->diet)
 
-                                    <span class="tag">{{ $dinningMeal?->diet?->name }}</span>
+                                    <span class="tag">{{ $diningMeal?->diet?->name }}</span>
 
                                     @endif
                                     {{-- end if --}}
 
 
-                                    <img src='{{ url("{$storagePath}/menu/meals/{$dinningMeal->imageFile}") }}'
+                                    <img src='{{ url("{$storagePath}/menu/meals/{$diningMeal->imageFile}") }}'
                                         class='of-contain' />
                                 </div>
 
@@ -867,10 +867,10 @@
                                     <div class="box-two">
 
                                         {{-- title - desc --}}
-                                        <p class="title px-2">{{ $dinningMeal?->name }}</p>
+                                        <p class="title px-2">{{ $diningMeal?->name }}</p>
 
                                         <p class="desc mb-2">
-                                            {{ $dinningMeal?->desc }}
+                                            {{ $diningMeal?->desc }}
                                         </p>
 
 
@@ -882,14 +882,14 @@
 
 
                                         {{-- navTabs --}}
-                                        <ul class="nav nav-tabs dinning--tabs" id="myTab" role="tablist">
+                                        <ul class="nav nav-tabs dining--tabs" id="myTab" role="tablist">
 
 
                                             {{-- navLinks --}}
-                                            @foreach ($dinningMeal?->sizes ?? [] as $outerKey => $mealSize)
+                                            @foreach ($diningMeal?->sizes ?? [] as $outerKey => $mealSize)
 
                                             <li class="nav-item" role="presentation" wire:ignore
-                                                key='dinning-meal-size-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}'>
+                                                key='dining-meal-size-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}'>
                                                 <button class="nav-link @if ($outerKey == 0) active @endif"
                                                     id="home-tab" data-bs-toggle="tab"
                                                     data-bs-target="#macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}"
@@ -918,7 +918,7 @@
 
 
                                             {{-- 1: sizeTab --}}
-                                            @foreach ($dinningMeal?->sizes ?? [] as $outerKey => $mealSize)
+                                            @foreach ($diningMeal?->sizes ?? [] as $outerKey => $mealSize)
 
                                             <div class="tab-pane fade @if ($outerKey == 0) show active @endif pt-3"
                                                 id="macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}"

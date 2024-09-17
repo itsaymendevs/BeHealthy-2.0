@@ -104,18 +104,17 @@ class Home extends Component
 
 
         // 1.2: sampleMeals
-        $menu = Menu::where('nameURL', 'website')?->first();
+        $menu = Menu::where('nameURL', 'dining')?->first();
         $mealsInArray = MealMenu::where('menuId', $menu->id)?->pluck('mealId')?->toArray() ?? [];
 
 
-        $dinningMeals = Meal::whereIn('id', $mealsInArray)?->get();
+        $diningMeals = Meal::whereIn('id', $mealsInArray)?->get();
 
 
 
 
 
-
-        return view('livewire.website.home', compact('sampleMeals', 'plans', 'dinningMeals'));
+        return view('livewire.website.home', compact('sampleMeals', 'plans', 'diningMeals'));
 
 
 
