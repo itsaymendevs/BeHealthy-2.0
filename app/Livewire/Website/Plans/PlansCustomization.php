@@ -44,7 +44,7 @@ class PlansCustomization extends Component
 
 
     // :: dependencies
-    public $allergyLists, $excludeLists, $sampleMeals, $minimumDeliveryDays;
+    public $allergyLists, $excludeLists, $sampleMeals, $minimumDeliveryDays, $hasOptionalBag;
 
 
 
@@ -76,6 +76,8 @@ class PlansCustomization extends Component
 
 
 
+
+        
 
 
         // :: checkSession
@@ -143,6 +145,17 @@ class PlansCustomization extends Component
             } // end if
 
         } // end if
+
+
+
+
+
+
+
+
+
+        // 1.4: optionalBag
+        $this->hasOptionalBag = $setting->hasOptionalBag;
 
 
 

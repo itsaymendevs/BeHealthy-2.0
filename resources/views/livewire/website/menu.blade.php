@@ -141,7 +141,7 @@
                             {{-- diet --}}
                             @if ($diningMeal?->diet)
 
-                            <span class="tag">{{ $diningMeal?->diet?->name }}</span>
+                            {{-- <span class="tag">{{ $diningMeal?->diet?->name }}</span> --}}
 
                             @endif
                             {{-- end if --}}
