@@ -1,23 +1,7 @@
 <?php
 
-use App\Http\Controllers\MailController;
-use App\Livewire\Portals\Customer\CustomerLogin;
-use App\Livewire\Portals\Customer\CustomerProfile;
-use App\Livewire\Website\Blogs;
-use App\Livewire\Website\Home;
-use App\Livewire\Website\Menu;
-use App\Livewire\Website\Plans;
-use App\Livewire\Website\Plans\PlansCart;
-use App\Livewire\Website\Plans\PlansCheckout;
-use App\Livewire\Website\Plans\PlansCustomization;
-use App\Livewire\Website\Plans\PlansInvoice;
-use App\Livewire\Website\Plans\SinglePlan;
-use App\Livewire\Website\PrivacyPolicy;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
-
-
-
 
 
 
@@ -135,20 +119,6 @@ if (env('APP_ENV') == 'production') {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
@@ -186,42 +156,6 @@ if (env('APP_ENV') == 'production') {
 // 2: renew - invoice
 // Route::get('/plans/invoice', PlansInvoice::class)->name('website.plans.invoice');
 // Route::get('/plans/{token}', Plans::class)->name('website.plansWithToken');
-
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-
-// 3: singlePlan
-// Route::get('/plans/{name}/details', SinglePlan::class)->name('website.plans.details');
-
-
-
-
-
-
-
-// ---------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-// 4.5: plans - checkout
-// Route::get('/plans/{name}/checkout', PlansCheckout::class)->name('website.plans.checkout');
 
 
 
