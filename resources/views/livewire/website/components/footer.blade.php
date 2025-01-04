@@ -1,117 +1,5 @@
 {{-- footer --}}
 <footer id="footer">
-    <div class="footer-top-inner">
-        <div class="container">
-            <div class="row">
-
-
-
-                {{-- leftSection --}}
-                <div class="col-lg-4 col-md-4 col-sm-4 col-12 order-lg-0 order-md-0 order-sm-0 order-1">
-                    <div class="stay-connected-div">
-                        <p class="title">STAY CONNECTED</p>
-
-
-
-
-                        {{-- socialLinks --}}
-                        <div class="social">
-
-
-
-
-                            {{-- 1: tiktok --}}
-                            <a href="https://www.tiktok.com/@behealthydxb?_t=8jI6o7ql8pV&_r=1" class="social-links">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-
-
-
-
-                            {{-- 2: instagram --}}
-                            <a href="https://www.instagram.com/behealthy_dxb?igsh=OTh5d3R5NndocHdn"
-                                class="social-links">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-
-
-
-
-                            {{-- 3: snapchat --}}
-                            <a href="#" class="social-links me-0">
-                                <i class="fab fa-snapchat-ghost"></i>
-                            </a>
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-
-                {{-- ---------------------------------------- --}}
-                {{-- ---------------------------------------- --}}
-
-
-
-
-
-
-
-                {{-- rightSection --}}
-                <div class="col-lg-8 col-md-8 col-sm-8 col-12 order-lg-1 order-md-1 order-sm-1 order-0">
-                    <div class="text-center subscribe-div-border">
-
-
-
-
-
-                        {{-- 1: subheading --}}
-                        <p class="title text-center">STAY CONNECTED</p>
-                        <p class="subtitle">For spam-free news, inspo + tips on all things healthy living, sign up to
-                            our weekly newsletter.</p>
-
-
-
-
-
-                        {{-- 2: subscriptionForm --}}
-                        <div class="subscribe">
-                            <form action="">
-                                <div class="input-group mb-3">
-
-
-                                    {{-- input --}}
-                                    <input type="text" class="form-control" placeholder="Email Address"
-                                        aria-describedby="subscribe" />
-
-
-                                    {{-- submitButton --}}
-                                    <span class="input-group-text" id="subscribe">
-                                        <button type="button" class="btn btn-subscribe">GO</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                        {{-- endForm --}}
-
-
-                    </div>
-                </div>
-            </div>
-            {{-- endRow --}}
-
-
-
-        </div>
-    </div>
-    {{-- endTopFooter --}}
 
 
 
@@ -137,14 +25,25 @@
 
 
 
-
+                <div class="col-lg-2 col-md-4 col-12">
+                </div>
 
                 {{-- 1: shortLinks --}}
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="col-lg-2 col-md-4 col-sm-12 col-12">
                     <div class="footer-links-div first-top-footer-links">
+                        <p class="footer-heading">Services</p> <!-- Add the heading here -->
                         <a href="{{ route('website.menu') }}" class="footer-link"> Menu </a>
                         <a href="{{ route('website.home') }}#meal-plan-section" class="footer-link"> Plans </a>
                         <a href="{{ route('website.home') }}#how-it-works" class="footer-link"> About Us </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12 col-12">
+                    <div class="footer-links-div first-top-footer-links">
+                        <p class="footer-heading">Legal</p>
+                        <a href="{{ route('website.menu') }}" class="footer-link"> Privacy policy</a>
+                        <a href="{{ route('website.home') }}#meal-plan-section" class="footer-link"> Terms & conditions </a>
+                        <a href="{{ route('website.home') }}#how-it-works" class="footer-link"> FAQs </a>
                     </div>
                 </div>
 
@@ -152,10 +51,11 @@
 
 
 
+
                 {{-- 2: contact --}}
-                <div class="col-lg-4 col-md-4 col-12">
+                <div class="col-lg-2 col-md-4 col-sm-12 col-12">
                     <div class="footer-links-div medium-footer-links">
-                        <p class="title">Customer support</p>
+                        <p class="footer-heading">Customer support</p>
 
 
                         {{-- 2.1: email --}}
@@ -171,80 +71,119 @@
 
 
                         {{-- 2.3: extraPhones --}}
-                        <div class="d-flex align-items-center mt-3 ft-2-num">
-                            <a href="tel:042870799" class="footer-link"> 04-2870799 </a>
-                            <span class="mx-2">/</span>
-                            <a href="tel:0555531152" class="footer-link mt-0">
-                                0555531152
-                            </a>
+                        <a href="tel:042870799" class="footer-link"> 04-2870799 / 0555531152 </a>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-12 col-12">
+                    <div>
+
+
+
+
+
+                        {{-- 1: subheading --}}
+                        <div class="stay-connected-div">
+                            <p class="footer-heading">STAY CONNECTED</p>
+
+
+
+
+                       
+                            <div class="social">
+
+
+
+
+                                {{-- 1: tiktok --}}
+                                <a href="https://www.tiktok.com/@behealthydxb?_t=8jI6o7ql8pV&_r=1" class="social-links">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+
+
+
+
+                                {{-- 2: instagram --}}
+                                <a href="https://www.instagram.com/behealthy_dxb?igsh=OTh5d3R5NndocHdn"
+                                    class="social-links">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+
+
+
+                                {{-- 3: snapchat --}}
+                                <a href="#" class="social-links me-0">
+                                    <i class="fab fa-snapchat-ghost"></i>
+                                </a>
+
+
+
+
+                            </div>
+
+
+
+                        
+                            <!-- <div class="subscribe">
+                                <form action="">
+                                    <div class="input-group mb-3">
+
+
+                                        {{-- input --}}
+                                        <input type="text" class="form-control" placeholder="Email Address"
+                                            aria-describedby="subscribe" />
+
+
+                                        {{-- submitButton --}}
+                                        <span class="input-group-text" id="subscribe">
+                                            <button type="button" class="btn btn-subscribe">GO</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div> -->
+                       
+
                         </div>
-
                     </div>
+
                 </div>
 
-
-
-
-
-
-
-
-
-                {{-- --------------------------- --}}
-                {{-- --------------------------- --}}
-
-
-
-
-
-                {{-- privacy --}}
-                <div class="offset-lg-2 offset-md-2 col-lg-2 col-md-2 col-12">
-                    <div class="footer-links-div copyright-footer-links-div">
-                        <p class="copyright-text">©2024 Be Healthy</p>
-                        <a href="{{ route('website.privacy') }}" class="footer-link"> Terms of Use </a>
-                        <a href="{{ route('website.privacy') }}" class="footer-link remove-margin-768">
-                            Privacy Policy
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-4 col-12">
                 </div>
-
-
-
-
-
-                {{-- empty --}}
-                <div class="col-12 mt-4"></div>
-
-
-                {{-- ------------------------------- --}}
-                {{-- ------------------------------- --}}
-                {{-- ------------------------------- --}}
-
-
-
-
-                {{-- poweredBy --}}
-                <div class="col-6 d-flex justify-content-start  align-items-center">
-                    <div class="text-center">
-                        <a class="d-flex justify-content-start justify-content-lg-center align-items-center" href="">
-                            <span>Powered By</span>
-                            <img class="trustpilot-title" src="{{ url('assets/images/doer.png') }}" alt="title" />
-                        </a>
-                    </div>
-                </div>
-                {{-- endWrap --}}
-
-
-
-
-
-                <div class="col-6 d-flex align-items-center justify-content-end">
-                    <img src="{{ url('assets/images/card-enhanced.png') }}"
-                        style="height: 30px; width: 100px; object-fit: contain;">
-                </div>
-
             </div>
+
+
+            
         </div>
     </div>
+
+    
+    <div class="footer-end">
+    <div class="d-flex container">
+        <!-- Second div to appear on the left -->
+        
+        
+        <!-- First div to appear on the right -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4  text-center">
+         <span class="me-2">© Copyright 2024. All rights reserved.</span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4" style="text-align:center;">
+            <div class="">
+                
+                <span class="me-2">Powered By</span>
+                <img src="{{ url('assets/images/doer.png') }}" alt="Powered By">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4  text-center">
+            <img src="{{ url('assets/images/card-enhanced.png') }}" alt="Enhanced Card Image">
+        </div>
+    </div>
+</div>
+
+                
+    
 </footer>
+
 {{-- endFooter --}}

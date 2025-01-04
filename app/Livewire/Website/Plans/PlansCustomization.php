@@ -77,8 +77,6 @@ class PlansCustomization extends Component
 
 
 
-        
-
 
         // :: checkSession
         if (session('pre-customer') && session('pre-customer')->{'isExistingCustomer'}) {
@@ -139,7 +137,7 @@ class PlansCustomization extends Component
             } else {
 
 
-                $restrictionDays = CustomerSubscriptionSetting::first()?->changeCalendarRestriction ?? 0;
+                $restrictionDays = CustomerSubscriptionSetting::first()?->changeCalendarRestriction ?? 1;
                 $this->instance->initStartDate = date('Y-m-d', strtotime("+{$restrictionDays} days"));
 
             } // end if
@@ -153,10 +151,8 @@ class PlansCustomization extends Component
 
 
 
-
         // 1.4: optionalBag
         $this->hasOptionalBag = $setting->hasOptionalBag;
-
 
 
 
@@ -442,14 +438,19 @@ class PlansCustomization extends Component
 
 
     #[On('confirmStep')]
-    public function continue($personalDetails = null)
+    public function continue($personalDetails = null, $isManualExistingCustomer = false)
     {
 
 
+
+
         // 1: handleParams
-        if ($personalDetails) {
+        if ($personalDetails && $isManualExistingCustomer == false) {
+
 
             $personalDetails = json_decode(json_encode($personalDetails));
+
+            $this->instance->isManualExistingCustomer = false;
 
             $this->instance->firstName = $personalDetails->firstName;
             $this->instance->lastName = $personalDetails->lastName;
@@ -467,6 +468,67 @@ class PlansCustomization extends Component
 
         } // end if
 
+
+
+
+
+
+
+
+
+        // 1.2: handleParams
+        if ($personalDetails && $isManualExistingCustomer == true) {
+
+
+
+            $personalDetails = json_decode(json_encode($personalDetails));
+
+            $this->instance->isManualExistingCustomer = true;
+
+            $this->instance->firstName = $personalDetails->firstName;
+            $this->instance->lastName = $personalDetails->lastName;
+
+            $this->instance->gender = $personalDetails->gender;
+            $this->instance->email = $personalDetails->email;
+            $this->instance->emailProvider = $personalDetails->emailProvider;
+            $this->instance->fullEmail = $personalDetails->fullEmail;
+
+            $this->instance->phone = $personalDetails->phone;
+            $this->instance->phoneKey = $personalDetails->phoneKey;
+
+            $this->instance->whatsapp = $personalDetails->whatsapp;
+            $this->instance->whatsappKey = $personalDetails->whatsappKey;
+
+
+
+
+
+            // 1.2.4: location
+            $this->instance->cityId = $personalDetails->cityId;
+            $this->instance->cityDistrictId = $personalDetails->cityDistrictId;
+            $this->instance->cityDeliveryTimeId = $personalDetails->cityDeliveryTimeId;
+
+            $this->instance->locationAddress = $personalDetails->locationAddress;
+            $this->instance->apartment = $personalDetails->apartment;
+            $this->instance->floor = $personalDetails->floor;
+
+
+
+
+
+
+            // 1.2.5: deliveryDays - initStartDate
+            $this->instance->deliveryDays = $personalDetails->deliveryDays;
+            $this->instance->initStartDate = $personalDetails->initStartDate;
+
+
+
+            $this->instance->startDate = (date('Y-m-d', strtotime($this->instance->startDate)) < $this->instance->initStartDate) ? date('d/m/Y', strtotime($this->instance->initStartDate)) : $this->instance->startDate;
+
+
+
+
+        } // end if
 
 
 
@@ -534,12 +596,33 @@ class PlansCustomization extends Component
 
 
 
+        // 3.1.5: localBag is zero [BeMoreHealthy]
+        if (env('APP_PAYMENT') && env('APP_PAYMENT') == 'local' && env('APP_CLIENT') == 'BeMoreHealthy') {
+
+            $this->instance->bagPrice = 0;
+
+        } // end if
+
+
+
+
+
+
+
+        // ----------------------------------------------------
+        // ----------------------------------------------------
+        // ----------------------------------------------------
+
+
+
 
 
 
         // 3.2: totalPrice
         $this->instance->totalPrice = $this->instance->planPrice + $this->instance->bagPrice;
         $this->instance->totalCheckoutPrice = $this->instance->planPrice + $this->instance->bagPrice;
+
+
 
 
 
@@ -612,6 +695,8 @@ class PlansCustomization extends Component
 
 
         // 1.2: plans
+        // $plans = Plan::where('id', '!=', $this->plan->id)->get();
+
         $plans = Plan::whereHas('ranges')
             ->whereHas('bundles')
             ->whereHas('defaultCalendarRelation')

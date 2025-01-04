@@ -58,7 +58,6 @@ class PlansCheckout extends Component
 
 
 
-
         // 1.2: handleSession
         if (session('pre-customer')) {
 
@@ -68,10 +67,9 @@ class PlansCheckout extends Component
         } else {
 
             Session::forget('customer');
-            $this->redirect(route('website.plans.customization', [$this->plan->nameURL]));
+            return $this->redirect(route('website.plans.customization', [$this->plan->nameURL]));
 
         } // end if
-
 
 
 
@@ -112,7 +110,7 @@ class PlansCheckout extends Component
 
 
         // 2.7: getDeliveryCharge
-        if (session('pre-customer') && session('pre-customer')->{'isExistingCustomer'}) {
+        if (session('pre-customer') && (session('pre-customer')->{'isExistingCustomer'} || session('pre-customer')->{'isManualExistingCustomer'})) {
 
 
             $city = City::find($this->instance->cityId);
@@ -402,7 +400,8 @@ class PlansCheckout extends Component
 
             // 1: changeProcessing - determineCustomer
             $this->isProcessing = true;
-            $this->instance->isExistingCustomer ? $type = 'customer' : $type = 'lead';
+            ($this->instance->isExistingCustomer || $this->instance->isManualExistingCustomer) ? $type = 'customer' : $type = 'lead';
+
 
 
 
@@ -431,7 +430,33 @@ class PlansCheckout extends Component
                 } // end if
 
 
+
+
+
+
+                // 1.3: Stripe
+            } elseif ($this->paymentMethod->name == 'Stripe') {
+
+
+
+                if (env('APP_PAYMENT') && env('APP_PAYMENT') == 'local') {
+
+                    $this->makeLocalCheckoutPaymennt($this->instance, $this->payment, $this->paymentMethod);
+
+                } else {
+
+                    return redirect()->route('website.plans.payment', [$this->plan->nameURL]);
+
+
+                } // end if
+
+
+
+
             } // end if
+
+
+
 
 
 
@@ -515,7 +540,6 @@ class PlansCheckout extends Component
 
 
 
-
         // 2.1: determine
         if ($type == 'customer') {
 
@@ -526,7 +550,6 @@ class PlansCheckout extends Component
             $response = $this->makeRequest('subscription/lead/store', $this->instance);
 
         } // end if
-
 
 
 

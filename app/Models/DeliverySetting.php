@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MealTag extends Model
+class DeliverySetting extends Model
 {
     use HasFactory;
 }

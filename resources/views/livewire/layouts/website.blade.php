@@ -9,7 +9,7 @@
         {{-- meta --}}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Be Healty DXB</title>
+        <title>Be Healthy DXB</title>
 
 
 
@@ -54,6 +54,15 @@
 
         {{-- icons --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
+
+
+
+        <!-- swiper -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{{ url('assets/css/swiper.css') }}">
 
 
 
@@ -150,6 +159,7 @@
         {{-- essentials --}}
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"
             integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
         </script>
@@ -157,6 +167,10 @@
 
 
 
+
+        {{-- swiper --}}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="{{url('assets/js/init-swiper.js')}}"></script>
 
 
 

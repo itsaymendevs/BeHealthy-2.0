@@ -37,6 +37,50 @@ class CustomerSubscription extends Model
 
 
 
+    public function nextDelivery()
+    {
+
+        $nextDelivery = $this->deliveries()?->where('deliveryDate', '>=', $this->getCurrentDate())?->where('status', '!=', 'Canceled')?->first();
+
+
+        return $nextDelivery ?? null;
+
+
+    } // end function
+
+
+
+
+
+
+
+
+    public function isNextDeliveryPaused()
+    {
+
+        $nextDelivery = $this->deliveries()?->where('deliveryDate', '>=', $this->getCurrentDate())?->where('status', '!=', 'Canceled')?->first();
+
+
+        if ($nextDelivery) {
+
+
+            return in_array($nextDelivery?->status, ['Skipped', 'Paused']) ? true : false;
+
+        } else {
+
+
+            return false;
+
+        } // end if
+
+
+
+    } // end function
+
+
+
+
+
 
 
     public function pauses()
@@ -171,7 +215,7 @@ class CustomerSubscription extends Model
         // 1: latestCollected - Delivery
         $latestCollectedDelivery = $this->deliveries()?->where('isBagCollected', 1)
                 ?->where('deliveryDate', '<=', $this->getCurrentDate())
-                ?->latest()?->first();
+                ?->latest('id')?->first();
 
 
 

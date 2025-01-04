@@ -11,6 +11,17 @@ class CustomerSubscriptionType extends Model
 
 
 
+
+    public function mealType()
+    {
+
+        return $this->belongsTo(MealType::class, 'mealTypeId');
+
+    } // end function
+
+
+
+
     public function type()
     {
 
@@ -20,14 +31,25 @@ class CustomerSubscriptionType extends Model
 
 
 
-
-
-    public function mealType()
+    public function customer()
     {
 
-        return $this->belongsTo(MealType::class, 'mealTypeId');
+        return $this->belongsTo(Customer::class, 'customerId');
 
     } // end function
+
+
+
+
+    public function subscription()
+    {
+
+        return $this->belongsTo(CustomerSubscription::class, 'customerSubscriptionId');
+
+    } // end function
+
+
+
 
 
 

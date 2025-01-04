@@ -87,6 +87,62 @@ class Plan extends Model
 
 
 
+    public function defaultCalendarMeals()
+    {
+
+
+        // 1: getDefaultCalendar
+        $sampleMeals = [];
+        $defaultCalendar = $this->defaultCalendar() ?? null;
+
+
+        if ($defaultCalendar) {
+
+
+            // 1.2: getMeals
+            $mealsIDs = $defaultCalendar?->calendar?->scheduleByDate($this->getCurrentDate())?->meals?->pluck('mealId')?->toArray() ?? [];
+
+            $sampleMeals = Meal::whereIn('id', $mealsIDs ?? [])?->get();
+
+
+        } // end if
+
+
+
+
+
+        return $sampleMeals ?? [];
+
+
+    } // end function
+
+
+
+
+
+
+
+
+    public function tagsInArray()
+    {
+
+        // 1: getTags
+        $tagsInArray = $this->tags ? explode('_', $this->tags) : [];
+
+        return $tagsInArray ?? [];
+
+
+    } // end function
+
+
+
+
+
+
+
+
+
+
     public function subscriptions()
     {
 

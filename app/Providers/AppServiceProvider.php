@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         // 1.5: storagePath
-        View::share('storagePath', env('APP_STORAGE'));
+        View::share('storagePath', env('APP_STORAGE') . '/' . $profile->nameURL);
 
 
     } // end function

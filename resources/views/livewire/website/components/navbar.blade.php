@@ -125,7 +125,7 @@
 
 
     {{-- promocodeToast --}}
-    <div class="toast-main-div" id="openToast">
+    <!-- <div class="toast-main-div" id="openToast">
         <div class="notification--reminder">
             <p class="m-0">
                 Up to 45 AED off your first order? Just use code <b>YOUR20</b> at checkout
@@ -136,7 +136,7 @@
                 <i class="fal fa-times"></i>
             </a>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -157,26 +157,26 @@
     {{-- 1: Home Banner --}}
     @if (Request::is('/'))
 
-    <div class="main-banner-div">
+    <!-- <div class="main-banner-div">
         <div class="banner-inner">
             <div class="banner-wrapper">
                 <div class="">
                     <div class="">
-                        <h1 class="title desktop">
+                        <h1 class="title desktop slide-fade-in">
                             PREMIUM MEAL PREP TO FUEL YOUR GOALS
                         </h1>
                         <p>
                             CHEF-CRAFTED HEALTHY MEAL DELIVERY, FRESH AND READY TO EAT.
                         </p>
                     </div>
-                    <button type="button" class="btn btn-black btn-banner">
+                    <button type="button" class="btn btn-black btn-banner slide-fade-in-bottom">
                         Get Started
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
+ -->
 
 
 

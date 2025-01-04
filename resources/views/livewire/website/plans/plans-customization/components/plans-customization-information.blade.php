@@ -33,11 +33,88 @@
 
 
 
+        {{-- switch --}}
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="btn-group mx-auto mb-4" role="group" aria-label="Customer's Type">
+
+
+                    {{-- NewCustomer --}}
+                    <button class="btn btn--regular sm border--bottom btn--collapse  fw-500 fs-14 " type='button'
+                        data-type='0'>New Customer</button>
+
+
+
+
+                    {{-- existingCustomer --}}
+                    <button class="btn btn--regular sm border--bottom btn--collapse collapsed fw-500 fs-14"
+                        data-type='1' type='button'>Existing Customer</button>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        {{-- ------------------------------------------------- --}}
+        {{-- ------------------------------------------------- --}}
+        {{-- ------------------------------------------------- --}}
+        {{-- ------------------------------------------------- --}}
+        {{-- ------------------------------------------------- --}}
+
+
 
 
 
         {{-- content --}}
-        <form wire:submit='continue' class="row mb-5 justify-content-center justify-content-md-start">
+
+        {{-- A: newCustomer --}}
+        <form id='form--new-customer' wire:submit='continue'
+            class="row mb-5 align-items-end justify-content-center justify-content-md-start"
+            wire:loading.class='no-events-loading'>
+
+
+
+
+            {{-- --------------------------- --}}
+            {{-- --------------------------- --}}
+
+
+
+
+
+            {{-- email --}}
+            <div class="col-12 col-lg-6 order-2 order-lg-1">
+                <div class="d-flex form--input-wrapper flex-column mb-4">
+
+                    <label class='w-100 d-flex align-items-center sm'>
+                        <span>Email Address</span>
+                    </label>
+
+                    <input type="email" class='form--input' wire:model='instance.fullEmail' required>
+                </div>
+            </div>
+            {{-- endCol --}}
+
+
+
+
+
+
+
+            {{-- --------------------------- --}}
+            {{-- --------------------------- --}}
+
+
 
 
 
@@ -46,8 +123,8 @@
 
 
             {{-- gender --}}
-            <div class="col-12">
-                <div class="d-flex mb-4 flex-wrap plan--days-wrapper justify-content-center">
+            <div class="col-12 col-lg-6 order-1 order-lg-2 ">
+                <div class="d-flex mb-4 pb-1 flex-wrap plan--days-wrapper justify-content-center">
 
 
 
@@ -91,9 +168,9 @@
 
 
 
+            {{-- --------------------------- --}}
+            {{-- --------------------------- --}}
 
-            {{-- --------------------------- --}}
-            {{-- --------------------------- --}}
 
 
 
@@ -101,14 +178,14 @@
 
 
             {{-- firstName --}}
-            <div class="col-6 col-sm-6">
+            <div class="col-6 col-sm-6 order-3">
                 <div class="d-flex form--input-wrapper flex-column mb-4">
 
                     <label class='w-100 d-flex align-items-center sm '>
                         <span>First Name</span>
                     </label>
 
-                    <input type="text" class='form--input text-center' wire:model='instance.firstName' required>
+                    <input type="text" class='form--input' wire:model='instance.firstName' required>
                 </div>
             </div>
 
@@ -118,14 +195,14 @@
 
 
             {{-- lastName --}}
-            <div class="col-6 col-sm-6">
+            <div class="col-6 col-sm-6 order-4">
                 <div class="d-flex form--input-wrapper flex-column mb-4">
 
                     <label class='w-100 d-flex align-items-center sm'>
                         <span>Last Name</span>
                     </label>
 
-                    <input type="text" class='form--input text-center' wire:model='instance.lastName' required>
+                    <input type="text" class='form--input' wire:model='instance.lastName' required>
                 </div>
             </div>
 
@@ -148,7 +225,7 @@
 
 
             {{-- phone --}}
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 order-5">
                 <div class="d-flex form--input-wrapper flex-column mb-4">
 
                     <label class='w-100 d-flex align-items-center sm'>
@@ -208,7 +285,7 @@
 
 
             {{-- whatsapp --}}
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 order-5">
                 <div class="d-flex form--input-wrapper flex-column mb-4">
 
                     <label class='w-100 d-flex align-items-center sm'>
@@ -239,7 +316,7 @@
 
                         {{-- input --}}
                         <input type="text" pattern="[0-9]+" class='form--input side--right text-center'
-                            style="width: 70% !important" wire:model='instance.whatsapp' minlength="5" maxlength="9"
+                            style="width: 70% !important" wire:model='instance.whatsapp' minlength="4" maxlength="10"
                             required>
 
 
@@ -252,59 +329,6 @@
             </div>
             {{-- endCol --}}
 
-
-
-
-
-
-
-
-
-            {{-- ------------------------------------ --}}
-            {{-- ------------------------------------ --}}
-
-
-
-
-
-
-            {{-- email --}}
-            <div class="col-12 col-md-12">
-                <div class="d-flex form--input-wrapper flex-column mb-4">
-
-                    <label class='w-100 d-flex align-items-center sm'>
-                        <span>Email Address</span>
-                    </label>
-
-
-
-                    {{-- inputWithSelect --}}
-                    <div class="form--input-with-select">
-
-                        {{-- input --}}
-                        <input type="text" class='form--input side--left text-center' style="width: 60% !important"
-                            wire:model='instance.email' required>
-
-
-                        {{-- select --}}
-                        <div class="form--select-wrapper side--right text-center" style="width: 40% !important">
-                            <select class='init--select form--select' value="@gmail.com"
-                                data-instance='instance.emailProvider' required>
-
-                                @foreach ($providers as $provier)
-                                <option value="{{ $provier }}">
-                                    {{ $provier }}
-                                </option>
-                                @endforeach
-
-                            </select>
-                        </div>
-                    </div>
-                    {{-- endWithSelect --}}
-
-                </div>
-            </div>
-            {{-- endCol --}}
 
 
 
@@ -326,7 +350,7 @@
 
 
             {{-- submitButton --}}
-            <div class="col-12">
+            <div class="col-12 order-5">
                 <div class="d-flex form--input-wrapper justify-content-center mb-4 mt-1
                 @if (!$settings?->showButtonMotion) no--button-motion @endif"
                     wire:loading.class='processing--button-wrap' wire:target='continue'>
@@ -336,6 +360,92 @@
                 </div>
             </div>
 
+
+
+
+        </form>
+
+
+
+
+
+
+        {{-- ------------------------------------------------- --}}
+        {{-- ------------------------------------------------- --}}
+
+
+
+
+        {{-- B: existingCustomer --}}
+        <form id='form--existing-customer' wire:submit='continueExisting'
+            class="row mb-5 align-items-end justify-content-center justify-content-md-start d-none"
+            wire:loading.class='no-events-loading'>
+
+
+
+
+            {{-- --------------------------- --}}
+            {{-- --------------------------- --}}
+
+
+
+
+
+            {{-- email --}}
+            <div class="col-12 col-lg-6">
+                <div class="d-flex form--input-wrapper flex-column mb-4">
+
+                    <label class='w-100 d-flex align-items-center sm'>
+                        <span>Email Address</span>
+                    </label>
+
+                    <input type="email" class='form--input' wire:model='instance.existingFullEmail' required>
+                </div>
+            </div>
+            {{-- endCol --}}
+
+
+
+
+
+
+            {{-- email --}}
+            <div class="col-12 col-lg-6">
+                <div class="d-flex form--input-wrapper flex-column mb-4">
+
+                    <label class='w-100 d-flex align-items-center sm'>
+                        <span>Password</span>
+                    </label>
+
+                    <input type="password" class='form--input' wire:model='instance.existingPassword' required>
+                </div>
+            </div>
+            {{-- endCol --}}
+
+
+
+
+
+
+
+            {{-- ------------------------------------ --}}
+            {{-- ------------------------------------ --}}
+
+
+
+
+
+
+            {{-- submitButton --}}
+            <div class="col-12">
+                <div class="d-flex form--input-wrapper justify-content-center mb-4 mt-1
+                @if (!$settings?->showButtonMotion) no--button-motion @endif"
+                    wire:loading.class='processing--button-wrap' wire:target='continueExisting'>
+
+                    <livewire:website.components.items.button-blob title='Continue' type="submit" />
+
+                </div>
+            </div>
 
 
 
@@ -384,6 +494,53 @@
 
 
       }); //end function
+
+
+
+
+
+
+
+    //   -----------------------------------------------
+    //   -----------------------------------------------
+
+
+
+
+      $(document).on('click', "#information--modal .btn--collapse", function(event) {
+
+
+
+        // 2.1: getValue
+        isManualExistingCustomer = $(this).attr('data-type');
+
+        if (isManualExistingCustomer == 1) {
+
+            $('#form--new-customer').addClass('d-none');
+            $('#form--existing-customer').removeClass('d-none');
+
+        } else {
+
+            $('#form--new-customer').removeClass('d-none');
+            $('#form--existing-customer').addClass('d-none');
+
+        } // end if
+
+
+
+
+        // 2.2: toggleActive
+        $("#information--modal .btn--collapse").addClass('collapsed');
+        $(this).removeClass('collapsed');
+
+
+
+    }); //end function
+
+
+
+
+
     </script>
 
 
