@@ -1,0 +1,38 @@
+.plans--card, .plans--card * {
+  transition: 0.2s all ease-in-out;
+}
+
+.navbar--menu .nav-link {
+  transition: 0.2s all ease-in-out;
+}
+
+.body--sidebar-whatsapp img {
+  transition: 0.3s all ease-in;
+}
+
+.btn--scheme-outline-theme, .btn--scheme-theme, nav-link {
+  transition: 0.2s all ease-in-out;
+}
+
+/* insta */
+
+.insta--post-overlay, .insta--post * {
+  transition: 0.3s all ease-in;
+}
+
+.menu--card, .menu--card * {
+  transition: 0.2s all ease-in-out;
+}
+
+.footer--links-wrapper, .footer--links-wrapper * {
+  transition: 0.2s all ease-in-out;
+}
+
+.footer-end-section, .footer-end-section * {
+  transition: 0.2s all ease-in-out;
+}
+
+.dining--floaters, .dining--floaters * {
+  transition: 0.2s all ease-in-out;
+}
+

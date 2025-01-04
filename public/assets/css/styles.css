@@ -1,0 +1,94 @@
+html {
+  background-color: var(--color-body);
+}
+
+body {
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  position: relative;
+  background-color: var(--color-body);
+}
+
+@media (max-width: 1199px) {
+  body {
+    /*display: none;*/
+  }
+}
+
+.section--padding {
+  padding-right: 10px;
+}
+
+/* btn */
+
+.btn--scheme.lg {
+  min-width: 150px;
+  height: 44px;
+}
+
+/* scheme-theme */
+
+.btn--scheme-theme {
+  background-color: var(--color-theme);
+  color: var(--color-text-reverse) !important;
+  min-width: 105px;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  border: 2px solid var(--color-theme) !important;
+  box-shadow: none;
+}
+
+.btn--scheme-theme:focus, .btn--scheme-theme:hover {
+  background-color: transparent;
+  border: 2px solid var(--color-theme);
+  color: var(--color-theme) !important;
+}
+
+.btn--scheme-dark {
+  background-color: var(--color-text);
+  min-width: 105px;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  border: 2px solid var(--color-text) !important;
+  box-shadow: none;
+}
+
+.btn--scheme-dark:focus, .btn--scheme-dark:hover {
+  background-color: transparent;
+  border: 2px solid var(--color-text);
+  color: var(--color-text) !important;
+}
+
+/* outline */
+
+.btn--scheme-outline-theme {
+  background-color: var(--color-text-reverse);
+  color: var(--color-theme) !important;
+  min-width: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  border: 2px solid var(--color-theme) !important;
+  box-shadow: none;
+}
+
+.btn--scheme-outline-theme:focus, .btn--scheme-outline-theme:hover {
+  background-color: var(--color-theme);
+  border: 2px solid var(--color-theme);
+  color: var(--color-text-reverse) !important;
+}
+

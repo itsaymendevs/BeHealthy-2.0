@@ -1,0 +1,11 @@
+:root {
+  --color-text: #111;
+  --color-text-dim: #000;
+  --color-text-reverse: white;
+  --color-body: white;
+  --color-theme: #08663d;
+  --color-theme-dim: #22382e;
+  --color-theme-secondary: #00a45c;
+  --btn-radius: 4px;
+}
+

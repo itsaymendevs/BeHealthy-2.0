@@ -1,0 +1,690 @@
+/* font sizes */
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-10 {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-11 {
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-12 {
+    font-size: 12px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-13 {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-14 {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-15 {
+    font-size: 15px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-16 {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-17 {
+    font-size: 17px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-18 {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-19 {
+    font-size: 19px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-20 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-21 {
+    font-size: 21px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-22 {
+    font-size: 22px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-23 {
+    font-size: 23px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-24 {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-25 {
+    font-size: 25px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-26 {
+    font-size: 26px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-27 {
+    font-size: 27px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-28 {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-29 {
+    font-size: 29px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-30 {
+    font-size: 30px !important;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 575px) {
+  .fs-sm-32 {
+    font-size: 32px !important;
+  }
+}
+
+/* mid */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-10 {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-11 {
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-12 {
+    font-size: 12px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-13 {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-14 {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-15 {
+    font-size: 15px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-16 {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-17 {
+    font-size: 17px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-18 {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-19 {
+    font-size: 19px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-20 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-21 {
+    font-size: 21px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-22 {
+    font-size: 22px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-23 {
+    font-size: 23px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-24 {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-25 {
+    font-size: 25px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-26 {
+    font-size: 26px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-27 {
+    font-size: 27px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-28 {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-29 {
+    font-size: 29px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-30 {
+    font-size: 30px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .fs-md-32 {
+    font-size: 32px !important;
+  }
+}
+
+/* large */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-10 {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-11 {
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-12 {
+    font-size: 12px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-13 {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-14 {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-15 {
+    font-size: 15px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-16 {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-17 {
+    font-size: 17px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-18 {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-19 {
+    font-size: 19px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-20 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-21 {
+    font-size: 21px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-22 {
+    font-size: 22px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-23 {
+    font-size: 23px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-24 {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-25 {
+    font-size: 25px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-26 {
+    font-size: 26px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-27 {
+    font-size: 27px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-28 {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-29 {
+    font-size: 29px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-30 {
+    font-size: 30px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .fs-lg-32 {
+    font-size: 32px !important;
+  }
+}
+
+/* xl */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-10 {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-11 {
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-12 {
+    font-size: 12px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-13 {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-14 {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-15 {
+    font-size: 15px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-16 {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-17 {
+    font-size: 17px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-18 {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-19 {
+    font-size: 19px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-20 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-21 {
+    font-size: 21px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-22 {
+    font-size: 22px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-23 {
+    font-size: 23px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-24 {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-25 {
+    font-size: 25px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-26 {
+    font-size: 26px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-27 {
+    font-size: 27px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-28 {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-29 {
+    font-size: 29px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-30 {
+    font-size: 30px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-32 {
+    font-size: 32px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .fs-xl-38 {
+    font-size: 38px !important;
+  }
+}
+
+/* xxl */
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-10 {
+    font-size: 10px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-11 {
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-12 {
+    font-size: 12px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-13 {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-14 {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-15 {
+    font-size: 15px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-16 {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-17 {
+    font-size: 17px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-18 {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-19 {
+    font-size: 19px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-20 {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-21 {
+    font-size: 21px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-22 {
+    font-size: 22px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-23 {
+    font-size: 23px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-24 {
+    font-size: 24px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-25 {
+    font-size: 25px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-26 {
+    font-size: 26px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-27 {
+    font-size: 27px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-28 {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-29 {
+    font-size: 29px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-30 {
+    font-size: 30px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-32 {
+    font-size: 32px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .fs-xxl-38 {
+    font-size: 38px !important;
+  }
+}
+
+/* line-height */
+
+@media (max-width: 1199px) {
+  .lh-xl-base {
+    line-height: inherit;
+  }
+}
+

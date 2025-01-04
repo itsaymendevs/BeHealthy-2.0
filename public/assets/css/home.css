@@ -1,0 +1,101 @@
+.body--wrapper {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+@media (max-width: 1199px) {
+  .body--wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .body--wrapper {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+/* sidebars */
+
+.body--right-siderbar {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  height: 100vh;
+  background-color: white;
+  width: 57px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-lr;
+}
+
+.body--right-siderbar a, .body--left-siderbar a {
+  height: 100%;
+  font-family: 'Patua One';
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 900;
+  box-shadow: none;
+  padding: 0px;
+  border: none;
+  transform: rotate(-180deg);
+}
+
+.body--left-siderbar a {
+  text-orientation: mixed;
+  font-size: 14px;
+}
+
+.body--right-siderbar a {
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+/* left sidebar */
+
+.body--left-siderbar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  height: 100vh;
+  background-color: white;
+  width: 57px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-rl;
+}
+
+@media (max-width: 1199px) {
+  .body--left-siderbar, .body--right-siderbar {
+    display: none !important;
+  }
+}
+
+.body--left-siderbar-clone {
+  position: absolute;
+}
+
+/* sidebar whatsapp */
+
+.body--sidebar-whatsapp {
+  height: auto !important;
+}
+
+.body--sidebar-whatsapp img {
+  width: 29px;
+  margin-bottom: 16px;
+  object-fit: contain;
+  margin-right: 9px;
+  transform: rotate(180deg);
+}
+
+.body--sidebar-whatsapp:hover img {
+  transform: scale(1.2) rotate(180deg);
+}
+
