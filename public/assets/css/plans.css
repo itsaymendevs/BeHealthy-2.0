@@ -1,194 +1,203 @@
 #plans--section {
-  min-height: 720px;
+    min-height: 720px;
 }
 
 @media (max-width: 1399px) {
-  #plans--section {
-    min-height: 670px;
-  }
+    #plans--section {
+        min-height: 670px;
+    }
 }
 
 @media (max-width: 991px) {
-  #plans--section {
-    min-height: 630px;
-  }
+    #plans--section {
+        min-height: 630px;
+    }
 }
 
 @media (max-width: 757px) {
-  #plans--section {
-    min-height: 690px;
-  }
+    #plans--section {
+        min-height: 690px;
+    }
 }
 
 @media (max-width: 575px) {
-  #plans--section {
-    min-height: 660px;
-  }
+    #plans--section {
+        min-height: 640px;
+    }
 }
 
 .plans--title.for-plans {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 .plans--title {
-  font-size: 52px;
-  max-width: 580px;
+    font-size: 52px;
+    max-width: 580px;
 }
 
 @media (max-width: 1199px) {
-  .plans--title {
-    max-width: 435px;
-  }
+    .plans--title {
+        max-width: 435px;
+    }
 }
 
 @media (max-width: 575px) {
-  .plans--title {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
+    .plans--title {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
 }
 
 .plans--subtitle {
-  font-size: 18px;
-  max-width: 390px;
+    font-size: 18px;
+    max-width: 390px;
 }
 
 @media (max-width: 767px) {
-  .plans--subtitle {
-    max-width: 470px;
-  }
+    .plans--subtitle {
+        max-width: 470px;
+    }
 }
 
 @media (max-width: 575px) {
-  .plans--subtitle {
-    max-width: 470px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .plans--subtitle {
+        max-width: 470px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* cards */
 
 .plans--card {
-  width: 100%;
-  width: 340px;
-  position: relative;
-  border-radius: 30px;
-  background: rgb(241,241,241);
-  background: radial-gradient(circle, rgba(241, 241, 241, 1) 27%, rgb(255 255 255) 65%, rgb(240 240 240) 82%, rgba(237, 237, 237, 1) 93%, rgb(230 230 230) 97%, rgb(255 255 255) 100%);
+    width: 100%;
+    width: 340px;
+    position: relative;
+    border-radius: 30px;
+    background: rgb(241, 241, 241);
+    background: radial-gradient(
+        circle,
+        rgba(241, 241, 241, 1) 27%,
+        rgb(255 255 255) 65%,
+        rgb(240 240 240) 82%,
+        rgba(237, 237, 237, 1) 93%,
+        rgb(230 230 230) 97%,
+        rgb(255 255 255) 100%
+    );
 }
 
 @media (max-width: 1199px) {
-  .plans--card {
-    width: 325px;
-  }
+    .plans--card {
+        width: 325px;
+    }
 }
 
 @media (max-width: 767px) {
-  .plans--card {
-    width: 300px;
-  }
+    .plans--card {
+        width: 300px;
+    }
 }
 
-.plans--card:hover, .plans--card:focus {
-  transform: translateY(-15px);
+.plans--card:hover,
+.plans--card:focus {
+    transform: translateY(-15px);
 }
 
-.plans--card:hover hr, .plans--card:focus hr {
-  width: 150px;
+.plans--card:hover hr,
+.plans--card:focus hr {
+    width: 150px;
 }
 
 .plans--card img {
-  width: 100%;
-  border-radius: 30px 30px 0px 0px;
-  height: 280px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  object-fit: contain;
+    width: 100%;
+    border-radius: 30px 30px 0px 0px;
+    height: 280px;
+    padding-bottom: 10px;
+    object-fit: contain;
 }
 
 @media (max-width: 1399px) {
-  .plans--card img {
-    height: 250px;
-  }
+    .plans--card img {
+        height: 250px;
+    }
 }
 
 @media (max-width: 991px) {
-  .plans--card img {
-    height: 230px;
-  }
+    .plans--card img {
+        height: 230px;
+    }
 }
 
 .plans--card:hover img {
-  height: 310px;
+    height: 310px;
 }
 
 @media (max-width: 1399px) {
-  .plans--card:hover img {
-    height: 290px;
-  }
+    .plans--card:hover img {
+        height: 290px;
+    }
 }
 
 @media (max-width: 991px) {
-  .plans--card:hover img {
-    height: 265px;
-  }
+    .plans--card:hover img {
+        height: 265px;
+    }
 }
 
 .plans--card-content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px 20px;
 }
 
 .plans--card-title {
-  font-size: 26px;
-  font-weight: 700;
+    font-size: 26px;
+    font-weight: 700;
 }
 
 .plans--card-caption {
-  color: var(--color-theme-secondary);
-  font-weight: 500;
-  font-size: 14px;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    color: var(--color-theme-secondary);
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .plans--card-subtitle {
-  font-weight: 400;
+    font-weight: 400;
+    min-height: 45px;
 }
 
 /* button */
 
 .plans--card-button-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  margin-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 3px;
 }
 
 .plans--card-button-wrap a {
-  font-size: 15px;
-  padding: 0px;
-  font-weight: 500;
-  border: none;
-  padding: 0px 8px 0px 12px;
-  /*text-transform: uppercase;*/
-  letter-spacing: 0.5px;
+    font-size: 15px;
+    padding: 0px;
+    font-weight: 500;
+    border: none;
+    padding: 0px 8px 0px 12px;
+    /*text-transform: uppercase;*/
+    letter-spacing: 0.5px;
 }
 
 .plans--card-button-wrap hr {
-  width: 38%;
-  border-color: var(--color-theme-secondary);
-  border-style: solid;
-  opacity: 1;
-  margin: 0px;
-  border-width: 1px;
-  display: none;
+    width: 38%;
+    border-color: var(--color-theme-secondary);
+    border-style: solid;
+    opacity: 1;
+    margin: 0px;
+    border-width: 1px;
+    display: none;
 }
-

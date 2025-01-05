@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\Website\Home;
+use App\Livewire\Website\Menu;
+use App\Livewire\Website\Plans;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 
@@ -67,8 +70,7 @@ if (env('APP_ENV') == 'production') {
 
 
 // 1: Home
-// Route::get('/', Home::class)->name('website.home');
-
+Route::get('/', Home::class)->name('website.home');
 
 
 
@@ -79,9 +81,19 @@ if (env('APP_ENV') == 'production') {
 
 
 
+// 2: Plans
+Route::get('/plans', Plans::class)->name('website.plans');
 
-// 2: Menu
-// Route::get('/menu', Menu::class)->name('website.menu');
+
+
+// ---------------------------------------------------------------------
+
+
+
+
+
+// 3: Menu
+Route::get('/menu', Menu::class)->name('website.menu');
 
 
 
