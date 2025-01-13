@@ -1,4 +1,5 @@
-<section data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" id="menu--section" class="menu--section">
+<section data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" id="menu--section" class="menu--section"
+    wire:ignore.self>
     <div class="container-fluid">
 
 
@@ -140,7 +141,7 @@
 
                                         {{-- desc --}}
                                         <p class="menu--card-subtitle fs-md-14
-                                        truncate-text-2l">{{ $menuMeal->desc }}</p>
+                                        truncate-text-3l">{{ $menuMeal->desc }}</p>
 
 
 
@@ -225,7 +226,7 @@
 
 
                             {{-- actionButton --}}
-                            <div class="btn-group menu--card-button-group" role="group">
+                            <div class="btn-group menu--card-button-group d-none" role="group">
                                 <button class="btn" type="button" disabled>Order</button>
                                 <button class="btn" type="button" disabled>Details</button>
                             </div>

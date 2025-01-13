@@ -6,7 +6,8 @@
 
 
     {{-- 1: faq --}}
-    <section data-aos="fade" data-aos-duration="600" data-aos-delay="400" id="faq--section" class="faq--section">
+    <section data-aos="fade" data-aos-duration="600" data-aos-delay="400" id="faq--section" class="faq--section"
+        wire:ignore.self>
         <div class="container">
             <div class="row justify-content-start">
 
@@ -297,13 +298,14 @@
 
                         {{-- privacy --}}
                         <a class="btn footer-end--links fs-xl-13 fs-lg-13 fs-md-13 powered--by-related" role="button"
-                            href="#">Privacy Policy</a>
+                            href="https://be-healthydxb.com/subscription/public/privacy-policy">Privacy Policy</a>
 
 
 
                         {{-- terms --}}
                         <a class="btn footer-end--links fs-xl-13 fs-lg-13 fs-md-13 powered--by-related" role="button"
-                            href="#">Terms &amp; Conditions</a>
+                            href="https://be-healthydxb.com/subscription/public/privacy-policy">Terms &amp;
+                            Conditions</a>
                     </div>
                 </div>
                 {{-- endLinks --}}

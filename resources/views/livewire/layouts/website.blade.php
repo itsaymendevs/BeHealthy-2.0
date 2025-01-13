@@ -71,6 +71,12 @@
 
 
 
+        {{-- select2 --}}
+        <link href="{{ url('assets/css/select2.css') }}" rel="stylesheet">
+        <link href="{{ url('assets/css/select2-custom.css') }}" rel="stylesheet">
+
+
+
 
 
         {{-- icons --}}
@@ -212,9 +218,13 @@
         <script src="{{url('assets/js/jquery.min.js')}}"></script>
         <script src="{{url('assets/bootstrap/js/bootstrap.min.js')}}"></script>
         <script src="{{url('assets/js/aos.min.js')}}"></script>
+        <script src="{{url('assets/js/select2.js') }}"></script>
         <script src="{{url('assets/js/bs-init.js')}}"></script>
         <script src="{{url('assets/js/hideScroll.js')}}"></script>
         <script src="{{url('assets/js/plugins/navbar.js')}}"></script>
+
+
+
 
 
 
@@ -226,11 +236,15 @@
 
 
 
+        {{-- init-select extensions --}}
+        <script src="{{ url('assets/js/init-select.js') }}"></script>
+
+
+
+
         <script>
             $(document).ready(function() {
-                setTimeout(() => {
-                    $("#preloader").fadeOut();
-                }, 1000);
+                $("#preloader").fadeOut();
             });
         </script>
 

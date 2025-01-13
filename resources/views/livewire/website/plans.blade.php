@@ -114,7 +114,7 @@
 
     {{-- section --}}
     <section data-aos="fade" data-aos-duration="600" data-aos-delay="300" id="plans--section"
-        class="plans--section for-plans section--padding">
+        class="plans--section for-plans section--padding" wire:ignore.self>
         <div class="container-fluid">
             <div class="row align-items-end">
 
@@ -132,7 +132,7 @@
                 {{-- description --}}
                 <div class="col-12 col-md-6 col-lg-5 col-xl-4">
                     <p class="text-center text-sm-start plans--subtitle mb-0 mb-lg-2 fs-xxl-16 fs-xl-16 fs-lg-15 fs-md-15 fs-sm-15"
-                        data-aos="fade" data-aos-duration="600" data-aos-delay="600">
+                        data-aos="fade" data-aos-duration="600" data-aos-delay="600" wire:ignore.self>
                         Enjoy the convenience of healthy eating with plans designed for
                         your unique needs. Let us help you achieve your wellness goals,
                         one delicious meal at a time!
@@ -168,7 +168,8 @@
                     <div class="plans--card for-plans w-100" key='single-plan-{{ $key }}'>
                         <img src="{{ " {$storagePath}/menu/plans/{$plan->imageFile}" }}" />
                         <div class="plans--card-content">
-                            <p class="plans--card-caption fs-xxl-13 fs-xl-13 fs-lg-13 fs-md-13 fs-sm-13">
+                            <p
+                                class="plans--card-caption fs-xxl-13 fs-xl-13 fs-lg-13 fs-md-13 fs-sm-13 @if ($key != 1) invisible @endif">
                                 Top Rated
                             </p>
 

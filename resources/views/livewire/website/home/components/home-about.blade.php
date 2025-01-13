@@ -1,5 +1,5 @@
 <section data-aos="fade" data-aos-duration="600" data-aos-delay="300" id="about--section"
-    class="about--section section--padding d-none d-sm-flex">
+    class="about--section section--padding d-none d-sm-flex" wire:ignore.self>
     <div class="container-fluid">
         <div class="row align-items-end">
 
@@ -7,10 +7,8 @@
             {{-- about paragraph --}}
             <div class="col-12 col-lg-10">
                 <h1 class="about--title mb-0 fs-xxl-24 fs-xl-21 lh-xl-base fs-lg-18 fs-md-18 fs-sm-14">
-                    Welcome to Be Healthy, where wholesome dining meets delicious
-                    flavors. We specialize in creating nutrient-packed meals, from
-                    fresh salads to satisfying wraps, crafted to fuel your body and
-                    delight your taste buds
+                    Be Healthy offers freshly prepared, healthy, and nutritious meals that are ideal for achieving
+                    various goals, such as gaining muscle, losing weight, or simply maintaining a healthy diet
                 </h1>
             </div>
 

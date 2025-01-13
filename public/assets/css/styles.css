@@ -38,18 +38,18 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    max-height: 130px;
+    max-height: 80px;
 }
 
 @media (max-width: 767px) {
     #preloader img {
-        max-height: 100px;
+        max-height: 80px;
     }
 }
 
 @media (max-width: 575px) {
     #preloader img {
-        max-height: 90px;
+        max-height: 80px;
     }
 }
 
@@ -126,4 +126,53 @@ body {
     background-color: var(--color-theme);
     border: 2px solid var(--color-theme);
     color: var(--color-text-reverse) !important;
+}
+
+/* label-hr */
+
+.label--with-hr {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 5px;
+}
+
+.label--with-hr label {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    width: 40%;
+    font-weight: 500;
+}
+
+.label--with-hr hr {
+    width: 52%;
+    opacity: 1;
+    border-top-color: #7c7c7c;
+    margin: auto;
+}
+
+@media (max-width: 767px) {
+    .label--with-hr hr {
+        width: 42%;
+        opacity: 1;
+        border-top-color: #7c7c7c;
+    }
+}
+
+/* input */
+
+.form--input[type="date"] {
+    letter-spacing: 1px;
+}
+
+.form--input {
+    width: 100%;
+    border: 1px solid #7c7c7c;
+    height: 42px;
+    padding: 0px 18px;
+    border-radius: 15px;
+    font-size: 13px;
+    box-shadow: none !important;
 }

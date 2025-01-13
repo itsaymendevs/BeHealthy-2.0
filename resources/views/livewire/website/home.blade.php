@@ -58,6 +58,8 @@
     <link rel="stylesheet" href="{{url('assets/css/plugins/navbar.css')}}" />
 
 
+
+
     @endsection
     {{-- endSection --}}
 

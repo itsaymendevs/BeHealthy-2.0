@@ -1,4 +1,5 @@
-<section data-aos="fade" data-aos-duration="600" data-aos-delay="300" id="insta--section" class="insta--section">
+<section data-aos="fade" data-aos-duration="600" data-aos-delay="300" id="insta--section" class="insta--section"
+    wire:ignore.self>
     <div class="container-fluid">
 
 
@@ -35,7 +36,7 @@
         <div class="d-flex justify-content-start align-items-center insta--post-wrapper">
 
             {{-- single --}}
-            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="insta--post">
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="insta--post" wire:ignore.self>
                 <div class="insta--post-overlay"></div>
                 <img class="insta--post-bg" src="{{url('assets/img/insta/insta-1.jpeg')}}" />
                 <div class="insta--post-content">
@@ -47,7 +48,8 @@
 
 
             {{-- single --}}
-            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="insta--post d-none d-xl-flex">
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="insta--post d-none d-xl-flex"
+                wire:ignore.self>
                 <div class="insta--post-overlay"></div>
                 <img class="insta--post-bg" src="{{url('assets/img/insta/insta-2.jpeg')}}" />
                 <div class="insta--post-content">
@@ -60,7 +62,7 @@
 
 
             {{-- single --}}
-            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="400" class="insta--post">
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="400" class="insta--post" wire:ignore.self>
                 <div class="insta--post-overlay"></div>
                 <img class="insta--post-bg" src="{{url('assets/img/insta/insta-3.jpeg')}}" />
                 <div class="insta--post-content">
@@ -73,7 +75,8 @@
 
 
             {{-- single --}}
-            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500" class="insta--post d-none d-xl-flex">
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500" class="insta--post d-none d-xl-flex"
+                wire:ignore.self>
                 <div class="insta--post-overlay"></div>
                 <img class="insta--post-bg" src="{{url('assets/img/insta/insta-4.jpeg')}}" />
                 <div class="insta--post-content">
@@ -83,7 +86,7 @@
 
 
             {{-- single --}}
-            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="600" class="insta--post">
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="600" class="insta--post" wire:ignore.self>
                 <div class="insta--post-overlay"></div>
                 <img class="insta--post-bg" src="{{url('assets/img/insta/insta-5.jpeg')}}" />
                 <div class="insta--post-content">

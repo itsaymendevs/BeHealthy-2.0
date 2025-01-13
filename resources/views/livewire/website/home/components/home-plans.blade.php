@@ -1,6 +1,6 @@
 {{-- section --}}
 <section data-aos="fade" data-aos-duration="600" data-aos-delay="300" id="plans--section"
-    class="plans--section section--padding">
+    class="plans--section section--padding" wire:ignore.self>
     <div class="container-fluid">
         <div class="row align-items-end">
 
@@ -55,7 +55,8 @@
                         class="plans--card swiper-slide init--link" key='single-plan-{{ $key }}'>
                         <img src="{{ " {$storagePath}/menu/plans/{$plan->imageFile}" }}" />
                         <div class="plans--card-content">
-                            <p class="plans--card-caption fs-xxl-13 fs-xl-13 fs-lg-13 fs-md-13 fs-sm-13">
+                            <p
+                                class="plans--card-caption fs-xxl-13 fs-xl-13 fs-lg-13 fs-md-13 fs-sm-13 @if ($key != 1) invisible @endif">
                                 Top Rated
                             </p>
                             <h1 class="plans--card-title fs-xxl-22 fs-xl-22 fs-lg-21 fs-md-21 fs-sm-21">

@@ -1,6 +1,6 @@
 {{-- section --}}
 <section id="navbar--section" class="navbar--section">
-    <div class="container-fluid navbar--section-wrapper" data-aos="fade-down" data-aos-duration="600">
+    <div class="container-fluid navbar--section-wrapper" data-aos="fade-down" data-aos-duration="600" wire:ignore.self>
         <div class="row align-items-center">
 
 
@@ -42,21 +42,24 @@
 
 
                                 {{-- home --}}
-                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="300">
+                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="300"
+                                    wire:ignore.self>
                                     <a class="nav-link @if (Request::is('', '/')) active @endif"
                                         href="{{ route('website.home') }}">Home</a>
                                 </li>
 
 
                                 {{-- plans --}}
-                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="350">
+                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="350"
+                                    wire:ignore.self>
                                     <a class="nav-link @if (Request::is('plans')) active @endif"
                                         href="{{ route('website.plans') }}">Plans</a>
                                 </li>
 
 
                                 {{-- menu --}}
-                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="400">
+                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="400"
+                                    wire:ignore.self>
                                     <a class="nav-link @if (Request::is('menu')) active @endif"
                                         href="{{ route('website.menu') }}">Menu</a>
                                 </li>
@@ -64,14 +67,16 @@
 
 
                                 {{-- contact --}}
-                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="450">
+                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="450"
+                                    wire:ignore.self>
                                     <a class="nav-link @if (Request::is('contact')) active @endif" href="#">Contact</a>
                                 </li>
 
 
 
                                 {{-- about --}}
-                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="500">
+                                <li class="nav-item" data-aos="fade" data-aos-duration="600" data-aos-delay="500"
+                                    wire:ignore.self>
                                     <a class="nav-link @if (Request::is('#about')) active @endif" href="#">About Us</a>
                                 </li>
                             </ul>
@@ -101,7 +106,7 @@
             {{-- logo --}}
             <div class="col-6 col-sm-5 col-md-4 col-xl-2">
                 <img data-aos="fade" data-aos-duration="600" data-aos-delay="800" class="navbar--logo"
-                    src="{{ url('assets/img/logo/logo.png') }}" />
+                    src="{{ url('assets/img/logo/logo.png') }}" wire:ignore.self />
             </div>
 
 

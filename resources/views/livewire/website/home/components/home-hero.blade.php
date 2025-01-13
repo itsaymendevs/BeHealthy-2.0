@@ -1,5 +1,6 @@
 {{-- section --}}
-<section data-aos="fade" data-aos-duration="600" data-aos-delay="600" id="hero--section" class="hero--section">
+<section data-aos="fade" data-aos-duration="600" data-aos-delay="600" id="hero--section" class="hero--section"
+    wire:ignore.self>
     <div class="container-fluid">
         <div class="row align-items-center hero--row">
 

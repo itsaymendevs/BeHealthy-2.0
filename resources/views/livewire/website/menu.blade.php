@@ -110,7 +110,7 @@
 
     {{-- section --}}
     <section data-aos="fade" data-aos-duration="600" data-aos-delay="300" id="dining--section"
-        class="menu--section for-menu position-relative">
+        class="menu--section for-menu position-relative" wire:ignore.self>
         <div class="container-fluid">
 
 
@@ -122,19 +122,162 @@
 
                     {{-- title --}}
                     <h1 class="text-center insta--title fw-800 fs-xxl-32 fs-xl-32 fs-lg-30 fs-md-28 fs-sm-24"
-                        data-aos="fade" data-aos-duration="600" data-aos-delay="500">
+                        data-aos="fade" data-aos-duration="600" data-aos-delay="500" wire:ignore.self>
                         Explore Our Delicious Menu
                     </h1>
 
 
                     {{-- subtitle --}}
                     <p class="text-center insta--subtitle fs-lg-16 fs-md-15 fs-sm-16" data-aos="fade"
-                        data-aos-duration="600" data-aos-delay="700">
+                        data-aos-duration="600" data-aos-delay="700" wire:ignore.self>
                         Don't Wait – Add Your Favorites to the Cart and Enjoy a Feast!
                     </p>
                 </div>
             </div>
             {{-- endRow --}}
+
+
+
+
+
+
+
+            {{-- -------------------------------------------- --}}
+            {{-- -------------------------------------------- --}}
+            {{-- -------------------------------------------- --}}
+
+
+
+
+
+            {{-- filters --}}
+            <div class="row justify-content-start justify-content-sm-center mb-4 pb-2 pb-lg-3">
+
+
+
+                {{-- diet --}}
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 text-center">
+                    <div>
+                        <div class="label--with-hr">
+                            <label class="form-label fs-sm-10 fs-md-11 fs-lg-12 fs-xl-12">Meal Type</label>
+                            <hr />
+                        </div>
+
+
+                        {{-- select --}}
+                        <div class="select--single-wrapper mb-4" wire:ignore>
+                            <select class="form-select form--select" data-instance='searchType' data-clear='true'
+                                required>
+                                <option value=""></option>
+
+                                @foreach ($mealTypes ?? [] as $mealType)
+
+
+                                {{-- checkRecipe --}}
+                                @if ($mealType?->name == 'Recipe')
+
+                                <option value="{{ $mealType->id }}">Meal</option>
+
+                                @else
+
+                                <option value="{{ $mealType->id }}">{{ $mealType->name }}</option>
+
+                                @endif
+                                {{-- end if --}}
+
+
+
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- endSelect --}}
+
+
+                    </div>
+                </div>
+
+
+
+
+                {{-- -------------------------------- --}}
+                {{-- -------------------------------- --}}
+
+
+
+
+
+
+                {{-- cuisine --}}
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 text-center">
+                    <div>
+                        <div class="label--with-hr">
+                            <label class="form-label fs-sm-10 fs-md-11 fs-lg-12 fs-xl-12">Cuisine</label>
+                            <hr />
+                        </div>
+
+
+                        {{-- select --}}
+                        <div class="select--single-wrapper mb-4" wire:ignore>
+                            <select class="form-select form--select" data-instance='searchCuisine' data-clear='true'
+                                required>
+                                <option value=""></option>
+
+                                @foreach ($cuisines ?? [] as $cuisine)
+
+                                <option value="{{ $cuisine?->id }}">{{ $cuisine->name }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- endSelect --}}
+
+
+
+                    </div>
+                </div>
+
+
+
+                {{-- -------------------------------- --}}
+                {{-- -------------------------------- --}}
+
+
+
+                {{-- diet --}}
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 text-center">
+                    <div>
+                        <div class="label--with-hr">
+                            <label class="form-label fs-sm-10 fs-md-11 fs-lg-12 fs-xl-12">Diet</label>
+                            <hr />
+                        </div>
+
+
+                        {{-- select --}}
+                        <div class="select--single-wrapper mb-4" wire:ignore>
+                            <select class="form-select form--select" data-instance='searchDiet' data-clear='true'
+                                required>
+                                <option value=""></option>
+
+                                @foreach ($diets ?? [] as $diet)
+
+                                <option value="{{ $diet?->id }}">{{ $diet->name }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- endSelect --}}
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            {{-- endFilters --}}
+
+
 
 
 
@@ -149,7 +292,8 @@
 
 
             {{-- row --}}
-            <div class="row justify-content-center" data-aos="fade" data-aos-duration="600" data-aos-delay="800">
+            <div class="row justify-content-center filter--wrapper" data-aos="fade" data-aos-duration="600"
+                data-aos-delay="800" wire:ignore.self>
 
 
 
@@ -259,7 +403,7 @@
 
                                         {{-- desc --}}
                                         <p class="menu--card-subtitle fs-md-14
-                                        truncate-text-2l">{{ $menuMeal->desc }}</p>
+                                        truncate-text-3l">{{ $menuMeal->desc }}</p>
 
 
 
@@ -344,7 +488,7 @@
 
 
                             {{-- actionButton --}}
-                            <div class="btn-group menu--card-button-group" role="group">
+                            <div class="btn-group menu--card-button-group d-none" role="group">
                                 <button class="btn" type="button" disabled>Order</button>
                                 <button class="btn" type="button" disabled>Details</button>
                             </div>
@@ -356,6 +500,26 @@
 
                 @endforeach
                 {{-- end loop --}}
+
+
+
+
+
+
+
+
+                {{-- fallback --}}
+                @if ($menuMeals?->count() == 0)
+
+                <div class="col-12">
+                    <div class="menu--fallback">
+                        <h5>No Results Found!</h5>
+                    </div>
+                </div>
+
+
+                @endif
+                {{-- end if --}}
 
 
             </div>
@@ -384,7 +548,7 @@
     @section('floaters')
 
 
-    <div class="dining--floaters">
+    <div class="dining--floaters d-none">
         <button class="btn dining--floaters-cart" type="button">
             <img src="{{ url('assets/img/helpers/purchase.png') }}" />
         </button>
@@ -395,6 +559,8 @@
 
 
 
+
+
     {{-- -------------------------------------------------- --}}
     {{-- -------------------------------------------------- --}}
     {{-- -------------------------------------------------- --}}
@@ -405,6 +571,43 @@
 
 
 
+
+
+
+    @section('scripts')
+
+
+
+    {{-- filters --}}
+
+
+
+    <script>
+        $(document).ready(function() {
+            $(".form--select").on("change", function(event) {
+
+                // 1.1: getValue - instance
+                selectValue = $(this).select2('val');
+                instance = $(this).attr('data-instance');
+
+                @this.set(instance, selectValue);
+
+            });
+        });
+    </script>
+
+    @endsection
+    {{-- endSection --}}
+
+
+
+
+
+
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
+    {{-- -------------------------------------------------- --}}
 
 
 

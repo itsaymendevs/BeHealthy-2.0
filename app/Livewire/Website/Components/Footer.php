@@ -20,13 +20,13 @@ class Footer extends Component
 
         // 1: init
         $this->faqs = [
-            "How do I get started with Be Healthy meal plan?" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, asperiores",
+            "How do I get started with Be Healthy meal plan?" => "Start your healthy journey by visiting our meal plan website: select your target, choose your calories and meal count, mention any food allergies or dislikes, and pick your start date. Once your order is confirmed, our customer service will contact you to confirm details and guide you through your meal plan",
 
-            "Can I customize my meal plan?" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, asperiores",
+            "Can I customize my meal plan?" => "Yes! you can customize your meal plan based on the calories and macros you need",
 
-            "How can I manage the delivery days?" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, asperiores",
+            "On which days do you provide delivery?" => "We provide all deliveries on Sundays and Fridays",
 
-            "Can I freeze my account if I want to travel or something?" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, asperiores",
+            "Is it possible to reheat my meals?" => "All our meals include microwave heating instructions. If you prefer to use an oven, simply transfer the contents to an oven-safe dish after removing the packaging. Heat until thoroughly piping hot.",
 
         ];
 
