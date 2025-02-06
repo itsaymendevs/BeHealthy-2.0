@@ -38,7 +38,7 @@ class Menu extends Component
 
 
 
-        // 1.2s: getMeals
+        // 1.2: getMeals
         $this->menuMealsOG = Meal::whereIn('id', $mealsByMenu)->get();
 
 
@@ -53,7 +53,9 @@ class Menu extends Component
         // 2: dependencies
         $this->diets = Diet::all();
         $this->cuisines = Cuisine::all();
-        $this->mealTypes = Type::whereIn('name', ['Recipe', 'Snack', 'Side', 'Sauce'])?->get();
+        $this->mealTypes = Type::whereIn('name', ['Recipe', 'Snack', 'Side', 'Drink'])?->get();
+
+
 
 
 

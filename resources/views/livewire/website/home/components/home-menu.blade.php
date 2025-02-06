@@ -239,16 +239,24 @@
                     {{-- end loop --}}
 
 
-
-
                 </div>
                 {{-- endWrapper --}}
 
-
             </div>
+
+
         </div>
         {{-- endSwiper --}}
 
+
+        {{-- ------------------------------ --}}
+        {{-- ------------------------------ --}}
+
+
+
+        <div class="d-block text-center">
+            <a href="{{ route('website.menu') }}" class="btn btn--full-menu" type="button">Full Menu</a>
+        </div>
 
 
     </div>

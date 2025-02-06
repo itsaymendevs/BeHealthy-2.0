@@ -384,7 +384,7 @@
 
 
                                     {{-- tab: 1 --}}
-                                    <div class="tab-pane show @if ($outerKey == 0) show active @endif" role="tabpanel"
+                                    <div class="tab-pane  @if ($outerKey == 0) show active @endif" role="tabpanel"
                                         id="macros--tab-{{ $mealSize?->mealId }}-{{ $mealSize?->sizeId }}">
 
 
